@@ -1,0 +1,1957 @@
+<!DOCTYPE html>
+<html  lang="zh">
+<head>
+    <meta charset="utf-8" />
+
+<meta name="generator" content="Hexo 4.2.0" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+<title>Apache Commons Lang之日期时间工具类 - һĨ���</title>
+
+
+    <meta name="description" content="码农不识Apache，码尽一生也枉然。  FastDateFormatFastDateFormat是一个快速且线程安全的时间操作类，它完全可以替代SimpleDateFromat。因为是线程安全的，所以你可以把它作为一个类的静态字段使用。构造方法为protected，不允许直接构造它的对象，可以通过工厂方法获取。FastDateFormat之所以是线程安全的，是因为这个类是无状态的：内部的成员在">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Apache Commons Lang之日期时间工具类">
+<meta property="og:url" content="http://www.xl06.xyz/Apache%20Commons%20Lang%E4%B9%8B%E6%97%A5%E6%9C%9F%E6%97%B6%E9%97%B4%E5%B7%A5%E5%85%B7%E7%B1%BB/index.html">
+<meta property="og:site_name" content="һĨ���">
+<meta property="og:description" content="码农不识Apache，码尽一生也枉然。  FastDateFormatFastDateFormat是一个快速且线程安全的时间操作类，它完全可以替代SimpleDateFromat。因为是线程安全的，所以你可以把它作为一个类的静态字段使用。构造方法为protected，不允许直接构造它的对象，可以通过工厂方法获取。FastDateFormat之所以是线程安全的，是因为这个类是无状态的：内部的成员在">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://www.xl06.xyz/images/og_image.png">
+<meta property="article:published_time" content="2018-09-29T14:10:00.000Z">
+<meta property="article:modified_time" content="2018-11-23T16:45:01.000Z">
+<meta property="article:author" content="һĨ���">
+<meta property="article:tag" content="Java">
+<meta property="article:tag" content="Apache">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://www.xl06.xyz/images/og_image.png">
+
+
+
+
+
+
+
+<link rel="icon" href="/images/favicon.svg">
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-light.css">
+
+
+    
+    
+<style>body>.footer,body>.navbar,body>.section{opacity:0}</style>
+
+    
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css">
+
+    
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.css">
+
+    
+    
+    
+    
+<link rel="stylesheet" href="/css/back-to-top.css">
+
+    
+    
+    
+    
+    
+    
+    
+    <link rel="stylesheet" href="/css/progressbar.css">
+<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+    
+    
+    
+
+
+<link rel="stylesheet" href="/css/style.css">
+	<script src="/js/src/click.js"></script>
+</head>
+<body class="is-3-column">
+    <nav class="navbar navbar-main">
+    <div class="container">
+        <div class="navbar-brand is-flex-center">
+            <a class="navbar-item navbar-logo" href="/">
+            
+                <img src="/images/ava.png" alt="Apache Commons Lang之日期时间工具类" height="28">
+            
+            </a>
+        </div>
+        <div class="navbar-menu">
+            
+            <div class="navbar-start">
+                
+                <a class="navbar-item"
+                href="/">首页</a>
+                
+                <a class="navbar-item"
+                href="/archives">归档</a>
+                
+                <a class="navbar-item"
+                href="/categories">分类</a>
+                
+                <a class="navbar-item"
+                href="/tags">标签</a>
+                
+                <a class="navbar-item"
+                href="/about">关于</a>
+                
+                <a class="navbar-item"
+                href="/project">作品</a>
+                
+            </div>
+            
+            <div class="navbar-end">
+                
+                    
+                    <a class="navbar-item" target="_blank" title="Download on GitHub" href="https://github.com/xueliang0614">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                    
+                
+                
+                
+                <a class="navbar-item search" title="搜索" href="javascript:;">
+                    <i class="fas fa-search"></i>
+                </a>
+                
+            </div>
+        </div>
+    </div>
+</nav>
+    
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main">
+<div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2018-09-29T14:10:00.000Z">2018-09-29</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/%E5%90%8E%E7%AB%AF/">后端</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    12 分钟 读完 (大约 1734 个字)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                Apache Commons Lang之日期时间工具类
+            
+        </h1>
+        <div class="content">
+            <html><head></head><body><blockquote>
+<p>码农不识Apache，码尽一生也枉然。</p>
+</blockquote>
+<h2 id="FastDateFormat"><a href="#FastDateFormat" class="headerlink" title="FastDateFormat"></a>FastDateFormat</h2><p><code>FastDateFormat</code>是一个快速且线程安全的时间操作类，它完全可以替代<code>SimpleDateFromat</code>。因为是线程安全的，所以你可以把它作为一个类的静态字段使用。构造方法为protected，不允许直接构造它的对象，可以通过工厂方法获取。FastDateFormat之所以是线程安全的，是因为这个类是无状态的：内部的成员在构造时就完成了初始化，并在对象存活期，不提供任何API供外界修改他们。</p>
+<h3 id="getInstance-String-pattern"><a href="#getInstance-String-pattern" class="headerlink" title="getInstance(String pattern)"></a>getInstance(String pattern)</h3><p>获取指定日期时间格式的<code>FastDateFormat</code>实例。</p>
+<h3 id="format-Date-date"><a href="#format-Date-date" class="headerlink" title="format(Date date)"></a>format(Date date)</h3><p>将日期时间格式化为字符串。</p>
+<figure class="highlight java hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">FastDateFormat.getInstance(<span class="hljs-string">"yyyy-MM-dd HH:mm:ss"</span>).format(<span class="hljs-keyword">new</span> Date()); <span class="hljs-comment">// 2017-06-03 23:32:31</span></span><br></pre></td></tr></tbody></table></figure>
+
+<h3 id="format-long-millis"><a href="#format-long-millis" class="headerlink" title="format(long millis)"></a>format(long millis)</h3><p>同<code>format(Date date)</code>相似。</p>
+<h3 id="format-Calendar-calendar"><a href="#format-Calendar-calendar" class="headerlink" title="format(Calendar calendar)"></a>format(Calendar calendar)</h3><p>同<code>format(Date date)</code>相似。</p>
+<h2 id="DateFormatUtils"><a href="#DateFormatUtils" class="headerlink" title="DateFormatUtils"></a>DateFormatUtils</h2><p>将时间转化为字符串的工具类。不可实例化对象且线程安全，依赖于<code>FastDateFormat</code>。</p>
+<h3 id="预定义的日期格式"><a href="#预定义的日期格式" class="headerlink" title="预定义的日期格式"></a>预定义的日期格式</h3><p><code>DateFormatUtils</code>预定义的日期格式有如下几种：</p>
+<figure class="highlight java hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> FastDateFormat ISO_8601_EXTENDED_DATETIME_FORMAT = FastDateFormat.getInstance(<span class="hljs-string">"yyyy-MM-dd'T'HH:mm:ss"</span>);</span><br><span class="line"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> FastDateFormat ISO_8601_EXTENDED_DATETIME_TIME_ZONE_FORMAT = FastDateFormat.getInstance(<span class="hljs-string">"yyyy-MM-dd'T'HH:mm:ssZZ"</span>);</span><br><span class="line"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> FastDateFormat ISO_8601_EXTENDED_DATE_FORMAT = FastDateFormat.getInstance(<span class="hljs-string">"yyyy-MM-dd"</span>);</span><br><span class="line"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> FastDateFormat ISO_8601_EXTENDED_TIME_FORMAT = FastDateFormat.getInstance(<span class="hljs-string">"HH:mm:ss"</span>);</span><br><span class="line"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> FastDateFormat ISO_8601_EXTENDED_TIME_TIME_ZONE_FORMAT = FastDateFormat.getInstance(<span class="hljs-string">"HH:mm:ssZZ"</span>);</span><br><span class="line"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> FastDateFormat SMTP_DATETIME_FORMAT = FastDateFormat.getInstance(<span class="hljs-string">"EEE, dd MMM yyyy HH:mm:ss Z"</span>, Locale.US);</span><br></pre></td></tr></tbody></table></figure>
+
+<h3 id="format-Date-date-String-pattern"><a href="#format-Date-date-String-pattern" class="headerlink" title="format(Date date, String pattern)"></a>format(Date date, String pattern)</h3><p>将日期格式化为字符串。</p>
+<figure class="highlight java hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">DateFormatUtils.format(<span class="hljs-keyword">new</span> Date(), <span class="hljs-string">"yyyy-MM-dd HH:mm:ss"</span>); <span class="hljs-comment">// 2017-06-03 23:03:53</span></span><br><span class="line">DateFormatUtils.ISO_8601_EXTENDED_DATETIME_FORMAT.format(<span class="hljs-keyword">new</span> Date()); <span class="hljs-comment">// 2017-06-03T23:09:52</span></span><br><span class="line">DateFormatUtils.format(System.currentTimeMillis(), <span class="hljs-string">"yyyy-MM-dd HH:mm:ss"</span>); <span class="hljs-comment">// 2017-06-03 23:16:59</span></span><br></pre></td></tr></tbody></table></figure>
+
+<h3 id="format-long-millis-String-pattern"><a href="#format-long-millis-String-pattern" class="headerlink" title="format(long millis, String pattern)"></a>format(long millis, String pattern)</h3><p>同<code>format(Date date, String pattern)</code>相似。</p>
+<h3 id="format-Calendar-calendar-String-pattern"><a href="#format-Calendar-calendar-String-pattern" class="headerlink" title="format(Calendar calendar, String pattern)"></a>format(Calendar calendar, String pattern)</h3><p>同<code>format(Date date, String pattern)</code>相似。</p>
+<h2 id="DateUtils"><a href="#DateUtils" class="headerlink" title="DateUtils"></a>DateUtils</h2><p><code>DateUtils</code>提供了很多很方便的功能，减轻了使用Date的复杂性。把原来需用<code>Calendar</code>才能完成的功能统一集中了起来，也就是说没有对应的<code>CalendarUtils</code>类。在JDK中，Date与Calendar概念本身就有些混淆，只是为了保持兼容性才引入的Calendar。相对于Calendar提供的方法，DateUtils提供了更加合理的方法，对时间的单个字段操作变得更加的容易。</p>
+<h3 id="常量"><a href="#常量" class="headerlink" title="常量"></a>常量</h3><figure class="highlight java hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> <span class="hljs-keyword">long</span> MILLIS_PER_SECOND = <span class="hljs-number">1000</span>; <span class="hljs-comment">// 1秒钟的毫秒数</span></span><br><span class="line"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> <span class="hljs-keyword">long</span> MILLIS_PER_MINUTE = <span class="hljs-number">60</span> * MILLIS_PER_SECOND; <span class="hljs-comment">// 1分钟的毫秒数</span></span><br><span class="line"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> <span class="hljs-keyword">long</span> MILLIS_PER_HOUR = <span class="hljs-number">60</span> * MILLIS_PER_MINUTE; <span class="hljs-comment">// 1小时的毫秒数</span></span><br><span class="line"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> <span class="hljs-keyword">long</span> MILLIS_PER_DAY = <span class="hljs-number">24</span> * MILLIS_PER_HOUR; <span class="hljs-comment">// 1天的毫秒数</span></span><br></pre></td></tr></tbody></table></figure>
+
+<h3 id="boolean-isSameDay-Date-date1-Date-date2"><a href="#boolean-isSameDay-Date-date1-Date-date2" class="headerlink" title="boolean isSameDay(Date date1, Date date2)"></a>boolean isSameDay(Date date1, Date date2)</h3><p>判断两个日期是否是同一天。</p>
+<figure class="highlight java hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">DateUtils.isSameDay(<span class="hljs-keyword">new</span> Date(), <span class="hljs-keyword">new</span> Date()); <span class="hljs-comment">// true</span></span><br></pre></td></tr></tbody></table></figure>
+
+<h3 id="boolean-isSameDay-Calendar-cal1-Calendar-cal2"><a href="#boolean-isSameDay-Calendar-cal1-Calendar-cal2" class="headerlink" title="boolean isSameDay(Calendar cal1, Calendar cal2)"></a>boolean isSameDay(Calendar cal1, Calendar cal2)</h3><p>同<code>isSameDay(Date date1, Date date2)</code>相似。</p>
+<h3 id="Date-parseDate-String-str-String…-parsePatterns"><a href="#Date-parseDate-String-str-String…-parsePatterns" class="headerlink" title="Date parseDate(String str, String… parsePatterns)"></a>Date parseDate(String str, String… parsePatterns)</h3><p>解析日期时间字符串日期时间Date对象，通过尝试各种不同的解析器来解析表示日期的字符串。</p>
+<figure class="highlight java hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">DateUtils.parseDate(<span class="hljs-string">"2017-06-03 23:51:44"</span>, <span class="hljs-string">"yyyy-MM-dd HH:mm:ss"</span>); <span class="hljs-comment">// 2017-06-03 23:51:44</span></span><br><span class="line">DateUtils.parseDate(<span class="hljs-string">"2017年06月03日 23时51分44秒"</span>, <span class="hljs-string">"yyyy-MM-dd HH:mm:ss"</span>, <span class="hljs-string">"yyyy年MM月dd日 HH时mm分ss秒"</span>);</span><br></pre></td></tr></tbody></table></figure>
+
+<h3 id="Date-addYears-Date-date-int-amount"><a href="#Date-addYears-Date-date-int-amount" class="headerlink" title="Date addYears(Date date, int amount)"></a>Date addYears(Date date, int amount)</h3><p>得到<code>date</code>日期时间后（前）<code>amount</code>年后的日期时间。</p>
+<figure class="highlight java hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Date d3 = DateUtils.addYears(<span class="hljs-keyword">new</span> Date(), <span class="hljs-number">3</span>); <span class="hljs-comment">// 2020-06-04 00:06:21</span></span><br><span class="line">Date d3 = DateUtils.addYears(<span class="hljs-keyword">new</span> Date(), -<span class="hljs-number">2</span>); <span class="hljs-comment">// 2015-06-04 00:06:21</span></span><br></pre></td></tr></tbody></table></figure>
+
+<h3 id="Date-addMonths-Date-date-int-amount"><a href="#Date-addMonths-Date-date-int-amount" class="headerlink" title="Date addMonths(Date date, int amount)"></a>Date addMonths(Date date, int amount)</h3><p>同<code>addYears(Date date, int amount)</code>相似，对月份数进行加减。</p>
+<h3 id="Date-addWeeks-Date-date-int-amount"><a href="#Date-addWeeks-Date-date-int-amount" class="headerlink" title="Date addWeeks(Date date, int amount)"></a>Date addWeeks(Date date, int amount)</h3><p>同<code>addYears(Date date, int amount)</code>相似，对周数进行加减。</p>
+<h3 id="Date-addDays-Date-date-int-amount"><a href="#Date-addDays-Date-date-int-amount" class="headerlink" title="Date addDays(Date date, int amount)"></a>Date addDays(Date date, int amount)</h3><p>同<code>addYears(Date date, int amount)</code>相似，对天数进行加减。</p>
+<h3 id="Date-addHours-Date-date-int-amount"><a href="#Date-addHours-Date-date-int-amount" class="headerlink" title="Date addHours(Date date, int amount)"></a>Date addHours(Date date, int amount)</h3><p>同<code>addYears(Date date, int amount)</code>相似，对小时数进行加减。</p>
+<h3 id="Date-addMinutes-Date-date-int-amount"><a href="#Date-addMinutes-Date-date-int-amount" class="headerlink" title="Date addMinutes(Date date, int amount)"></a>Date addMinutes(Date date, int amount)</h3><p>同<code>addYears(Date date, int amount)</code>相似，对分钟数进行加减。</p>
+<h3 id="Date-addSeconds-Date-date-int-amount"><a href="#Date-addSeconds-Date-date-int-amount" class="headerlink" title="Date addSeconds(Date date, int amount)"></a>Date addSeconds(Date date, int amount)</h3><p>同<code>addYears(Date date, int amount)</code>相似，对秒数进行加减。</p>
+<h3 id="Date-addMilliseconds-Date-date-int-amount"><a href="#Date-addMilliseconds-Date-date-int-amount" class="headerlink" title="Date addMilliseconds(Date date, int amount)"></a>Date addMilliseconds(Date date, int amount)</h3><p>同<code>addYears(Date date, int amount)</code>相似，对毫秒数进行加减。</p>
+<h3 id="Date-setYears-Date-date-int-amount"><a href="#Date-setYears-Date-date-int-amount" class="headerlink" title="Date setYears(Date date, int amount)"></a>Date setYears(Date date, int amount)</h3><p>对给定的日期时间设置年份。</p>
+<figure class="highlight java hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Date d4 = DateUtils.setYears(<span class="hljs-keyword">new</span> Date(), <span class="hljs-number">2028</span>); <span class="hljs-comment">// 2028-06-04 00:16:48</span></span><br></pre></td></tr></tbody></table></figure>
+
+<h3 id="Date-setMonths-Date-date-int-amount"><a href="#Date-setMonths-Date-date-int-amount" class="headerlink" title="Date setMonths(Date date, int amount)"></a>Date setMonths(Date date, int amount)</h3><p>同<code>setYears(Date date, int amount)</code>相似，对月数进行设置。</p>
+<h3 id="Date-setDays-Date-date-int-amount"><a href="#Date-setDays-Date-date-int-amount" class="headerlink" title="Date setDays(Date date, int amount)"></a>Date setDays(Date date, int amount)</h3><p>同<code>setYears(Date date, int amount)</code>相似，对天数进行设置。</p>
+<h3 id="Date-setHours-Date-date-int-amount"><a href="#Date-setHours-Date-date-int-amount" class="headerlink" title="Date setHours(Date date, int amount)"></a>Date setHours(Date date, int amount)</h3><p>同<code>setYears(Date date, int amount)</code>相似，对小时数进行设置。</p>
+<h3 id="Date-setMinutes-Date-date-int-amount"><a href="#Date-setMinutes-Date-date-int-amount" class="headerlink" title="Date setMinutes(Date date, int amount)"></a>Date setMinutes(Date date, int amount)</h3><p>同<code>setYears(Date date, int amount)</code>相似，对分钟数进行设置。</p>
+<h3 id="Date-setSeconds-Date-date-int-amount"><a href="#Date-setSeconds-Date-date-int-amount" class="headerlink" title="Date setSeconds(Date date, int amount)"></a>Date setSeconds(Date date, int amount)</h3><p>同<code>setYears(Date date, int amount)</code>相似，对秒钟数进行设置。</p>
+<h3 id="Date-setMilliseconds-Date-date-int-amount"><a href="#Date-setMilliseconds-Date-date-int-amount" class="headerlink" title="Date setMilliseconds(Date date, int amount)"></a>Date setMilliseconds(Date date, int amount)</h3><p>同<code>setYears(Date date, int amount)</code>相似，对毫秒数进行设置。</p>
+<h3 id="toCalendar-Date-date"><a href="#toCalendar-Date-date" class="headerlink" title="toCalendar(Date date)"></a>toCalendar(Date date)</h3><p>将日期转为<code>Calendar</code>实例。</p>
+<h3 id="Date-round-Date-date-int-field"><a href="#Date-round-Date-date-int-field" class="headerlink" title="Date round(Date date, int field)"></a>Date round(Date date, int field)</h3><p>对日期时间进行四舍五入。filed指定取整的字段，可以取的值为</p>
+<ul>
+<li>Calendar.SECOND</li>
+<li>Calendar.MINUTE</li>
+<li>Calendar.HOUR_OF_DAY</li>
+<li>Calendar.DAY_OF_MONTH</li>
+<li>Calendar.MONTH</li>
+<li>Calendar.YEAR<br>… </li>
+</ul>
+<figure class="highlight java hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">// 当前时间为'2017-06-04 00:44:41'，则执行以下代码</span></span><br><span class="line">DateUtils.round(<span class="hljs-keyword">new</span> Date(), Calendar.YEAR); <span class="hljs-comment">// 2017-01-01 00:00:00</span></span><br><span class="line">DateUtils.round(<span class="hljs-keyword">new</span> Date(), Calendar.MONTH); <span class="hljs-comment">// 2017-06-01 00:00:00</span></span><br><span class="line">DateUtils.round(<span class="hljs-keyword">new</span> Date(), Calendar.HOUR_OF_DAY); <span class="hljs-comment">// 2017-06-04 01:00:00</span></span><br><span class="line">DateUtils.round(<span class="hljs-keyword">new</span> Date(), Calendar.DAY_OF_MONTH); <span class="hljs-comment">// 2017-06-04 00:00:00</span></span><br><span class="line">DateUtils.round(<span class="hljs-keyword">new</span> Date(), Calendar.HOUR); <span class="hljs-comment">// 2017-06-04 01:00:00</span></span><br><span class="line">DateUtils.round(<span class="hljs-keyword">new</span> Date(), Calendar.MINUTE); <span class="hljs-comment">// 2017-06-04 00:45:00</span></span><br><span class="line">DateUtils.round(<span class="hljs-keyword">new</span> Date(), Calendar.SECOND); <span class="hljs-comment">// 2017-06-04 00:44:43</span></span><br></pre></td></tr></tbody></table></figure>
+
+<h3 id="Date-truncate-Date-date-int-field"><a href="#Date-truncate-Date-date-int-field" class="headerlink" title="Date truncate(Date date, int field)"></a>Date truncate(Date date, int field)</h3><p>从给定字段开始格式化截取日期。对一个时间对象的某个字段进行截断。</p>
+<figure class="highlight java hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">// 当前时间为'2017-06-04 00:56:05'，则执行以下代码</span></span><br><span class="line">DateUtils.truncate(<span class="hljs-keyword">new</span> Date(), Calendar.YEAR); <span class="hljs-comment">// 2017-01-01 00:00:00</span></span><br><span class="line">DateUtils.truncate(<span class="hljs-keyword">new</span> Date(), Calendar.MONTH); <span class="hljs-comment">// 2017-06-01 00:00:00</span></span><br><span class="line">DateUtils.truncate(<span class="hljs-keyword">new</span> Date(), Calendar.HOUR_OF_DAY); <span class="hljs-comment">// 2017-06-04 00:00:00</span></span><br><span class="line">DateUtils.truncate(<span class="hljs-keyword">new</span> Date(), Calendar.DAY_OF_MONTH); <span class="hljs-comment">// 2017-06-04 00:00:00</span></span><br><span class="line">DateUtils.truncate(<span class="hljs-keyword">new</span> Date(), Calendar.HOUR); <span class="hljs-comment">// 2017-06-04 00:00:00</span></span><br><span class="line">DateUtils.truncate(<span class="hljs-keyword">new</span> Date(), Calendar.MINUTE); <span class="hljs-comment">// 2017-06-04 00:56:00</span></span><br><span class="line">DateUtils.truncate(<span class="hljs-keyword">new</span> Date(), Calendar.SECOND); <span class="hljs-comment">// 2017-06-04 00:56:05</span></span><br></pre></td></tr></tbody></table></figure>
+
+<h3 id="Date-ceiling-Date-date-int-field"><a href="#Date-ceiling-Date-date-int-field" class="headerlink" title="Date ceiling(Date date, int field)"></a>Date ceiling(Date date, int field)</h3><p>从给定字段开始“向上”格式化日期。</p>
+<figure class="highlight java hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">// 当前时间为'2017-06-04 01:02:31'，则执行以下代码</span></span><br><span class="line">DateUtils.ceiling(<span class="hljs-keyword">new</span> Date(), Calendar.YEAR); <span class="hljs-comment">// 2018-01-01 00:00:00</span></span><br><span class="line">DateUtils.ceiling(<span class="hljs-keyword">new</span> Date(), Calendar.MONTH); <span class="hljs-comment">// 2017-07-01 00:00:00</span></span><br><span class="line">DateUtils.ceiling(<span class="hljs-keyword">new</span> Date(), Calendar.HOUR_OF_DAY); <span class="hljs-comment">// 2017-06-04 02:00:00</span></span><br><span class="line">DateUtils.ceiling(<span class="hljs-keyword">new</span> Date(), Calendar.DAY_OF_MONTH); <span class="hljs-comment">// 2017-06-05 00:00:00</span></span><br><span class="line">DateUtils.ceiling(<span class="hljs-keyword">new</span> Date(), Calendar.HOUR); <span class="hljs-comment">// 2017-06-04 02:00:00</span></span><br><span class="line">DateUtils.ceiling(<span class="hljs-keyword">new</span> Date(), Calendar.MINUTE); <span class="hljs-comment">// 2017-06-04 01:03:00</span></span><br><span class="line">DateUtils.ceiling(<span class="hljs-keyword">new</span> Date(), Calendar.SECOND); <span class="hljs-comment">// 2017-06-04 01:02:32</span></span><br></pre></td></tr></tbody></table></figure>
+
+<h3 id="long-getFragmentInDays-Date-date-int-fragment"><a href="#long-getFragmentInDays-Date-date-int-fragment" class="headerlink" title="long getFragmentInDays(Date date, int fragment)"></a>long getFragmentInDays(Date date, int fragment)</h3><p>返回一个指定时间的天数。关键的是参数<code>fragment</code>，它的作用非常重要。它的值必须是Calendar的时间常量字段。</p>
+<p><strong>注意</strong>：小时必须用24小时制的，即<code>Calendar.HOUR_OF_DAY</code>，而不能用<code>Calendar.HOUR</code>字段。</p>
+<figure class="highlight java hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">// 当前时间为'2017-06-04 01:12:31'，则执行以下代码</span></span><br><span class="line">DateUtils.getFragmentInDays(<span class="hljs-keyword">new</span> Date(), Calendar.YEAR); <span class="hljs-comment">// 155</span></span><br><span class="line">DateUtils.getFragmentInDays(<span class="hljs-keyword">new</span> Date(), Calendar.MONTH); <span class="hljs-comment">// 4</span></span><br></pre></td></tr></tbody></table></figure>
+
+<h3 id="long-getFragmentInMilliseconds-Date-date-int-fragment"><a href="#long-getFragmentInMilliseconds-Date-date-int-fragment" class="headerlink" title="long getFragmentInMilliseconds(Date date, int fragment)"></a>long getFragmentInMilliseconds(Date date, int fragment)</h3><p>同<code>getFragmentInDays(Date date, int fragment)</code>相似。</p>
+<h3 id="long-getFragmentInSeconds-Date-date-int-fragment"><a href="#long-getFragmentInSeconds-Date-date-int-fragment" class="headerlink" title="long getFragmentInSeconds(Date date, int fragment)"></a>long getFragmentInSeconds(Date date, int fragment)</h3><p>同<code>getFragmentInDays(Date date, int fragment)</code>相似。</p>
+<h3 id="long-getFragmentInMinutes-Date-date-int-fragment"><a href="#long-getFragmentInMinutes-Date-date-int-fragment" class="headerlink" title="long getFragmentInMinutes(Date date, int fragment)"></a>long getFragmentInMinutes(Date date, int fragment)</h3><p>同<code>getFragmentInDays(Date date, int fragment)</code>相似。</p>
+<h3 id="long-getFragmentInHours-Date-date-int-fragment"><a href="#long-getFragmentInHours-Date-date-int-fragment" class="headerlink" title="long getFragmentInHours(Date date, int fragment)"></a>long getFragmentInHours(Date date, int fragment)</h3><p>同<code>getFragmentInDays(Date date, int fragment)</code>相似。</p>
+<h3 id="boolean-truncatedEquals-Date-date1-Date-date2-int-field"><a href="#boolean-truncatedEquals-Date-date1-Date-date2-int-field" class="headerlink" title="boolean truncatedEquals(Date date1, Date date2, int field)"></a>boolean truncatedEquals(Date date1, Date date2, int field)</h3><p>比较日历对应字段是否相等。</p>
+<h2 id="StopWatch"><a href="#StopWatch" class="headerlink" title="StopWatch"></a>StopWatch</h2><p><code>StopWatch</code>是一个方便的计时器。</p>
+<h3 id="使用示例"><a href="#使用示例" class="headerlink" title="使用示例"></a>使用示例</h3><figure class="highlight java hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">StopWatch stopWatch = <span class="hljs-keyword">new</span> StopWatch();</span><br><span class="line">stopWatch.start();</span><br><span class="line">...</span><br><span class="line">stopWatch.stop();</span><br><span class="line">System.out.println(stopWatch.getTime());</span><br></pre></td></tr></tbody></table></figure>
+
+<h3 id="主要方法："><a href="#主要方法：" class="headerlink" title="主要方法："></a>主要方法：</h3><ul>
+<li><code>start()</code>: 开始计时</li>
+<li><code>stop()</code>: 停止计时</li>
+<li><code>reset()</code>: 重置计时</li>
+<li><code>suspend()</code>: 暂停计时</li>
+<li><code>resume()</code>: 继续计时</li>
+<li><code>getTime()</code>: 获取消耗的毫秒数</li>
+<li><code>getNanoTime()</code>: 获取消耗的纳秒数</li>
+<li><code>getStartTime()</code>: 获取开始的毫秒数</li>
+<li><code>isStarted()</code>: 是否开始</li>
+<li><code>isSuspended()</code>: 是否暂停</li>
+<li><code>isStopped()</code>: 是否停止</li>
+</ul>
+</body></html>
+        </div>
+        
+        <div class="level is-size-7 is-uppercase">
+            <div class="level-start">
+                <div class="level-item">
+                    <span class="is-size-6 has-text-grey has-mr-7">#</span>
+                    <a class="has-link-grey -link" href="/tags/Apache/" rel="tag">Apache</a>, <a class="has-link-grey -link" href="/tags/Java/" rel="tag">Java</a>
+                </div>
+            </div>
+        </div>
+        
+        
+        
+        <div class="social-share"></div>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js@1.0.16/dist/css/share.min.css">
+<script src="https://cdn.jsdelivr.net/npm/social-share.js@1.0.16/dist/js/social-share.min.js"></script>
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="menu-label has-text-centered">喜欢这篇文章？打赏一下作者吧</h3>
+        <div class="buttons is-centered">
+            
+                
+<a class="button is-info donate">
+    <span class="icon is-small">
+        <i class="fab fa-alipay"></i>
+    </span>
+    <span>支付宝</span>
+    <div class="qrcode"><img src="/images/zhi.jpg" alt="支付宝"></div>
+</a>
+
+                
+                
+<a class="button is-success donate">
+    <span class="icon is-small">
+        <i class="fab fa-weixin"></i>
+    </span>
+    <span>微信</span>
+    <div class="qrcode"><img src="/images/wei.png" alt="微信"></div>
+</a>
+
+                
+        </div>
+    </div>
+</div>
+
+
+
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        <div class="level-start">
+            <a class="level level-item has-link-grey  article-nav-prev" href="/%E4%BD%BF%E7%94%A8Java%E8%B0%83%E7%94%A8PhantomJS%E5%8A%A8%E6%80%81%E5%AF%BC%E5%87%BAECharts%E5%9B%BE%E7%89%87%E5%88%B0Word%E6%96%87%E4%BB%B6%E4%B8%AD/">
+                <i class="level-item fas fa-chevron-left"></i>
+                <span class="level-item">使用Java调用PhantomJS动态导出ECharts图片到Word文件中</span>
+            </a>
+        </div>
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/Apache%20commons%20lang%E4%B9%8BArrayUtils/">
+                <span class="level-item">Apache Commons Lang之ArrayUtils</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="title is-5 has-text-weight-normal">评论</h3>
+        
+<div id="valine-thread" class="content"></div>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+<script>
+    new Valine({
+        el: '#valine-thread' ,
+        notify: false,
+        verify: false,
+        app_id: 'pGtDpK5EpiLy1oMGmpFXAaV6-gzGzoHsz',
+        app_key: 'ra40Npwa5HY3ex482cDELW5j',
+        placeholder: 'xxxxxxxx'
+    });
+</script>
+
+    </div>
+</div>
+</div>
+                
+
+
+
+
+<div class="column is-4-tablet is-4-desktop is-3-widescreen  has-order-1 column-left ">
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <nav class="level">
+            <div class="level-item has-text-centered" style="flex-shrink: 1">
+                <div>
+                    
+                    <figure class="image is-128x128 has-mb-6">
+                        <img class="" src="/images/xueshao110.jpg" alt="一抹离愁">
+                    </figure>
+                    
+                    <p class="is-size-4 is-block">
+                        一抹离愁
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-block">
+                        一抹离愁
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-flex is-flex-center has-text-grey">
+                        <i class="fas fa-map-marker-alt has-mr-7"></i>
+                        <span>西安</span>
+                    </p>
+                    
+                </div>
+            </div>
+        </nav>
+        <nav class="level is-mobile">
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        文章
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        59
+                    </p>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        分类
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        9
+                    </p>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        标签
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        28
+                    </p>
+                </div>
+            </div>
+        </nav>
+        
+        <div class="level">
+            <a class="level-item button is-link is-rounded" href="https://github.com/xueliang0614" target="_blank">
+                关注我</a>
+        </div>
+        
+        
+        
+        <div class="level is-mobile">
+            
+            <a class="level-item button is-white is-marginless" target="_blank"
+                title="Github" href="https://github.com/xueliang0614">
+                
+                <i class="fab fa-github"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank"
+                title="CSDN" href="https://blog.csdn.net/xueshao110">
+                
+                <i class="fab fa-github"></i>
+                
+            </a>
+            
+        </div>
+        
+    </div>
+</div>
+    
+        
+    
+        <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+        <h3 class="menu-label">
+            链接
+        </h3>
+        <ul class="menu-list">
+        
+            <li>
+                <a class="level is-mobile" href="https://blog.csdn.net/xueshao110" target="_blank">
+                    <span class="level-left">
+                        <span class="level-item">CSDN</span>
+                    </span>
+                    <span class="level-right">
+                        <span class="level-item tag">blog.csdn.net</span>
+                    </span>
+                </a>
+            </li>
+        
+            <li>
+                <a class="level is-mobile" href="https://github.com/xueliang0614" target="_blank">
+                    <span class="level-left">
+                        <span class="level-item">github</span>
+                    </span>
+                    <span class="level-right">
+                        <span class="level-item tag">github.com</span>
+                    </span>
+                </a>
+            </li>
+        
+        </ul>
+        </div>
+    </div>
+</div>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css">
+<script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script>
+<!-- require MetingJS -->
+<script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script>
+
+    <meting-js style="margin-top: 1.5rem;width: auto;height: auto;"
+    server="netease"
+    type="playlist"
+    id="408894554"
+    theme="#2980b9"
+    loop="all"
+    autoplay="true"
+    order="random"
+    storageName="aplayer-setting"
+    lrctype= 0
+    >
+    </meting-js>
+<style>
+    .aplayer{
+        margin: 1.5rem 0;
+    }
+</style>
+
+
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                分类
+            </h3>
+            <ul class="menu-list">
+            <li>
+        <a class="level is-marginless" href="/categories/Android/">
+            <span class="level-start">
+                <span class="level-item">Android</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">5</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/%E5%89%8D%E7%AB%AF/">
+            <span class="level-start">
+                <span class="level-item">前端</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">4</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/%E5%90%8E%E7%AB%AF/">
+            <span class="level-start">
+                <span class="level-item">后端</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">21</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/%E5%AE%89%E5%85%A8/">
+            <span class="level-start">
+                <span class="level-item">安全</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/%E5%B0%8F%E7%A8%8B%E5%BA%8F/">
+            <span class="level-start">
+                <span class="level-item">小程序</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/">
+            <span class="level-start">
+                <span class="level-item">数据库</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/%E7%BC%96%E7%A8%8B%E4%B9%8B%E9%81%93/">
+            <span class="level-start">
+                <span class="level-item">编程之道</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">3</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E5%85%B7/">
+            <span class="level-start">
+                <span class="level-item">软件工具</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">8</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/%E8%BD%AF%E4%BB%B6%E8%AE%BE%E8%AE%A1/">
+            <span class="level-start">
+                <span class="level-item">软件设计</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">14</span>
+            </span>
+        </a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+    
+        <div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            标签云
+        </h3>
+        <a href="/tags/Android/" style="font-size: 16.67px;">Android</a> <a href="/tags/Apache/" style="font-size: 15px;">Apache</a> <a href="/tags/CPU%E7%BC%93%E5%AD%98/" style="font-size: 10px;">CPU缓存</a> <a href="/tags/DevOps/" style="font-size: 10px;">DevOps</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/GitLab-CI/" style="font-size: 10px;">GitLab CI</a> <a href="/tags/Google/" style="font-size: 10px;">Google</a> <a href="/tags/Java/" style="font-size: 20px;">Java</a> <a href="/tags/JavaScript/" style="font-size: 15px;">JavaScript</a> <a href="/tags/Jenkins/" style="font-size: 10px;">Jenkins</a> <a href="/tags/Linux/" style="font-size: 15px;">Linux</a> <a href="/tags/MVEL/" style="font-size: 11.67px;">MVEL</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/PostgreSQL/" style="font-size: 10px;">PostgreSQL</a> <a href="/tags/Spring/" style="font-size: 10px;">Spring</a> <a href="/tags/Typora/" style="font-size: 10px;">Typora</a> <a href="/tags/UML/" style="font-size: 11.67px;">UML</a> <a href="/tags/Vue/" style="font-size: 10px;">Vue</a> <a href="/tags/%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95/" style="font-size: 10px;">单元测试</a> <a href="/tags/%E5%AE%89%E5%85%A8/" style="font-size: 10px;">安全</a> <a href="/tags/%E5%B0%8F%E7%A8%8B%E5%BA%8F/" style="font-size: 10px;">小程序</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" style="font-size: 10px;">数据库</a> <a href="/tags/%E6%95%B4%E6%B4%81%E4%BB%A3%E7%A0%81/" style="font-size: 10px;">整洁代码</a> <a href="/tags/%E6%B5%8B%E8%AF%95/" style="font-size: 10px;">测试</a> <a href="/tags/%E8%AE%BE%E8%AE%A1%E5%8E%9F%E5%88%99/" style="font-size: 10px;">设计原则</a> <a href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" style="font-size: 18.33px;">设计模式</a> <a href="/tags/%E9%87%8D%E6%9E%84/" style="font-size: 10px;">重构</a> <a href="/tags/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%BC%96%E7%A8%8B/" style="font-size: 13.33px;">面向对象编程</a>
+    </div>
+</div>
+    
+    
+        <div class="column-right-shadow is-hidden-widescreen ">
+        
+            <div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            最新文章
+        </h3>
+        
+        <article class="media">
+            
+            <a href="/hello-world/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Hello World">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-03-06T03:18:23.363Z">2020-03-06</time></div>
+                    <a href="/hello-world/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Hello World</a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/%E5%85%B3%E4%BA%8E%E5%B0%8F%E7%A8%8B%E5%BA%8F/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/gallery/thumbnails/x.jpeg" alt="关于小程序">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-10-20T14:10:22.000Z">2019-10-20</time></div>
+                    <a href="/%E5%85%B3%E4%BA%8E%E5%B0%8F%E7%A8%8B%E5%BA%8F/" class="title has-link-black-ter is-size-6 has-text-weight-normal">关于小程序</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/%E5%B0%8F%E7%A8%8B%E5%BA%8F/">小程序</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/Android-%E8%87%AA%E5%AE%9A%E4%B9%89%E7%9B%B8%E6%9C%BA/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/gallery/thumbnails/c.jpg" alt="Android 自定义相机">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-04-21T14:42:52.000Z">2019-04-21</time></div>
+                    <a href="/Android-%E8%87%AA%E5%AE%9A%E4%B9%89%E7%9B%B8%E6%9C%BA/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Android 自定义相机</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Android/">Android</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/Android%E5%AE%9E%E7%8E%B0%E4%B8%AA%E4%BA%BA%E4%B8%AD%E5%BF%83%E8%AE%BE%E7%BD%AE%E7%95%8C%E9%9D%A2/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/gallery/thumbnails/b.jpg" alt="Android实现个人中心设置界面">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-03-28T14:35:49.000Z">2019-03-28</time></div>
+                    <a href="/Android%E5%AE%9E%E7%8E%B0%E4%B8%AA%E4%BA%BA%E4%B8%AD%E5%BF%83%E8%AE%BE%E7%BD%AE%E7%95%8C%E9%9D%A2/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Android实现个人中心设置界面</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Android/">Android</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/%E5%9F%BA%E4%BA%8E%E8%B0%B7%E6%AD%8Cmvp%E6%9E%B6%E6%9E%84/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/gallery/thumbnails/a.jpg" alt="基于谷歌mvp架构">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-03-03T14:27:59.000Z">2019-03-03</time></div>
+                    <a href="/%E5%9F%BA%E4%BA%8E%E8%B0%B7%E6%AD%8Cmvp%E6%9E%B6%E6%9E%84/" class="title has-link-black-ter is-size-6 has-text-weight-normal">基于谷歌mvp架构</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Android/">Android</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+    </div>
+</div>
+        
+            <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+        <h3 class="menu-label">
+            归档
+        </h3>
+        <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/03/">
+                <span class="level-start">
+                    <span class="level-item">三月 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/10/">
+                <span class="level-start">
+                    <span class="level-item">十月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/04/">
+                <span class="level-start">
+                    <span class="level-item">四月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/03/">
+                <span class="level-start">
+                    <span class="level-item">三月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">2</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/02/">
+                <span class="level-start">
+                    <span class="level-item">二月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2018/11/">
+                <span class="level-start">
+                    <span class="level-item">十一月 2018</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">4</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2018/10/">
+                <span class="level-start">
+                    <span class="level-item">十月 2018</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">7</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2018/09/">
+                <span class="level-start">
+                    <span class="level-item">九月 2018</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">9</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2018/08/">
+                <span class="level-start">
+                    <span class="level-item">八月 2018</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">2</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2018/07/">
+                <span class="level-start">
+                    <span class="level-item">七月 2018</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">4</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2018/06/">
+                <span class="level-start">
+                    <span class="level-item">六月 2018</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">4</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2018/05/">
+                <span class="level-start">
+                    <span class="level-item">五月 2018</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2018/04/">
+                <span class="level-start">
+                    <span class="level-item">四月 2018</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">2</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2018/03/">
+                <span class="level-start">
+                    <span class="level-item">三月 2018</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">4</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2018/02/">
+                <span class="level-start">
+                    <span class="level-item">二月 2018</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2018/01/">
+                <span class="level-start">
+                    <span class="level-item">一月 2018</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">4</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2017/12/">
+                <span class="level-start">
+                    <span class="level-item">十二月 2017</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2017/11/">
+                <span class="level-start">
+                    <span class="level-item">十一月 2017</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">3</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2017/10/">
+                <span class="level-start">
+                    <span class="level-item">十月 2017</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">2</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2017/09/">
+                <span class="level-start">
+                    <span class="level-item">九月 2017</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">3</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2017/06/">
+                <span class="level-start">
+                    <span class="level-item">六月 2017</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2017/04/">
+                <span class="level-start">
+                    <span class="level-item">四月 2017</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        </ul>
+        </div>
+    </div>
+</div>
+        
+            <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                标签
+            </h3>
+            <div class="field is-grouped is-grouped-multiline">
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Android/">
+                        <span class="tag">Android</span>
+                        <span class="tag is-grey">5</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Apache/">
+                        <span class="tag">Apache</span>
+                        <span class="tag is-grey">4</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/CPU%E7%BC%93%E5%AD%98/">
+                        <span class="tag">CPU缓存</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/DevOps/">
+                        <span class="tag">DevOps</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Git/">
+                        <span class="tag">Git</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/GitLab-CI/">
+                        <span class="tag">GitLab CI</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Google/">
+                        <span class="tag">Google</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Java/">
+                        <span class="tag">Java</span>
+                        <span class="tag is-grey">37</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/JavaScript/">
+                        <span class="tag">JavaScript</span>
+                        <span class="tag is-grey">4</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Jenkins/">
+                        <span class="tag">Jenkins</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Linux/">
+                        <span class="tag">Linux</span>
+                        <span class="tag is-grey">4</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/MVEL/">
+                        <span class="tag">MVEL</span>
+                        <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Markdown/">
+                        <span class="tag">Markdown</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/PostgreSQL/">
+                        <span class="tag">PostgreSQL</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Spring/">
+                        <span class="tag">Spring</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Typora/">
+                        <span class="tag">Typora</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/UML/">
+                        <span class="tag">UML</span>
+                        <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Vue/">
+                        <span class="tag">Vue</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95/">
+                        <span class="tag">单元测试</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/%E5%AE%89%E5%85%A8/">
+                        <span class="tag">安全</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/%E5%B0%8F%E7%A8%8B%E5%BA%8F/">
+                        <span class="tag">小程序</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/">
+                        <span class="tag">数据库</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/%E6%95%B4%E6%B4%81%E4%BB%A3%E7%A0%81/">
+                        <span class="tag">整洁代码</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/%E6%B5%8B%E8%AF%95/">
+                        <span class="tag">测试</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/%E8%AE%BE%E8%AE%A1%E5%8E%9F%E5%88%99/">
+                        <span class="tag">设计原则</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">
+                        <span class="tag">设计模式</span>
+                        <span class="tag is-grey">12</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/%E9%87%8D%E6%9E%84/">
+                        <span class="tag">重构</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%BC%96%E7%A8%8B/">
+                        <span class="tag">面向对象编程</span>
+                        <span class="tag is-grey">3</span>
+                    </a>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</div>
+        
+        </div>
+    
+</div>
+
+                
+
+
+
+
+<div class="column is-4-tablet is-4-desktop is-3-widescreen is-hidden-touch is-hidden-desktop-only has-order-3 column-right ">
+    
+        <div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            最新文章
+        </h3>
+        
+        <article class="media">
+            
+            <a href="/hello-world/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Hello World">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-03-06T03:18:23.363Z">2020-03-06</time></div>
+                    <a href="/hello-world/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Hello World</a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/%E5%85%B3%E4%BA%8E%E5%B0%8F%E7%A8%8B%E5%BA%8F/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/gallery/thumbnails/x.jpeg" alt="关于小程序">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-10-20T14:10:22.000Z">2019-10-20</time></div>
+                    <a href="/%E5%85%B3%E4%BA%8E%E5%B0%8F%E7%A8%8B%E5%BA%8F/" class="title has-link-black-ter is-size-6 has-text-weight-normal">关于小程序</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/%E5%B0%8F%E7%A8%8B%E5%BA%8F/">小程序</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/Android-%E8%87%AA%E5%AE%9A%E4%B9%89%E7%9B%B8%E6%9C%BA/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/gallery/thumbnails/c.jpg" alt="Android 自定义相机">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-04-21T14:42:52.000Z">2019-04-21</time></div>
+                    <a href="/Android-%E8%87%AA%E5%AE%9A%E4%B9%89%E7%9B%B8%E6%9C%BA/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Android 自定义相机</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Android/">Android</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/Android%E5%AE%9E%E7%8E%B0%E4%B8%AA%E4%BA%BA%E4%B8%AD%E5%BF%83%E8%AE%BE%E7%BD%AE%E7%95%8C%E9%9D%A2/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/gallery/thumbnails/b.jpg" alt="Android实现个人中心设置界面">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-03-28T14:35:49.000Z">2019-03-28</time></div>
+                    <a href="/Android%E5%AE%9E%E7%8E%B0%E4%B8%AA%E4%BA%BA%E4%B8%AD%E5%BF%83%E8%AE%BE%E7%BD%AE%E7%95%8C%E9%9D%A2/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Android实现个人中心设置界面</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Android/">Android</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/%E5%9F%BA%E4%BA%8E%E8%B0%B7%E6%AD%8Cmvp%E6%9E%B6%E6%9E%84/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/gallery/thumbnails/a.jpg" alt="基于谷歌mvp架构">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-03-03T14:27:59.000Z">2019-03-03</time></div>
+                    <a href="/%E5%9F%BA%E4%BA%8E%E8%B0%B7%E6%AD%8Cmvp%E6%9E%B6%E6%9E%84/" class="title has-link-black-ter is-size-6 has-text-weight-normal">基于谷歌mvp架构</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Android/">Android</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+    </div>
+</div>
+    
+        <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+        <h3 class="menu-label">
+            归档
+        </h3>
+        <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/03/">
+                <span class="level-start">
+                    <span class="level-item">三月 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/10/">
+                <span class="level-start">
+                    <span class="level-item">十月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/04/">
+                <span class="level-start">
+                    <span class="level-item">四月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/03/">
+                <span class="level-start">
+                    <span class="level-item">三月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">2</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/02/">
+                <span class="level-start">
+                    <span class="level-item">二月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2018/11/">
+                <span class="level-start">
+                    <span class="level-item">十一月 2018</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">4</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2018/10/">
+                <span class="level-start">
+                    <span class="level-item">十月 2018</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">7</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2018/09/">
+                <span class="level-start">
+                    <span class="level-item">九月 2018</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">9</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2018/08/">
+                <span class="level-start">
+                    <span class="level-item">八月 2018</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">2</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2018/07/">
+                <span class="level-start">
+                    <span class="level-item">七月 2018</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">4</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2018/06/">
+                <span class="level-start">
+                    <span class="level-item">六月 2018</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">4</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2018/05/">
+                <span class="level-start">
+                    <span class="level-item">五月 2018</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2018/04/">
+                <span class="level-start">
+                    <span class="level-item">四月 2018</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">2</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2018/03/">
+                <span class="level-start">
+                    <span class="level-item">三月 2018</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">4</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2018/02/">
+                <span class="level-start">
+                    <span class="level-item">二月 2018</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2018/01/">
+                <span class="level-start">
+                    <span class="level-item">一月 2018</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">4</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2017/12/">
+                <span class="level-start">
+                    <span class="level-item">十二月 2017</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2017/11/">
+                <span class="level-start">
+                    <span class="level-item">十一月 2017</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">3</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2017/10/">
+                <span class="level-start">
+                    <span class="level-item">十月 2017</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">2</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2017/09/">
+                <span class="level-start">
+                    <span class="level-item">九月 2017</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">3</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2017/06/">
+                <span class="level-start">
+                    <span class="level-item">六月 2017</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2017/04/">
+                <span class="level-start">
+                    <span class="level-item">四月 2017</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        </ul>
+        </div>
+    </div>
+</div>
+    
+        <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                标签
+            </h3>
+            <div class="field is-grouped is-grouped-multiline">
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Android/">
+                        <span class="tag">Android</span>
+                        <span class="tag is-grey">5</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Apache/">
+                        <span class="tag">Apache</span>
+                        <span class="tag is-grey">4</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/CPU%E7%BC%93%E5%AD%98/">
+                        <span class="tag">CPU缓存</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/DevOps/">
+                        <span class="tag">DevOps</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Git/">
+                        <span class="tag">Git</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/GitLab-CI/">
+                        <span class="tag">GitLab CI</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Google/">
+                        <span class="tag">Google</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Java/">
+                        <span class="tag">Java</span>
+                        <span class="tag is-grey">37</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/JavaScript/">
+                        <span class="tag">JavaScript</span>
+                        <span class="tag is-grey">4</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Jenkins/">
+                        <span class="tag">Jenkins</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Linux/">
+                        <span class="tag">Linux</span>
+                        <span class="tag is-grey">4</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/MVEL/">
+                        <span class="tag">MVEL</span>
+                        <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Markdown/">
+                        <span class="tag">Markdown</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/PostgreSQL/">
+                        <span class="tag">PostgreSQL</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Spring/">
+                        <span class="tag">Spring</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Typora/">
+                        <span class="tag">Typora</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/UML/">
+                        <span class="tag">UML</span>
+                        <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Vue/">
+                        <span class="tag">Vue</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95/">
+                        <span class="tag">单元测试</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/%E5%AE%89%E5%85%A8/">
+                        <span class="tag">安全</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/%E5%B0%8F%E7%A8%8B%E5%BA%8F/">
+                        <span class="tag">小程序</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/">
+                        <span class="tag">数据库</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/%E6%95%B4%E6%B4%81%E4%BB%A3%E7%A0%81/">
+                        <span class="tag">整洁代码</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/%E6%B5%8B%E8%AF%95/">
+                        <span class="tag">测试</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/%E8%AE%BE%E8%AE%A1%E5%8E%9F%E5%88%99/">
+                        <span class="tag">设计原则</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">
+                        <span class="tag">设计模式</span>
+                        <span class="tag is-grey">12</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/%E9%87%8D%E6%9E%84/">
+                        <span class="tag">重构</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%BC%96%E7%A8%8B/">
+                        <span class="tag">面向对象编程</span>
+                        <span class="tag is-grey">3</span>
+                    </a>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</div>
+    
+    
+</div>
+
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+    <div class="container">
+        <div class="level">
+            <div class="level-start has-text-centered-mobile">
+			
+			<script type="text/javascript" src="//rf.revolvermaps.com/0/0/6.js?i=5spvzwvaykj&amp;m=7&amp;c=e63100&amp;cr1=ffffff&amp;f=arial&amp;l=0&amp;bv=90&amp;lx=-420&amp;ly=420&amp;hi=20&amp;he=7&amp;hc=a8ddff&amp;rs=80" async="async"></script>
+			
+                <a class="footer-logo is-block has-mb-6" href="/">
+                
+                    <img src="/images/ava.png" alt="Apache Commons Lang之日期时间工具类" height="28">
+                
+                </a>
+                <p class="is-size-7">
+                &copy; 2020 blinkfox&nbsp;
+                Powered by <a href="https://hexo.io/" target="_blank">Hexo</a> & <a
+                        href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank">Icarus</a>
+                
+                </p>
+            </div>
+            <div class="level-end">
+            
+                <div class="field has-addons is-flex-center-mobile has-mt-5-mobile is-flex-wrap is-flex-middle">
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="Creative Commons" href="https://creativecommons.org/">
+                        
+                        <i class="fab fa-creative-commons"></i>
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/">
+                        
+                        <i class="fab fa-creative-commons-by"></i>
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="Download on GitHub" href="https://github.com/ppoffice/hexo-theme-icarus">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                </p>
+                
+                </div>
+            
+            </div>
+        </div>
+    </div>
+</footer>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script>
+<script>moment.locale("zh-CN");</script>
+
+<script>
+var IcarusThemeSettings = {
+    article: {
+        highlight: {
+            clipboard: true,
+            fold: 'unfolded'
+        }
+    }
+};
+</script>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script>
+
+
+
+    
+    
+<script src="/js/animation.js"></script>
+
+    
+    
+<script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script>
+<script src="/js/gallery.js" defer></script>
+
+    
+    
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/" target="_blank" rel="noopener">Update
+            my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.js" defer></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        });
+    });
+</script>
+
+    
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.5/unpacked/MathJax.js?config=TeX-MML-AM_CHTML" defer></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    MathJax.Hub.Config({
+        'HTML-CSS': {
+            matchFontHeight: false
+        },
+        SVG: {
+            matchFontHeight: false
+        },
+        CommonHTML: {
+            matchFontHeight: false
+        },
+        tex2jax: {
+            inlineMath: [
+                ['$','$'],
+                ['\\(','\\)']
+            ]
+        }
+    });
+});
+</script>
+    
+    
+<a id="back-to-top" title="回到顶端" href="javascript:;">
+    <i class="fas fa-chevron-up"></i>
+</a>
+<script src="/js/back-to-top.js" defer></script>
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+
+<script src="/js/main.js" defer></script>
+
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="想要查找什么..." />
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '页面',
+                CATEGORIES: '分类',
+                TAGS: '标签',
+                UNTITLED: '(无标题)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script src="/js/insight.js" defer></script>
+<link rel="stylesheet" href="/css/search.css">
+<link rel="stylesheet" href="/css/insight.css">
+    
+	
+	<!-- 雪花特效 -->
+    <script type="text/javascript">
+      var windowWidth = $(window).width();
+      if (windowWidth > 480) {
+        document.write('<script type="text/javascript" src="/js/src/snow.js"><\/script>');
+      }
+    </script>
+	
+	<script type="text/javascript" src="//rf.revolvermaps.com/0/0/6.js?i=5spvzwvaykj&amp;m=7&amp;c=e63100&amp;cr1=ffffff&amp;f=arial&amp;l=0&amp;bv=90&amp;lx=-420&amp;ly=420&amp;hi=20&amp;he=7&amp;hc=a8ddff&amp;rs=80" async="async"></script>
+
+</body>
+</html>

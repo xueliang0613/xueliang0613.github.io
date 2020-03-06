@@ -1,0 +1,2199 @@
+<!DOCTYPE html>
+<html  lang="zh">
+<head>
+    <meta charset="utf-8" />
+
+<meta name="generator" content="Hexo 4.2.0" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+<title>Java6新特性及使用 - һĨ���</title>
+
+
+    <meta name="description" content="新特性列表以下是Java6中的引入的部分新特性，相比Java5的新特性就少了很多了。关于Java6更详细的介绍可参考这里。  Web Services Metadata Scripting Compiler API Light-weight HTTP server Common annotations(JSR 250) StAX JAXB2 Console Java DB(Derby) JDBC">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java6新特性及使用">
+<meta property="og:url" content="http://www.xl06.xyz/Java6%E6%96%B0%E7%89%B9%E6%80%A7%E5%8F%8A%E4%BD%BF%E7%94%A8/index.html">
+<meta property="og:site_name" content="һĨ���">
+<meta property="og:description" content="新特性列表以下是Java6中的引入的部分新特性，相比Java5的新特性就少了很多了。关于Java6更详细的介绍可参考这里。  Web Services Metadata Scripting Compiler API Light-weight HTTP server Common annotations(JSR 250) StAX JAXB2 Console Java DB(Derby) JDBC">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://www.xl06.xyz/images/og_image.png">
+<meta property="article:published_time" content="2018-07-11T14:40:00.000Z">
+<meta property="article:modified_time" content="2018-12-03T10:05:14.485Z">
+<meta property="article:author" content="һĨ���">
+<meta property="article:tag" content="Java">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://www.xl06.xyz/images/og_image.png">
+
+
+
+
+
+
+
+<link rel="icon" href="/images/favicon.svg">
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-light.css">
+
+
+    
+    
+<style>body>.footer,body>.navbar,body>.section{opacity:0}</style>
+
+    
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css">
+
+    
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.css">
+
+    
+    
+    
+    
+<link rel="stylesheet" href="/css/back-to-top.css">
+
+    
+    
+    
+    
+    
+    
+    
+    <link rel="stylesheet" href="/css/progressbar.css">
+<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+    
+    
+    
+
+
+<link rel="stylesheet" href="/css/style.css">
+	<script src="/js/src/click.js"></script>
+</head>
+<body class="is-3-column">
+    <nav class="navbar navbar-main">
+    <div class="container">
+        <div class="navbar-brand is-flex-center">
+            <a class="navbar-item navbar-logo" href="/">
+            
+                <img src="/images/ava.png" alt="Java6新特性及使用" height="28">
+            
+            </a>
+        </div>
+        <div class="navbar-menu">
+            
+            <div class="navbar-start">
+                
+                <a class="navbar-item"
+                href="/">首页</a>
+                
+                <a class="navbar-item"
+                href="/archives">归档</a>
+                
+                <a class="navbar-item"
+                href="/categories">分类</a>
+                
+                <a class="navbar-item"
+                href="/tags">标签</a>
+                
+                <a class="navbar-item"
+                href="/about">关于</a>
+                
+                <a class="navbar-item"
+                href="/project">作品</a>
+                
+            </div>
+            
+            <div class="navbar-end">
+                
+                    
+                    <a class="navbar-item" target="_blank" title="Download on GitHub" href="https://github.com/xueliang0614">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                    
+                
+                
+                
+                <a class="navbar-item search" title="搜索" href="javascript:;">
+                    <i class="fas fa-search"></i>
+                </a>
+                
+            </div>
+        </div>
+    </div>
+</nav>
+    
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main">
+<div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2018-07-11T14:40:00.000Z">2018-07-11</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/%E5%90%8E%E7%AB%AF/">后端</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    41 分钟 读完 (大约 6146 个字)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                Java6新特性及使用
+            
+        </h1>
+        <div class="content">
+            <html><head></head><body><h2 id="新特性列表"><a href="#新特性列表" class="headerlink" title="新特性列表"></a>新特性列表</h2><p>以下是Java6中的引入的部分新特性，相比Java5的新特性就少了很多了。关于Java6更详细的介绍可参考<a href="http://www.oracle.com/technetwork/java/javase/features-141434.html" target="_blank" rel="noopener">这里</a>。</p>
+<ul>
+<li>Web Services Metadata</li>
+<li>Scripting</li>
+<li>Compiler API</li>
+<li>Light-weight HTTP server</li>
+<li>Common annotations(JSR 250)</li>
+<li>StAX</li>
+<li>JAXB2</li>
+<li>Console</li>
+<li>Java DB(Derby)</li>
+<li>JDBC 4.0</li>
+<li>值得关注的<ul>
+<li>集合框架增强</li>
+</ul>
+</li>
+<li>其它<ul>
+<li>GUI增强</li>
+</ul>
+</li>
+</ul>
+<h2 id="一、Web-Services-Metadata"><a href="#一、Web-Services-Metadata" class="headerlink" title="一、Web Services Metadata"></a>一、Web Services Metadata</h2><p><code>WebService</code>是一种独立于特定语言、特定平台，基于网络的、分布式的模块化组件。是一个能够使用<code>xml</code>消息通过网络来访问的接口，这个接口描述了一组可访问的操作。在Java6中，在想要发布为<code>WebService</code>的类上加上<code>@WebService</code>的注解，这个类的方法就变为<code>WebService</code>方法了，再通过<code>Endpoint.publish()</code>方法发布这个服务。到此，一个最简单的<code>WebService</code>搞定。运行<code>main</code>方法，在浏览器里输入<code>http://localhost:8080/com.thunisoft.sacweq.dataflow.organ.test.Hello?wsdl</code>，即可查看你WebService的WSDL信息。</p>
+<figure class="highlight java hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">import</span> javax.jws.WebService;</span><br><span class="line"><span class="hljs-keyword">import</span> javax.xml.ws.Endpoint;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">import</span> org.slf4j.Logger;</span><br><span class="line"><span class="hljs-keyword">import</span> org.slf4j.LoggerFactory;</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">/**</span></span><br><span class="line"><span class="hljs-comment"> * Hello.</span></span><br><span class="line"><span class="hljs-comment"> * <span class="hljs-doctag">@author</span> blinkfox on 2017-11-28.</span></span><br><span class="line"><span class="hljs-comment"> */</span></span><br><span class="line"><span class="hljs-meta">@WebService</span></span><br><span class="line"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Hello</span> </span>{</span><br><span class="line"></span><br><span class="line">    <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> Logger log = LoggerFactory.getLogger(Hello<span class="hljs-class">.<span class="hljs-keyword">class</span>)</span>;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-comment">/**</span></span><br><span class="line"><span class="hljs-comment">     * sayHello.</span></span><br><span class="line"><span class="hljs-comment">     * <span class="hljs-doctag">@param</span> name 名称</span></span><br><span class="line"><span class="hljs-comment">     * <span class="hljs-doctag">@return</span> 结果</span></span><br><span class="line"><span class="hljs-comment">     */</span></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">sayHello</span><span class="hljs-params">(String name)</span> </span>{</span><br><span class="line">        <span class="hljs-keyword">return</span> <span class="hljs-string">"Hello "</span>.concat(name);</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="hljs-comment">/**</span></span><br><span class="line"><span class="hljs-comment">     * <span class="hljs-doctag">@param</span> args</span></span><br><span class="line"><span class="hljs-comment">     */</span></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>{</span><br><span class="line">        Endpoint.publish(<span class="hljs-string">"http://localhost:8080/com.thunisoft.sacweq.dataflow.organ.test.Hello"</span>, <span class="hljs-keyword">new</span> Hello());</span><br><span class="line">        log.info(<span class="hljs-string">"调用成功!"</span>);</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<p>Java 自从JDK5中添加了元数据功能(注解)之后,SUN几乎重构了整个J2EE体系，由于变化很大，干脆将名字也重构为Java EE，Java EE(当前版本为5.0)将元数据纳入很多规范当中，这其中就包括<code>Web Services</code>的相关规范，这显然比以前的JAX-RPC编程模型简单(当然, Axis的编程模型也很简单)。这里要谈的Web服务元数据(JSR 181)只是Java Web 服务规范中的一个,它跟Common Annotations, JAXB2, StAX, SAAJ和JAX-WS等共同构成Java EE 5的Web Services技术堆栈。</p>
+<p>下面介绍<code>JSR-181</code>里面各个元数据的相关参数及用途。</p>
+<table>
+<thead>
+<tr>
+<th>Annotation</th>
+<th>Retention</th>
+<th>Target</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>WebService</td>
+<td>Runtime</td>
+<td>Type</td>
+<td>标注要暴露为Web Services的类或接口</td>
+</tr>
+<tr>
+<td>WebParam</td>
+<td>Runtime</td>
+<td>Parameter</td>
+<td>自定义服务方法参数到WSDL的映射</td>
+</tr>
+<tr>
+<td>WebResult</td>
+<td>Runtime</td>
+<td>Method</td>
+<td>自定义服务方法返回值到WSDL的映射</td>
+</tr>
+<tr>
+<td>WebMethod</td>
+<td>Runtime</td>
+<td>Method</td>
+<td>自定义单个服务方法到WSDL的映射</td>
+</tr>
+<tr>
+<td>Oneway</td>
+<td>Runtime</td>
+<td>Method</td>
+<td>必须与@WebMethod连用,表明被标注方法只有输入没有输出,这就要求被标注方法不能有返回值,也不能声明checked exception</td>
+</tr>
+<tr>
+<td>HandlerChain</td>
+<td>Runtime</td>
+<td>Type,Method,Field</td>
+<td>将Web服务与外部Handler chain关联起来</td>
+</tr>
+<tr>
+<td>SOAPBinding</td>
+<td>Runtime</td>
+<td>Type,Method</td>
+<td>自定义<code>SOAPBinding</code></td>
+</tr>
+</tbody></table>
+<h2 id="二、Scripting"><a href="#二、Scripting" class="headerlink" title="二、Scripting"></a>二、Scripting</h2><p>Java6增加了对动态语言的支持，原理上是将脚本语言编译成字节码，这样脚本语言也能享用Java平台的诸多优势，包括可移植性，安全等。另外由于现在是编译成字节码后再执行，所以比原来边解释边执行效率要高很多。可以很好的利用脚本语言的动态特性，主要支持的有<code>JavaSrcipt</code>、<code>Ruby</code>、<code>Python</code>等。</p>
+<p>以下使用<code>JavaScript</code>的脚本，代码示例如下：</p>
+<figure class="highlight java hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">import</span> javax.script.Invocable;</span><br><span class="line"><span class="hljs-keyword">import</span> javax.script.ScriptEngine;</span><br><span class="line"><span class="hljs-keyword">import</span> javax.script.ScriptEngineManager;</span><br><span class="line"><span class="hljs-keyword">import</span> javax.script.ScriptException;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">import</span> org.slf4j.Logger;</span><br><span class="line"><span class="hljs-keyword">import</span> org.slf4j.LoggerFactory;</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">/**</span></span><br><span class="line"><span class="hljs-comment"> * JsTest.</span></span><br><span class="line"><span class="hljs-comment"> * <span class="hljs-doctag">@author</span> blinkfox</span></span><br><span class="line"><span class="hljs-comment"> * <span class="hljs-doctag">@version</span> 1.0</span></span><br><span class="line"><span class="hljs-comment"> *</span></span><br><span class="line"><span class="hljs-comment"> */</span></span><br><span class="line"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">JsTest</span> </span>{</span><br><span class="line"></span><br><span class="line">    <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> Logger log = LoggerFactory.getLogger(Hello<span class="hljs-class">.<span class="hljs-keyword">class</span>)</span>;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-comment">/**</span></span><br><span class="line"><span class="hljs-comment">     * main方法.</span></span><br><span class="line"><span class="hljs-comment">     * <span class="hljs-doctag">@param</span> args 数组参数</span></span><br><span class="line"><span class="hljs-comment">     * <span class="hljs-doctag">@throws</span> ScriptException 脚本异常</span></span><br><span class="line"><span class="hljs-comment">     * <span class="hljs-doctag">@throws</span> NoSuchMethodException 无方法异常</span></span><br><span class="line"><span class="hljs-comment">     */</span></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> <span class="hljs-keyword">throws</span> ScriptException, NoSuchMethodException </span>{</span><br><span class="line">        ScriptEngineManager enjineManager = <span class="hljs-keyword">new</span> ScriptEngineManager();</span><br><span class="line">        ScriptEngine engine = enjineManager.getEngineByName(<span class="hljs-string">"JavaScript"</span>);</span><br><span class="line"></span><br><span class="line">        String script=<span class="hljs-string">"function hello(name){return 'Hello ' + name}"</span>;</span><br><span class="line">        engine.eval(script);</span><br><span class="line">        Invocable inv=(Invocable) engine;</span><br><span class="line">        String result = (String) inv.invokeFunction(<span class="hljs-string">"hello"</span>, <span class="hljs-string">"blinkfox"</span>);</span><br><span class="line">        log.info(<span class="hljs-string">"脚本执行结果:{}"</span>, result);</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<h2 id="三、Compiler-API"><a href="#三、Compiler-API" class="headerlink" title="三、Compiler API"></a>三、Compiler API</h2><p>在Java6中提供了一套<code>Compiler API</code>，定义在<code>JSR199</code>中, 提供在运行期动态编译java代码为字节码的功能。一套API就好比是在java程序中模拟javac程序，将Java源文件编译为class文件；其提供的默认实现也正是在文件系统上进行查找、编译工作的。<code>Compiler API</code>结合反射功能就可以实现动态的产生Java代码并编译执行这些代码，有点动态语言的特征。</p>
+<p>基本使用示例如下：</p>
+<figure class="highlight java hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">JavaCompilerAPICompiler</span> </span>{</span><br><span class="line"></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">compile</span><span class="hljs-params">(Path src, Path output)</span> <span class="hljs-keyword">throws</span> IOException </span>{</span><br><span class="line">        JavaCompiler compiler = ToolProvider.getSystemJavaCompiler();</span><br><span class="line">        <span class="hljs-keyword">try</span> (StandardJavaFileManager fileManager = compiler.getStandardFileManager(<span class="hljs-keyword">null</span>, <span class="hljs-keyword">null</span>, <span class="hljs-keyword">null</span>)) {</span><br><span class="line">            Iterable<? extends JavaFileObject> compilationUnits = fileManager.getJavaFileObjects(src.toFile());</span><br><span class="line">            Iterable<String> options = Arrays.asList(<span class="hljs-string">"-d"</span>, output.toString());</span><br><span class="line">            JavaCompiler.CompilationTask task = compiler.getTask(<span class="hljs-keyword">null</span>, fileManager, <span class="hljs-keyword">null</span>, options, <span class="hljs-keyword">null</span>, compilationUnits);</span><br><span class="line">            <span class="hljs-keyword">boolean</span> result = task.call();</span><br><span class="line">        }</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<h2 id="四、轻量级HTTP-server"><a href="#四、轻量级HTTP-server" class="headerlink" title="四、轻量级HTTP server"></a>四、轻量级HTTP server</h2><p>JDK6提供了一个轻量级的<code>Http Server API</code>，据此我们可以构建自己的嵌入式Http Server，它支持<code>Http</code>和<code>Https</code>协议,提供了HTTP1.1的部分实现，没有被实现的那部分可以通过扩展已有的Http Server API来实现，程序员必须自己实现<code>HttpHandler</code>接口，HttpServer会调用<code>HttpHandler</code>实现类的回调方法来处理客户端请求，在这里，我们把一个Http请求和它的响应称为一个交换,包装成<code>HttpExchange</code>类,HttpServer负责将<code>HttpExchange</code>传给<code>HttpHandler</code>实现类的回调方法。</p>
+<p>以下是通过JDK6新特性能够实现的HttpServer的示例：</p>
+<figure class="highlight java hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">import</span> com.sun.net.httpserver.HttpExchange;</span><br><span class="line"><span class="hljs-keyword">import</span> com.sun.net.httpserver.HttpHandler;</span><br><span class="line"><span class="hljs-keyword">import</span> com.sun.net.httpserver.HttpServer;</span><br><span class="line"><span class="hljs-keyword">import</span> com.sun.net.httpserver.spi.HttpServerProvider;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">import</span> java.io.BufferedReader;</span><br><span class="line"><span class="hljs-keyword">import</span> java.io.IOException;</span><br><span class="line"><span class="hljs-keyword">import</span> java.io.InputStream;</span><br><span class="line"><span class="hljs-keyword">import</span> java.io.InputStreamReader;</span><br><span class="line"><span class="hljs-keyword">import</span> java.io.OutputStream;</span><br><span class="line"><span class="hljs-keyword">import</span> java.net.InetSocketAddress;</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">/**</span></span><br><span class="line"><span class="hljs-comment"> * 自定义的http服务器.</span></span><br><span class="line"><span class="hljs-comment"> *</span></span><br><span class="line"><span class="hljs-comment"> * <span class="hljs-doctag">@author</span> blinkfox on 2017-12-04.</span></span><br><span class="line"><span class="hljs-comment"> */</span></span><br><span class="line"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MyHttpServer</span> </span>{</span><br><span class="line"></span><br><span class="line">    <span class="hljs-comment">/**</span></span><br><span class="line"><span class="hljs-comment">     * 启动服务，监听来自客户端的请求.</span></span><br><span class="line"><span class="hljs-comment">     *</span></span><br><span class="line"><span class="hljs-comment">     * <span class="hljs-doctag">@throws</span> IOException IO异常</span></span><br><span class="line"><span class="hljs-comment">     */</span></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">httpserverService</span><span class="hljs-params">()</span> <span class="hljs-keyword">throws</span> IOException </span>{</span><br><span class="line">        HttpServerProvider provider = HttpServerProvider.provider();</span><br><span class="line">        HttpServer httpserver = provider.createHttpServer(<span class="hljs-keyword">new</span> InetSocketAddress(<span class="hljs-number">8888</span>), <span class="hljs-number">200</span>); <span class="hljs-comment">// 监听端口8888,能同时接受100个请求</span></span><br><span class="line">        httpserver.createContext(<span class="hljs-string">"/mytest"</span>, <span class="hljs-keyword">new</span> MyHttpHandler());</span><br><span class="line">        httpserver.setExecutor(<span class="hljs-keyword">null</span>);</span><br><span class="line">        httpserver.start();</span><br><span class="line">        System.out.println(<span class="hljs-string">"server started"</span>);</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="hljs-comment">/**</span></span><br><span class="line"><span class="hljs-comment">     * Http请求处理类.</span></span><br><span class="line"><span class="hljs-comment">     */</span></span><br><span class="line">    <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MyHttpHandler</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">HttpHandler</span> </span>{</span><br><span class="line"></span><br><span class="line">        <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">handle</span><span class="hljs-params">(HttpExchange httpExchange)</span> <span class="hljs-keyword">throws</span> IOException </span>{</span><br><span class="line">            String responseMsg = <span class="hljs-string">"ok"</span>; <span class="hljs-comment">//响应信息</span></span><br><span class="line">            InputStream in = httpExchange.getRequestBody(); <span class="hljs-comment">//获得输入流</span></span><br><span class="line">            BufferedReader reader = <span class="hljs-keyword">new</span> BufferedReader(<span class="hljs-keyword">new</span> InputStreamReader(in));</span><br><span class="line">            String temp = <span class="hljs-keyword">null</span>;</span><br><span class="line">            <span class="hljs-keyword">while</span>((temp = reader.readLine()) != <span class="hljs-keyword">null</span>) {</span><br><span class="line">                System.out.println(<span class="hljs-string">"client request:"</span> + temp);</span><br><span class="line">            }</span><br><span class="line">            httpExchange.sendResponseHeaders(<span class="hljs-number">200</span>, responseMsg.length()); <span class="hljs-comment">//设置响应头属性及响应信息的长度</span></span><br><span class="line">            OutputStream out = httpExchange.getResponseBody();  <span class="hljs-comment">//获得输出流</span></span><br><span class="line">            out.write(responseMsg.getBytes());</span><br><span class="line">            out.flush();</span><br><span class="line">            httpExchange.close();</span><br><span class="line">        }</span><br><span class="line"></span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> <span class="hljs-keyword">throws</span> IOException </span>{</span><br><span class="line">        httpserverService();</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<figure class="highlight java hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">import</span> java.io.BufferedReader;</span><br><span class="line"><span class="hljs-keyword">import</span> java.io.IOException;</span><br><span class="line"><span class="hljs-keyword">import</span> java.io.InputStream;</span><br><span class="line"><span class="hljs-keyword">import</span> java.io.InputStreamReader;</span><br><span class="line"><span class="hljs-keyword">import</span> java.io.OutputStream;</span><br><span class="line"><span class="hljs-keyword">import</span> java.net.HttpURLConnection;</span><br><span class="line"><span class="hljs-keyword">import</span> java.net.URL;</span><br><span class="line"><span class="hljs-keyword">import</span> java.util.concurrent.ExecutorService;</span><br><span class="line"><span class="hljs-keyword">import</span> java.util.concurrent.Executors;</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">/**</span></span><br><span class="line"><span class="hljs-comment"> * Http服务器测试类.</span></span><br><span class="line"><span class="hljs-comment"> *</span></span><br><span class="line"><span class="hljs-comment"> * <span class="hljs-doctag">@author</span> blinkfox on 2017-12-04.</span></span><br><span class="line"><span class="hljs-comment"> */</span></span><br><span class="line"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">HttpTest</span> </span>{</span><br><span class="line"></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>{</span><br><span class="line">        ExecutorService exec = Executors.newCachedThreadPool();</span><br><span class="line">        <span class="hljs-comment">// 测试并发对MyHttpServer的影响</span></span><br><span class="line">        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i < <span class="hljs-number">20</span>; i++) {</span><br><span class="line">            Runnable run = <span class="hljs-keyword">new</span> Runnable() {</span><br><span class="line">                <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">run</span><span class="hljs-params">()</span> </span>{</span><br><span class="line">                    <span class="hljs-keyword">try</span> {</span><br><span class="line">                        startWork();</span><br><span class="line">                    } <span class="hljs-keyword">catch</span> (IOException e) {</span><br><span class="line">                        e.printStackTrace();</span><br><span class="line">                    }</span><br><span class="line">                }</span><br><span class="line">            };</span><br><span class="line">            exec.execute(run);</span><br><span class="line">        }</span><br><span class="line">        exec.shutdown();<span class="hljs-comment">// 关闭线程池</span></span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">startWork</span><span class="hljs-params">()</span> <span class="hljs-keyword">throws</span> IOException </span>{</span><br><span class="line">        URL url = <span class="hljs-keyword">new</span> URL(<span class="hljs-string">"http://127.0.0.1:8888/mytest"</span>);</span><br><span class="line">        HttpURLConnection urlConn = (HttpURLConnection) url.openConnection();</span><br><span class="line">        urlConn.setDoOutput(<span class="hljs-keyword">true</span>);</span><br><span class="line">        urlConn.setDoInput(<span class="hljs-keyword">true</span>);</span><br><span class="line">        urlConn.setRequestMethod(<span class="hljs-string">"POST"</span>);</span><br><span class="line">        <span class="hljs-comment">// 测试内容包</span></span><br><span class="line">        String teststr = <span class="hljs-string">"this is a test message"</span>;</span><br><span class="line">        OutputStream out = urlConn.getOutputStream();</span><br><span class="line">        out.write(teststr.getBytes());</span><br><span class="line">        out.flush();</span><br><span class="line">        <span class="hljs-keyword">while</span> (urlConn.getContentLength() != -<span class="hljs-number">1</span>) {</span><br><span class="line">            <span class="hljs-keyword">if</span> (urlConn.getResponseCode() == <span class="hljs-number">200</span>) {</span><br><span class="line">                InputStream in = urlConn.getInputStream();</span><br><span class="line">                BufferedReader reader = <span class="hljs-keyword">new</span> BufferedReader(<span class="hljs-keyword">new</span> InputStreamReader(in));</span><br><span class="line">                String temp = <span class="hljs-string">""</span>;</span><br><span class="line">                <span class="hljs-keyword">while</span> ((temp = reader.readLine()) != <span class="hljs-keyword">null</span>) {</span><br><span class="line">                    System.err.println(<span class="hljs-string">"server response:"</span> + temp);<span class="hljs-comment">// 打印收到的信息</span></span><br><span class="line">                }</span><br><span class="line">                reader.close();</span><br><span class="line">                in.close();</span><br><span class="line">                urlConn.disconnect();</span><br><span class="line">            }</span><br><span class="line">        }</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<h2 id="五、Common-annotations"><a href="#五、Common-annotations" class="headerlink" title="五、Common annotations"></a>五、Common annotations</h2><p><code>Common annotations</code>原本是Java EE 5.0(JSR 244)规范的一部分，现在SUN把它的一部分放到了Java SE 6.0中.随着Annotation元数据功能(JSR 175)加入到Java SE 5.0里面，很多Java 技术(比如EJB,Web Services)都会用Annotation部分代替XML文件来配置运行参数（或者说是支持声明式编程,如EJB的声明式事务）, 如果这些技术为通用目的都单独定义了自己的Annotations,显然有点重复建设, 所以,为其他相关的Java技术定义一套公共的Annotation是有价值的，可以避免重复建设的同时，也保证Java SE和Java EE 各种技术的一致性。</p>
+<p>下面列举出<code>Common Annotations 1.0</code>里面的10个<code>Annotations</code>：</p>
+<table>
+<thead>
+<tr>
+<th align="left"><strong>Annotation</strong></th>
+<th align="center"><strong>Retention</strong></th>
+<th align="left"><strong>Target</strong></th>
+<th align="left"><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">Generated</td>
+<td align="center">Source</td>
+<td align="left">ANNOTATION_TYPE, CONSTRUCTOR, FIELD, LOCAL_VARIABLE, METHOD, PACKAGE, PARAMETER, TYPE</td>
+<td align="left">用于标注生成的源代码</td>
+</tr>
+<tr>
+<td align="left">Resource</td>
+<td align="center">Runtime</td>
+<td align="left">TYPE, METHOD, FIELD</td>
+<td align="left">用于标注所依赖的资源,容器据此注入外部资源依赖，有基于字段的注入和基于setter方法的注入两种方式</td>
+</tr>
+<tr>
+<td align="left">Resources</td>
+<td align="center">Runtime</td>
+<td align="left">TYPE</td>
+<td align="left">同时标注多个外部依赖，容器会把所有这些外部依赖注入</td>
+</tr>
+<tr>
+<td align="left">PostConstruct</td>
+<td align="center">Runtime</td>
+<td align="left">METHOD</td>
+<td align="left">标注当容器注入所有依赖之后运行的方法，用来进行依赖注入后的初始化工作，只有一个方法可以标注为PostConstruct</td>
+</tr>
+<tr>
+<td align="left">PreDestroy</td>
+<td align="center">Runtime</td>
+<td align="left">METHOD</td>
+<td align="left">当对象实例将要被从容器当中删掉之前，要执行的回调方法要标注为PreDestroy</td>
+</tr>
+<tr>
+<td align="left">RunAs</td>
+<td align="center">Runtime</td>
+<td align="left">TYPE</td>
+<td align="left">用于标注用什么安全角色来执行被标注类的方法，这个安全角色必须和Container 的Security角色一致的</td>
+</tr>
+<tr>
+<td align="left">RolesAllowed</td>
+<td align="center">Runtime</td>
+<td align="left">TYPE, METHOD</td>
+<td align="left">用于标注允许执行被标注类或方法的安全角色，这个安全角色必须和Container 的Security角色一致的</td>
+</tr>
+<tr>
+<td align="left">PermitAll</td>
+<td align="center">Runtime</td>
+<td align="left">TYPE, METHOD</td>
+<td align="left">允许所有角色执行被标注的类或方法</td>
+</tr>
+<tr>
+<td align="left">DenyAll</td>
+<td align="center">Runtime</td>
+<td align="left">TYPE, METHOD</td>
+<td align="left">不允许任何角色执行被标注的类或方法，表明该类或方法不能在Java EE容器里面运行</td>
+</tr>
+<tr>
+<td align="left">DeclareRoles</td>
+<td align="center">Runtime</td>
+<td align="left">TYPE</td>
+<td align="left">用来定义可以被应用程序检验的安全角色，通常用isUserInRole来检验安全角色</td>
+</tr>
+</tbody></table>
+<h2 id="六、StAX"><a href="#六、StAX" class="headerlink" title="六、StAX"></a>六、StAX</h2><p>StAX(JSR 173)是JDK6中新增的除了DOM和SAX之外的又一种处理XML文档的API。</p>
+<p><code>StAX</code>是<code>The Streaming API for XML</code>的缩写，一种利用拉模式解析(pull-parsing)XML文档的API。StAX通过提供一种基于事件迭代器(Iterator)的API让程序员去控制xml文档解析过程,程序遍历这个事件迭代器去处理每一个解析事件，解析事件可以看做是程序拉出来的，也就是程序促使解析器产生一个解析事件然后处理该事件，之后又促使解析器产生下一个解析事件，如此循环直到碰到文档结束符；SAX也是基于事件处理xml文档，但却是用推模式解析，解析器解析完整个xml文档后，才产生解析事件，然后推给程序去处理这些事件；DOM采用的方式是将整个xml文档映射到一颗内存树，这样就可以很容易地得到父节点和子结点以及兄弟节点的数据，但如果文档很大，将会严重影响性能。</p>
+<p>下面是这几种XML解析API的特性比较：</p>
+<table>
+<thead>
+<tr>
+<th>Feature</th>
+<th>StAX</th>
+<th>SAX</th>
+<th>DOM</th>
+<th>TrAX</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>API Type</td>
+<td>Pull, streaming</td>
+<td>Push, streaming</td>
+<td>In memory tree</td>
+<td>XSLT Rule</td>
+</tr>
+<tr>
+<td>Ease of Use</td>
+<td>High</td>
+<td>Medium</td>
+<td>High</td>
+<td>Medium</td>
+</tr>
+<tr>
+<td>XPath Capability</td>
+<td>No</td>
+<td>No</td>
+<td>Yes</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>CPU and Memory Efficiency</td>
+<td>Good</td>
+<td>Good</td>
+<td>Varies</td>
+<td>Varies</td>
+</tr>
+<tr>
+<td>Forward Only</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr>
+<td>Read XML</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>Write XML</td>
+<td>Yes</td>
+<td>No</td>
+<td>Yes</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>Create, Read, Update, Delete</td>
+<td>No</td>
+<td>No</td>
+<td>Yes</td>
+<td>No</td>
+</tr>
+</tbody></table>
+<p>下面代码演示了如何通过StAX读取xml文档和生成xml文档：</p>
+<p>需要读取的xml文件：</p>
+<figure class="highlight xml hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta"><?xml version="1.0" encoding="UTF-8"?></span></span><br><span class="line"><span class="hljs-tag"><<span class="hljs-name">catalogs</span>></span></span><br><span class="line">    <span class="hljs-tag"><<span class="hljs-name">catalog</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"001"</span>></span>Book<span class="hljs-tag"></<span class="hljs-name">catalog</span>></span></span><br><span class="line">    <span class="hljs-tag"><<span class="hljs-name">catalog</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"002"</span>></span>Video<span class="hljs-tag"></<span class="hljs-name">catalog</span>></span></span><br><span class="line"><span class="hljs-tag"></<span class="hljs-name">catalogs</span>></span></span><br></pre></td></tr></tbody></table></figure>
+
+<p>读和写XML文件的Java代码：</p>
+<figure class="highlight java hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">import</span> java.io.FileInputStream;</span><br><span class="line"><span class="hljs-keyword">import</span> java.io.FileNotFoundException;</span><br><span class="line"><span class="hljs-keyword">import</span> java.io.FileOutputStream;</span><br><span class="line"><span class="hljs-keyword">import</span> javax.xml.namespace.QName;</span><br><span class="line"><span class="hljs-keyword">import</span> javax.xml.stream.*;</span><br><span class="line"><span class="hljs-keyword">import</span> javax.xml.stream.events.StartElement;</span><br><span class="line"><span class="hljs-keyword">import</span> javax.xml.stream.events.XMLEvent;</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">/**</span></span><br><span class="line"><span class="hljs-comment"> * Stax测试类.</span></span><br><span class="line"><span class="hljs-comment"> *</span></span><br><span class="line"><span class="hljs-comment"> * <span class="hljs-doctag">@author</span> blinkfox on 2017-12-04.</span></span><br><span class="line"><span class="hljs-comment"> */</span></span><br><span class="line"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">StaxTester</span> </span>{</span><br><span class="line"></span><br><span class="line">    <span class="hljs-comment">/**</span></span><br><span class="line"><span class="hljs-comment">     * 根据StAX读取XML文件.</span></span><br><span class="line"><span class="hljs-comment">     *</span></span><br><span class="line"><span class="hljs-comment">     * <span class="hljs-doctag">@throws</span> XMLStreamException XML流异常</span></span><br><span class="line"><span class="hljs-comment">     * <span class="hljs-doctag">@throws</span> FileNotFoundException 文件未找到异常</span></span><br><span class="line"><span class="hljs-comment">     */</span></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">readXxmlByStax</span><span class="hljs-params">()</span> <span class="hljs-keyword">throws</span> XMLStreamException, FileNotFoundException </span>{</span><br><span class="line">        XMLInputFactory xmlif = XMLInputFactory.newInstance();</span><br><span class="line">        XMLEventReader xmler = xmlif.createXMLEventReader(<span class="hljs-keyword">new</span> FileInputStream(<span class="hljs-string">"G:\\test\\test.xml"</span>));</span><br><span class="line">        XMLEvent event;</span><br><span class="line">        StringBuilder sb = <span class="hljs-keyword">new</span> StringBuilder();</span><br><span class="line">        <span class="hljs-keyword">while</span> (xmler.hasNext()) {</span><br><span class="line">            event = xmler.nextEvent();</span><br><span class="line">            <span class="hljs-keyword">if</span> (event.isStartElement()) { <span class="hljs-comment">//如果解析的是起始标记</span></span><br><span class="line">                StartElement element = event.asStartElement();</span><br><span class="line">                sb.append(<span class="hljs-string">"<"</span>);</span><br><span class="line">                sb.append(element.getName());</span><br><span class="line">                <span class="hljs-keyword">if</span>(element.getName().getLocalPart().equals(<span class="hljs-string">"catalog"</span>)) {</span><br><span class="line">                    sb.append(<span class="hljs-string">" id=/"</span>);</span><br><span class="line">                    sb.append(element.getAttributeByName(<span class="hljs-keyword">new</span> QName(<span class="hljs-string">"id"</span>)).getValue());</span><br><span class="line">                    sb.append(<span class="hljs-string">"/"</span>);</span><br><span class="line">                }</span><br><span class="line">                sb.append(<span class="hljs-string">">"</span>);</span><br><span class="line">            } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (event.isCharacters()) { <span class="hljs-comment">//如果解析的是文本内容</span></span><br><span class="line">                sb.append(event.asCharacters().getData());</span><br><span class="line">            } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(event.isEndElement()) { <span class="hljs-comment">//如果解析的是结束标记</span></span><br><span class="line">                sb.append(<span class="hljs-string">"</"</span>);</span><br><span class="line">                sb.append(event.asEndElement().getName());</span><br><span class="line">                sb.append(<span class="hljs-string">">"</span>);</span><br><span class="line">            }</span><br><span class="line">        }</span><br><span class="line">        System.out.println(sb);</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="hljs-comment">/**</span></span><br><span class="line"><span class="hljs-comment">     * 根据StAX写入XML文件.</span></span><br><span class="line"><span class="hljs-comment">     *</span></span><br><span class="line"><span class="hljs-comment">     * <span class="hljs-doctag">@throws</span> XMLStreamException XML流异常</span></span><br><span class="line"><span class="hljs-comment">     * <span class="hljs-doctag">@throws</span> FileNotFoundException 文件未找到异常</span></span><br><span class="line"><span class="hljs-comment">     */</span></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">writeXmlByStax</span><span class="hljs-params">()</span> <span class="hljs-keyword">throws</span> XMLStreamException, FileNotFoundException </span>{</span><br><span class="line">        XMLOutputFactory xmlof = XMLOutputFactory.newInstance();</span><br><span class="line">        XMLStreamWriter xmlw = xmlof.createXMLStreamWriter(<span class="hljs-keyword">new</span> FileOutputStream(<span class="hljs-string">"G:\\test\\output.xml"</span>));</span><br><span class="line">        <span class="hljs-comment">// 写入默认的 XML 声明到xml文档</span></span><br><span class="line">        xmlw.writeStartDocument();</span><br><span class="line">        xmlw.writeCharacters(<span class="hljs-string">"\n"</span>);</span><br><span class="line">        <span class="hljs-comment">// 写入注释到xml文档</span></span><br><span class="line">        xmlw.writeComment(<span class="hljs-string">"testing comment"</span>);</span><br><span class="line">        xmlw.writeCharacters(<span class="hljs-string">"\n"</span>);</span><br><span class="line">        <span class="hljs-comment">// 写入一个catalogs根元素</span></span><br><span class="line">        xmlw.writeStartElement(<span class="hljs-string">"catalogs"</span>);</span><br><span class="line">        xmlw.writeNamespace(<span class="hljs-string">"myNS"</span>, <span class="hljs-string">"http://blinkfox.com"</span>);</span><br><span class="line">        xmlw.writeAttribute(<span class="hljs-string">"owner"</span>,<span class="hljs-string">"Chinajash"</span>);</span><br><span class="line">        xmlw.writeCharacters(<span class="hljs-string">"\n"</span>);</span><br><span class="line">        <span class="hljs-comment">// 写入子元素catalog</span></span><br><span class="line">        xmlw.writeCharacters(<span class="hljs-string">"    "</span>);</span><br><span class="line">        xmlw.writeStartElement(<span class="hljs-string">"http://blinkfox.com"</span>, <span class="hljs-string">"catalog"</span>);</span><br><span class="line">        xmlw.writeAttribute(<span class="hljs-string">"id"</span>,<span class="hljs-string">"007"</span>);</span><br><span class="line">        xmlw.writeCharacters(<span class="hljs-string">"Apparel"</span>);</span><br><span class="line">        <span class="hljs-comment">// 写入catalog元素的结束标签</span></span><br><span class="line">        xmlw.writeEndElement();</span><br><span class="line">        <span class="hljs-comment">// 写入catalogs元素的结束标签</span></span><br><span class="line">        xmlw.writeCharacters(<span class="hljs-string">"\n"</span>);</span><br><span class="line">        xmlw.writeEndElement();</span><br><span class="line">        <span class="hljs-comment">// 结束 XML 文档</span></span><br><span class="line">        xmlw.writeEndDocument();</span><br><span class="line">        xmlw.close();</span><br><span class="line">        System.out.println(<span class="hljs-string">"生成xml文件成功!"</span>);</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="hljs-comment">/**</span></span><br><span class="line"><span class="hljs-comment">     * main方法.</span></span><br><span class="line"><span class="hljs-comment">     *</span></span><br><span class="line"><span class="hljs-comment">     * <span class="hljs-doctag">@param</span> args 数组参数</span></span><br><span class="line"><span class="hljs-comment">     * <span class="hljs-doctag">@throws</span> XMLStreamException XML流异常</span></span><br><span class="line"><span class="hljs-comment">     * <span class="hljs-doctag">@throws</span> FileNotFoundException 文件未找到异常</span></span><br><span class="line"><span class="hljs-comment">     */</span></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> <span class="hljs-keyword">throws</span> XMLStreamException, FileNotFoundException </span>{</span><br><span class="line">        readXxmlByStax();</span><br><span class="line">        writeXmlByStax();</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<p>运行上面程序后，控制台输出如下:</p>
+<figure class="highlight bash hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><catalogs></span><br><span class="line">    <catalog id=/001/>Book</catalog></span><br><span class="line">    <catalog id=/002/>Video</catalog></span><br><span class="line"></catalogs></span><br><span class="line">生成xml文件成功!</span><br></pre></td></tr></tbody></table></figure>
+
+<p>产生的<code>output.xml</code>文件如下:</p>
+<figure class="highlight xml hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta"><?xml version="1.0" ?></span></span><br><span class="line"><span class="hljs-comment"><!--testing comment--></span></span><br><span class="line"><span class="hljs-tag"><<span class="hljs-name">catalogs</span> <span class="hljs-attr">xmlns:myNS</span>=<span class="hljs-string">"http://blinkfox.com"</span> <span class="hljs-attr">owner</span>=<span class="hljs-string">"Chinajash"</span>></span></span><br><span class="line">    <span class="hljs-tag"><<span class="hljs-name">myNS:catalog</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"007"</span>></span>Apparel<span class="hljs-tag"></<span class="hljs-name">myNS:catalog</span>></span></span><br><span class="line"><span class="hljs-tag"></<span class="hljs-name">catalogs</span>></span></span><br></pre></td></tr></tbody></table></figure>
+
+<h2 id="七、JAXB2"><a href="#七、JAXB2" class="headerlink" title="七、JAXB2"></a>七、JAXB2</h2><p><code>JAXB</code>是<code>Java Architecture for XML Binding</code>的缩写，可以将一个Java对象转变成为XML格式，反之亦然。我们把对象与关系数据库之间的映射称为ORM, 其实也可以把对象与XML之间的映射称为<code>OXM</code>(Object XML Mapping). 原来JAXB是Java EE的一部分，在JDK6中，SUN将其放到了Java SE中，这也是SUN的一贯做法。JDK6中自带的这个JAXB版本是2.0, 比起1.0(JSR 31)来，JAXB2(JSR 222)用JDK5的新特性<code>Annotation</code>来标识要作绑定的类和属性等，这就极大简化了开发的工作量。实际上，在Java EE 5.0中，EJB和Web Services也通过Annotation来简化开发工作。另外,JAXB2在底层是用StAX(JSR 173)来处理XML文档。 下面用代码演示在JDK6中如何来用<code>JAXB2</code>：</p>
+<figure class="highlight java hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">/**</span></span><br><span class="line"><span class="hljs-comment"> * Gender性别枚举类.</span></span><br><span class="line"><span class="hljs-comment"> *</span></span><br><span class="line"><span class="hljs-comment"> * <span class="hljs-doctag">@author</span> blinkfox on 2017-12-04.</span></span><br><span class="line"><span class="hljs-comment"> */</span></span><br><span class="line"><span class="hljs-keyword">public</span> <span class="hljs-keyword">enum</span> Gender {</span><br><span class="line"></span><br><span class="line">    MALE(<span class="hljs-keyword">true</span>),</span><br><span class="line"></span><br><span class="line">    FEMALE (<span class="hljs-keyword">false</span>);</span><br><span class="line"></span><br><span class="line">    <span class="hljs-keyword">private</span> <span class="hljs-keyword">boolean</span> code;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-comment">/**</span></span><br><span class="line"><span class="hljs-comment">     * 构造方法.</span></span><br><span class="line"><span class="hljs-comment">     * <span class="hljs-doctag">@param</span> code 性别值</span></span><br><span class="line"><span class="hljs-comment">     */</span></span><br><span class="line">    Gender(<span class="hljs-keyword">boolean</span> code) {</span><br><span class="line">        <span class="hljs-keyword">this</span>.code = code;</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<figure class="highlight java hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">import</span> javax.xml.bind.annotation.XmlAttribute;</span><br><span class="line"><span class="hljs-keyword">import</span> javax.xml.bind.annotation.XmlElement;</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">/**</span></span><br><span class="line"><span class="hljs-comment"> * Address地址类.</span></span><br><span class="line"><span class="hljs-comment"> *</span></span><br><span class="line"><span class="hljs-comment"> * <span class="hljs-doctag">@author</span> blinkfox on 2017-12-04.</span></span><br><span class="line"><span class="hljs-comment"> */</span></span><br><span class="line"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Address</span> </span>{</span><br><span class="line"></span><br><span class="line">    <span class="hljs-meta">@XmlAttribute</span></span><br><span class="line">    String country;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-meta">@XmlElement</span></span><br><span class="line">    String state;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-meta">@XmlElement</span></span><br><span class="line">    String city;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-meta">@XmlElement</span></span><br><span class="line">    String street;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-comment">/** 由于没有添加<span class="hljs-doctag">@XmlElement</span>,所以该元素不会出现在输出的xml中. */</span></span><br><span class="line">    String zipcode;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-comment">/**</span></span><br><span class="line"><span class="hljs-comment">     * 默认的空构造方法.</span></span><br><span class="line"><span class="hljs-comment">     */</span></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">Address</span><span class="hljs-params">()</span> </span>{</span><br><span class="line">        <span class="hljs-keyword">super</span>();</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">Address</span><span class="hljs-params">(String country, String state, String city, String street, String zipcode)</span> </span>{</span><br><span class="line">        <span class="hljs-keyword">this</span>.country = country;</span><br><span class="line">        <span class="hljs-keyword">this</span>.state = state;</span><br><span class="line">        <span class="hljs-keyword">this</span>.city = city;</span><br><span class="line">        <span class="hljs-keyword">this</span>.street = street;</span><br><span class="line">        <span class="hljs-keyword">this</span>.zipcode = zipcode;</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="hljs-comment">/**</span></span><br><span class="line"><span class="hljs-comment">     * country的getter方法.</span></span><br><span class="line"><span class="hljs-comment">     *</span></span><br><span class="line"><span class="hljs-comment">     * <span class="hljs-doctag">@return</span> country</span></span><br><span class="line"><span class="hljs-comment">     */</span></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">getCountry</span><span class="hljs-params">()</span> </span>{</span><br><span class="line">        <span class="hljs-keyword">return</span> country;</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<figure class="highlight java hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">import</span> java.util.Calendar;</span><br><span class="line"><span class="hljs-keyword">import</span> javax.xml.bind.annotation.XmlAttribute;</span><br><span class="line"><span class="hljs-keyword">import</span> javax.xml.bind.annotation.XmlElement;</span><br><span class="line"><span class="hljs-keyword">import</span> javax.xml.bind.annotation.XmlRootElement;</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">/**</span></span><br><span class="line"><span class="hljs-comment"> * Person类.</span></span><br><span class="line"><span class="hljs-comment"> *</span></span><br><span class="line"><span class="hljs-comment"> * <span class="hljs-doctag">@author</span> blinkfox on 2017-12-04.</span></span><br><span class="line"><span class="hljs-comment"> */</span></span><br><span class="line"><span class="hljs-meta">@XmlRootElement</span></span><br><span class="line"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Person</span> </span>{</span><br><span class="line"></span><br><span class="line">    <span class="hljs-comment">/** birthday将作为person的子元素. */</span></span><br><span class="line">    <span class="hljs-meta">@XmlElement</span></span><br><span class="line">    Calendar birthDay;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-comment">/** name将作为person的的一个属性. */</span></span><br><span class="line">    <span class="hljs-meta">@XmlAttribute</span></span><br><span class="line">    String name;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-comment">/** address将作为person的子元素. */</span></span><br><span class="line">    <span class="hljs-meta">@XmlElement</span></span><br><span class="line">    Address address;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-comment">/** gender将作为person的子元素. */</span></span><br><span class="line">    <span class="hljs-meta">@XmlElement</span></span><br><span class="line">    Gender gender;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-comment">/** job将作为person的子元素. */</span></span><br><span class="line">    <span class="hljs-meta">@XmlElement</span></span><br><span class="line">    String job;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-comment">/**</span></span><br><span class="line"><span class="hljs-comment">     * 默认的空构造方法.</span></span><br><span class="line"><span class="hljs-comment">     */</span></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">Person</span><span class="hljs-params">()</span> </span>{</span><br><span class="line">        <span class="hljs-keyword">super</span>();</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">Person</span><span class="hljs-params">(Calendar birthDay, String name, Address address, Gender gender, String job)</span> </span>{</span><br><span class="line">        <span class="hljs-keyword">this</span>.birthDay = birthDay;</span><br><span class="line">        <span class="hljs-keyword">this</span>.name = name;</span><br><span class="line">        <span class="hljs-keyword">this</span>.address = address;</span><br><span class="line">        <span class="hljs-keyword">this</span>.gender = gender;</span><br><span class="line">        <span class="hljs-keyword">this</span>.job = job;</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="hljs-comment">/**</span></span><br><span class="line"><span class="hljs-comment">     * address的getter方法.</span></span><br><span class="line"><span class="hljs-comment">     * <span class="hljs-doctag">@return</span> address</span></span><br><span class="line"><span class="hljs-comment">     */</span></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> Address <span class="hljs-title">getAddress</span><span class="hljs-params">()</span> </span>{</span><br><span class="line">        <span class="hljs-keyword">return</span> address;</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<figure class="highlight java hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">import</span> java.io.FileReader;</span><br><span class="line"><span class="hljs-keyword">import</span> java.io.FileWriter;</span><br><span class="line"><span class="hljs-keyword">import</span> java.util.Calendar;</span><br><span class="line"><span class="hljs-keyword">import</span> javax.xml.bind.JAXBContext;</span><br><span class="line"><span class="hljs-keyword">import</span> javax.xml.bind.Marshaller;</span><br><span class="line"><span class="hljs-keyword">import</span> javax.xml.bind.Unmarshaller;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">import</span> org.apache.commons.io.IOUtils;</span><br><span class="line"><span class="hljs-keyword">import</span> org.slf4j.Logger;</span><br><span class="line"><span class="hljs-keyword">import</span> org.slf4j.LoggerFactory;</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">/**</span></span><br><span class="line"><span class="hljs-comment"> * JAXB2测试类.</span></span><br><span class="line"><span class="hljs-comment"> *</span></span><br><span class="line"><span class="hljs-comment"> * <span class="hljs-doctag">@author</span> blinkfox on 2017-12-04.</span></span><br><span class="line"><span class="hljs-comment"> */</span></span><br><span class="line"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">JAXB2Test</span> </span>{</span><br><span class="line"></span><br><span class="line">    <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> Logger log = LoggerFactory.getLogger(JAXB2Test<span class="hljs-class">.<span class="hljs-keyword">class</span>)</span>;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>{</span><br><span class="line">        Address address = <span class="hljs-keyword">new</span> Address(<span class="hljs-string">"中国"</span>, <span class="hljs-string">"北京"</span>, <span class="hljs-string">"北京"</span>, <span class="hljs-string">"上地"</span>, <span class="hljs-string">"100080"</span>);</span><br><span class="line">        Person p = <span class="hljs-keyword">new</span> Person(Calendar.getInstance(),<span class="hljs-string">"JAXB2"</span>, address, Gender.MALE, <span class="hljs-string">"软件工程师"</span>);</span><br><span class="line"></span><br><span class="line">        FileReader reader = <span class="hljs-keyword">null</span>;</span><br><span class="line">        FileWriter writer = <span class="hljs-keyword">null</span>;</span><br><span class="line">        <span class="hljs-keyword">try</span> {</span><br><span class="line">            <span class="hljs-comment">// 生成xml文件.</span></span><br><span class="line">            JAXBContext context = JAXBContext.newInstance(Person<span class="hljs-class">.<span class="hljs-keyword">class</span>)</span>;</span><br><span class="line">            writer = <span class="hljs-keyword">new</span> FileWriter(<span class="hljs-string">"G:/test/person.xml"</span>);</span><br><span class="line">            Marshaller m = context.createMarshaller();</span><br><span class="line">            m.marshal(p, writer);</span><br><span class="line">            log.info(<span class="hljs-string">"生成person.xml文件成功!"</span>);</span><br><span class="line"></span><br><span class="line">            <span class="hljs-comment">// 读取xml文件.</span></span><br><span class="line">            reader = <span class="hljs-keyword">new</span> FileReader(<span class="hljs-string">"G:/test/person.xml"</span>);</span><br><span class="line">            Unmarshaller um = context.createUnmarshaller();</span><br><span class="line">            Person p2 = (Person) um.unmarshal(reader);</span><br><span class="line">            log.info(<span class="hljs-string">"Country:{}"</span>, p2.getAddress().getCountry());</span><br><span class="line">        } <span class="hljs-keyword">catch</span> (Exception e) {</span><br><span class="line">            log.error(<span class="hljs-string">"生成和读取XML文件出错！"</span>, e);</span><br><span class="line">        } <span class="hljs-keyword">finally</span> {</span><br><span class="line">            IOUtils.closeQuietly(writer);</span><br><span class="line">            IOUtils.closeQuietly(reader);</span><br><span class="line">        }</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<p>运行该程序，我们会得到一个<code>person.xml</code>的文件，内容如下：</p>
+<figure class="highlight xml hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta"><?xml version="1.0" encoding="UTF-8" standalone="yes"?></span></span><br><span class="line"><span class="hljs-tag"><<span class="hljs-name">person</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"JAXB2"</span>></span></span><br><span class="line">    <span class="hljs-tag"><<span class="hljs-name">birthDay</span>></span>2017-12-04T17:16:19.226+08:00<span class="hljs-tag"></<span class="hljs-name">birthDay</span>></span></span><br><span class="line">    <span class="hljs-tag"><<span class="hljs-name">address</span> <span class="hljs-attr">country</span>=<span class="hljs-string">"中国"</span>></span></span><br><span class="line">        <span class="hljs-tag"><<span class="hljs-name">state</span>></span>北京<span class="hljs-tag"></<span class="hljs-name">state</span>></span></span><br><span class="line">        <span class="hljs-tag"><<span class="hljs-name">city</span>></span>北京<span class="hljs-tag"></<span class="hljs-name">city</span>></span></span><br><span class="line">        <span class="hljs-tag"><<span class="hljs-name">street</span>></span>上地<span class="hljs-tag"></<span class="hljs-name">street</span>></span></span><br><span class="line">    <span class="hljs-tag"></<span class="hljs-name">address</span>></span></span><br><span class="line">    <span class="hljs-tag"><<span class="hljs-name">gender</span>></span>MALE<span class="hljs-tag"></<span class="hljs-name">gender</span>></span></span><br><span class="line">    <span class="hljs-tag"><<span class="hljs-name">job</span>></span>软件工程师<span class="hljs-tag"></<span class="hljs-name">job</span>></span></span><br><span class="line"><span class="hljs-tag"></<span class="hljs-name">person</span>></span></span><br></pre></td></tr></tbody></table></figure>
+
+<h2 id="八、Console"><a href="#八、Console" class="headerlink" title="八、Console"></a>八、Console</h2><p>JDK6中提供了<code>java.io.Console</code>类专用来访问基于字符的控制台设备。你的程序如果要与Windows下的cmd或者Linux下的Terminal交互,就可以用Console类代劳. 但我们不总是能得到可用的Console, 一个JVM是否有可用的Console依赖于底层平台和JVM如何被调用。如果JVM是在交互式命令行(比如Windows的cmd)中启动的,并且输入输出没有重定向到另外的地方，那么就可以得到一个可用的Console实例。下面代码演示了Console类的用法:</p>
+<figure class="highlight java hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">import</span> java.io.Console;</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">/**</span></span><br><span class="line"><span class="hljs-comment"> * Jdk6之Console测试类.</span></span><br><span class="line"><span class="hljs-comment"> *</span></span><br><span class="line"><span class="hljs-comment"> * <span class="hljs-doctag">@author</span> blinkfox on 2017-12-04.</span></span><br><span class="line"><span class="hljs-comment"> */</span></span><br><span class="line"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ConsoleTest</span> </span>{</span><br><span class="line"></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>{</span><br><span class="line">        <span class="hljs-comment">// 获得Console实例，并判断console是否可用</span></span><br><span class="line">        Console console = System.console();</span><br><span class="line">        <span class="hljs-keyword">if</span> (console != <span class="hljs-keyword">null</span>) {</span><br><span class="line">            <span class="hljs-comment">// 读取整行字符和密码，密码输入时不会显示</span></span><br><span class="line">            String user = <span class="hljs-keyword">new</span> String(console.readLine(<span class="hljs-string">"请输入用户名:"</span>));</span><br><span class="line">            String pwd = <span class="hljs-keyword">new</span> String(console.readPassword(<span class="hljs-string">"再输入密码:"</span>));</span><br><span class="line">            console.printf(<span class="hljs-string">"用户名是:"</span> + user + <span class="hljs-string">"\n"</span>);</span><br><span class="line">            console.printf(<span class="hljs-string">"密码是:"</span> + pwd + <span class="hljs-string">"\n"</span>);</span><br><span class="line">        } <span class="hljs-keyword">else</span> {</span><br><span class="line">            System.out.println(<span class="hljs-string">"Console不可用!"</span>);</span><br><span class="line">        }</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<p>编译该代码，并在命令行中输入：<code>java ConsoleTest</code>，然后即可运行，运行示例如下：</p>
+<figure class="highlight bash hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">请输入用户名:张三</span><br><span class="line">再输入密码:</span><br><span class="line">打印出的用户名是:张三</span><br><span class="line">打印出的密码是:123456</span><br></pre></td></tr></tbody></table></figure>
+
+<blockquote>
+<p><strong>注</strong>: 在这里可以看到输入密码时,控制台时不显示这些密码字符的,但是程序可以得到输入的密码字符串,这与Linux下面输入密码的情况是一样的。</p>
+</blockquote>
+<h2 id="九、Java-DB-Derby"><a href="#九、Java-DB-Derby" class="headerlink" title="九、Java DB(Derby)"></a>九、Java DB(Derby)</h2><p>从JDK6开始，JDK目录中新增了一个名为<code>db</code>的目录。这便是 Java 6 的新成员：Java DB。这是一个纯 Java 实现、开源的数据库管理系统（DBMS），源于 Apache 软件基金会（ASF）名下的项目<code>Derby</code>。它只有 2MB 大小，对比动辄上 G 的数据库来说可谓袖珍。但这并不妨碍 Derby 功能齐备，支持几乎大部分的数据库应用所需要的特性。JDK6.0里面带的这个Derby的版本是10.2.1.7,支持存储过程和触发器；有两种运行模式，一种是作为嵌入式数据库，另一种是作为网络数据库。前者的数据库服务器和客户端都在同一个JVM里面运行，后者允许数据库服务器端和客户端不在同一个JVM里面，而且允许这两者在不同的物理机器上。值得注意的是JDK6里面的这个Derby支持JDK6的新特性<code>JDBC 4.0</code>规范(JSR 221)。</p>
+<p>下面分两种情况演示一下如何用代码操作Derby数据库，一种是嵌入式数据库，一种是网络数据库。</p>
+<h3 id="1-嵌入式数据库"><a href="#1-嵌入式数据库" class="headerlink" title="1. 嵌入式数据库"></a>1. 嵌入式数据库</h3><figure class="highlight java hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">import</span> com.blinkfox.learn.jdbc.JdbcDaoHelper;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">import</span> java.sql.*;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">import</span> org.slf4j.Logger;</span><br><span class="line"><span class="hljs-keyword">import</span> org.slf4j.LoggerFactory;</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">/**</span></span><br><span class="line"><span class="hljs-comment"> * Derby内嵌数据库测试示例.</span></span><br><span class="line"><span class="hljs-comment"> *</span></span><br><span class="line"><span class="hljs-comment"> * <span class="hljs-doctag">@author</span> blinkfox on 2017-12-04.</span></span><br><span class="line"><span class="hljs-comment"> */</span></span><br><span class="line"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">EmbeddedDerbyTest</span> </span>{</span><br><span class="line"></span><br><span class="line">    <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> Logger log = LoggerFactory.getLogger(EmbeddedDerbyTest<span class="hljs-class">.<span class="hljs-keyword">class</span>)</span>;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-comment">/** Derby驱动,在derby.jar里面. */</span></span><br><span class="line">    <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> String DRIVER = <span class="hljs-string">"org.apache.derby.jdbc.EmbeddedDriver"</span>;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-comment">/** 连接Derby的url，create=true表示当数据库不存在时就创建它. */</span></span><br><span class="line">    <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> String URL = <span class="hljs-string">"jdbc:derby:EmbeddedDB;create=true"</span>;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-comment">/**</span></span><br><span class="line"><span class="hljs-comment">     * main方法.</span></span><br><span class="line"><span class="hljs-comment">     *</span></span><br><span class="line"><span class="hljs-comment">     * <span class="hljs-doctag">@param</span> args 数组参数</span></span><br><span class="line"><span class="hljs-comment">     */</span></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>{</span><br><span class="line">        Connection conn = <span class="hljs-keyword">null</span>;</span><br><span class="line">        Statement st = <span class="hljs-keyword">null</span>;</span><br><span class="line">        ResultSet rs = <span class="hljs-keyword">null</span>;</span><br><span class="line">        <span class="hljs-keyword">try</span> {</span><br><span class="line">            Class.forName(DRIVER);</span><br><span class="line">            conn = DriverManager.getConnection(URL);<span class="hljs-comment">//启动嵌入式数据库</span></span><br><span class="line">            st = conn.createStatement();</span><br><span class="line">            st.execute(<span class="hljs-string">"create table foo (FOOID INT NOT NULL, FOONAME VARCHAR(30) NOT NULL)"</span>); <span class="hljs-comment">//创建foo表</span></span><br><span class="line">            st.executeUpdate(<span class="hljs-string">"insert into foo(FOOID,FOONAME) values (1, 'blinkfox')"</span>); <span class="hljs-comment">//插入一条数据</span></span><br><span class="line">            rs = st.executeQuery(<span class="hljs-string">"select * from foo"</span>);<span class="hljs-comment">//读取刚插入的数据</span></span><br><span class="line">            <span class="hljs-keyword">while</span> (rs.next()) {</span><br><span class="line">                <span class="hljs-keyword">int</span> id = rs.getInt(<span class="hljs-number">1</span>);</span><br><span class="line">                String name = rs.getString(<span class="hljs-number">2</span>);</span><br><span class="line">                log.info(<span class="hljs-string">"查询结果：id = {}; name = {}"</span>, id, name);</span><br><span class="line">            }</span><br><span class="line">        } <span class="hljs-keyword">catch</span> (Exception e) {</span><br><span class="line">            log.error(<span class="hljs-string">"使用Derby数据库出错!"</span>, e);</span><br><span class="line">        } <span class="hljs-keyword">finally</span> {</span><br><span class="line">            JdbcDaoHelper.close(rs);</span><br><span class="line">            JdbcDaoHelper.close(st);</span><br><span class="line">            JdbcDaoHelper.close(conn);</span><br><span class="line">        }</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<p>运行上面程序后，会在当前目录生成名为<code>EmbeddedDB</code>的文件夹，既是<code>EmbeddedDB</code>数据库的数据文件存放的地方，控制台将输出：</p>
+<figure class="highlight bash hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">查询结果：id = 1; name = blinkfox</span><br></pre></td></tr></tbody></table></figure>
+
+<h3 id="2-网络数据库"><a href="#2-网络数据库" class="headerlink" title="2. 网络数据库"></a>2. 网络数据库</h3><figure class="highlight java hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">import</span> java.io.PrintWriter;</span><br><span class="line"><span class="hljs-keyword">import</span> java.sql.DriverManager;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">import</span> org.apache.derby.drda.NetworkServerControl;</span><br><span class="line"><span class="hljs-keyword">import</span> org.slf4j.Logger;</span><br><span class="line"><span class="hljs-keyword">import</span> org.slf4j.LoggerFactory;</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">/**</span></span><br><span class="line"><span class="hljs-comment"> * Derby网络数据库测试示例.</span></span><br><span class="line"><span class="hljs-comment"> *</span></span><br><span class="line"><span class="hljs-comment"> * <span class="hljs-doctag">@author</span> blinkfox on 2017-12-04.</span></span><br><span class="line"><span class="hljs-comment"> */</span></span><br><span class="line"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">NetworkServerDerbyTest</span> </span>{</span><br><span class="line"></span><br><span class="line">    <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> Logger log = LoggerFactory.getLogger(NetworkServerDerbyTest<span class="hljs-class">.<span class="hljs-keyword">class</span>)</span>;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-comment">/** Derby驱动,在derbyclient.jar里面. */</span></span><br><span class="line">    <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> String DRIVER = <span class="hljs-string">"org.apache.derby.jdbc.ClientDriver"</span>;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-comment">/** 连接Derby的url. */</span></span><br><span class="line">    <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> String URL = <span class="hljs-string">"jdbc:derby://localhost:1527/NetworkDB;create=true"</span>;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-comment">/**</span></span><br><span class="line"><span class="hljs-comment">     * main方法.</span></span><br><span class="line"><span class="hljs-comment">     * <p>创建Derby网络服务器,默认端口是1527,也可以通过运行<Derby_Home>/frameworks/NetworkServer/bin/startNetworkServer.bat</span></span><br><span class="line"><span class="hljs-comment">     来创建并启动Derby网络服务器,如果是Unix,用startNetworkServer.ksh</p></span></span><br><span class="line"><span class="hljs-comment">     *</span></span><br><span class="line"><span class="hljs-comment">     * <span class="hljs-doctag">@param</span> args 数组参数</span></span><br><span class="line"><span class="hljs-comment">     */</span></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>{</span><br><span class="line">        NetworkServerControl derbyServer = <span class="hljs-keyword">null</span>;</span><br><span class="line">        <span class="hljs-keyword">try</span> {</span><br><span class="line">            <span class="hljs-comment">//NetworkServerControl类在derbynet.jar里面</span></span><br><span class="line">            derbyServer = <span class="hljs-keyword">new</span> NetworkServerControl();</span><br><span class="line">            PrintWriter pw = <span class="hljs-keyword">new</span> PrintWriter(System.out); <span class="hljs-comment">//用系统输出作为Derby数据库的输出</span></span><br><span class="line">            derbyServer.start(pw); <span class="hljs-comment">//启动Derby服务器</span></span><br><span class="line">            Class.forName(DRIVER);</span><br><span class="line">            DriverManager.getConnection(URL);</span><br><span class="line">        } <span class="hljs-keyword">catch</span> (Exception e) {</span><br><span class="line">            log.error(<span class="hljs-string">"操作Derby网络数据库异常!"</span>, e);</span><br><span class="line">        } <span class="hljs-keyword">finally</span> {</span><br><span class="line">            <span class="hljs-keyword">if</span> (derbyServer != <span class="hljs-keyword">null</span>) {</span><br><span class="line">                <span class="hljs-keyword">try</span> {</span><br><span class="line">                    derbyServer.shutdown();</span><br><span class="line">                } <span class="hljs-keyword">catch</span> (Exception e) {</span><br><span class="line">                    log.error(<span class="hljs-string">"关闭Derby网络数据库异常!"</span>, e);</span><br><span class="line">                }</span><br><span class="line">            }</span><br><span class="line">        }</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<p>运行上面程序后,会在当前目录生成名为<code>NetworkDB</code>的文件夹。关于<code>Derby</code>的详细情况,请参考<a href="http://db.apache.org/derby" target="_blank" rel="noopener">http://db.apache.org/derby</a>。</p>
+<h2 id="十、JDBC-4-0"><a href="#十、JDBC-4-0" class="headerlink" title="十、JDBC 4.0"></a>十、JDBC 4.0</h2><p>在 Java SE 6 所提供的诸多新特性和改进中，值得一提的是为 Java 程序提供数据库访问机制的 JDBC 版本升级到了 4.0, 这个以 JSR-221 为代号的版本，提供了更加便利的代码编写机制及柔性，并且支持更多的数据类型。JDBC4.0 主要有以下改进和新特性。</p>
+<ul>
+<li>自动加载<code>java.sql.Driver</code>，而不需要再调用<code>class.forName</code>；</li>
+<li>添加了<code>java.sql.RowId</code>数据类型用来可以访问<code>sql rowid</code>；</li>
+<li>添加了<code>National Character Set</code>的支持；</li>
+<li>增强了<code>BLOB</code>和<code>CLOB</code>的支持功能；</li>
+<li><code>SQL/XML</code>和<code>XML</code>支持；</li>
+<li><code>Wrapper Pattern</code>；</li>
+<li><code>SQLException</code>增强；</li>
+<li><code>Connection</code>和<code>Statement</code>接口增强；</li>
+<li><code>New Scalar Funtions</code>；</li>
+<li><code>JDBC API changes</code>。</li>
+</ul>
+<h2 id="十一、值得关注的"><a href="#十一、值得关注的" class="headerlink" title="十一、值得关注的"></a>十一、值得关注的</h2><h3 id="1-集合框架增强"><a href="#1-集合框架增强" class="headerlink" title="1. 集合框架增强"></a>1. 集合框架增强</h3><p>Jdk6中的集合框架的API更改数量要少于JDK5，更多地关注了规范的准确性和清晰度。即使在编写旧版本的程序时，我们也建议使用Java SE 6规范。<br>API更改的主要主题是更好的双向收集访问。</p>
+<p>新增了以下几个接口：</p>
+<ul>
+<li><code>Deque</code>: 双端队列接口，继承了Queue接口，队列两头都可以实现入队和出队。</li>
+<li><code>BlockingDeque</code>: 双端阻塞队列接口，继承了BlockingQueue、Deque接口。</li>
+<li><code>NavigableSet</code>: 可导航Set接口，继承自SortedSet接口。</li>
+<li><code>NavigableMap</code>: 可导航Map接口，继承自SortedMap接口。</li>
+<li><code>ConcurrentNavigableMap</code>: 支持并发的可导航Map，继承自<code>ConcurrentMap</code>接口和<code>NavigableMap</code>接口。</li>
+</ul>
+<p>新增了以下几个实现类：</p>
+<ul>
+<li><code>ArrayDeque</code>: 底层采用了循环数组的方式来完成双端队列的实现，无限扩展且可选容量。Java已不推荐使用Stack，而是推荐使用更高效的<code>ArrayDeque</code>来实现栈的功能，非线程安全。</li>
+<li><code>ConcurrentSkipListSet</code>: 底层使用跳跃列表来实现，适用于高并发的场景，内部使用了ConcurrentNavigableMap，同TreeSet功能相似，线程安全。</li>
+<li><code>ConcurrentSkipListMap</code>: 底层使用跳跃列表来实现，适用于高并发的场景，内部使用了ConcurrentNavigableMap，同TreeMap功能相似，是一个并发的、可排序的Map，线程安全。因此它可以在多线程环境中弥补ConcurrentHashMap不支持排序的问题。</li>
+<li><code>LinkedBlockingDeque</code>: 底层采用了双向链表实现的双端阻塞并发队列，无限扩展且可选容量。该阻塞队列同时支持FIFO和FILO两种操作方式，即可以从队列的头和尾同时操作(插入/删除)，且线程安全。</li>
+<li><code>AbstractMap.SimpleEntry</code>: <code>Map.Entry</code>的简单可变实现。</li>
+<li><code>AbstractMap.SimpleImmutableEntry</code>: <code>Map.Entry</code>的简单不可变实现。</li>
+</ul>
+<p>以下的类已经被改进来用来实现新的接口：</p>
+<ul>
+<li><code>LinkedList</code>: 改进以实现Deque接口。</li>
+<li><code>TreeSet</code>: 改进以实现NavigableSet接口。</li>
+<li><code>TreeMap</code>: 改进以实现NavigableMap接口。</li>
+</ul>
+<p>新增了两个新的方法到<code>Collections</code>的工具类中：</p>
+<ul>
+<li><code>newSetFromMap(Map)</code>: 从通用的Map实现中创建一个通用的Set实现。Java集合中有<code>IdentityHashMap</code>，但是没有<code>IdentityHashSet</code>类，我们可以通过这样的方式来实现：</li>
+</ul>
+<figure class="highlight java hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Set<Object> identityHashSet = Collections.newSetFromMap(<span class="hljs-keyword">new</span> IdentityHashMap<Object, Boolean>());</span><br></pre></td></tr></tbody></table></figure>
+
+<ul>
+<li><code>asLifoQueue(Deque)</code>: 通过传入<code>Deque</code>得到一个后进先出(LIFO)的队列。</li>
+</ul>
+<p>现在<code>Arrays</code>工具类，具有<code>copyOf</code>和<code>copyOfRange</code>方法，可以有效地调整，截断或复制所有类型的数组的子数组。</p>
+<p>以前是这样实现的：</p>
+<figure class="highlight java hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">int</span>[] newArray = <span class="hljs-keyword">new</span> <span class="hljs-keyword">int</span>[newLength];</span><br><span class="line">System.arraycopy(oldArray, <span class="hljs-number">0</span>, newArray, <span class="hljs-number">0</span>, oldArray.length);</span><br></pre></td></tr></tbody></table></figure>
+
+<p>现在可以这样实现：</p>
+<figure class="highlight java hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">int</span>[] newArray = Arrays.copyOf(a, newLength);</span><br></pre></td></tr></tbody></table></figure>
+
+<hr>
+<p>参考文档：</p>
+<p>-<a href="http://www.oracle.com/technetwork/java/javase/features-141434.html" target="_blank" rel="noopener">JavaSE6 Features and Enhancements</a><br>-<a href="https://segmentfault.com/a/1190000004417536" target="_blank" rel="noopener">Java6的新特性</a><br>-<a href="http://my.csdn.net/Chinajash" target="_blank" rel="noopener">chinajash</a></p>
+</body></html>
+        </div>
+        
+        <div class="level is-size-7 is-uppercase">
+            <div class="level-start">
+                <div class="level-item">
+                    <span class="is-size-6 has-text-grey has-mr-7">#</span>
+                    <a class="has-link-grey -link" href="/tags/Java/" rel="tag">Java</a>
+                </div>
+            </div>
+        </div>
+        
+        
+        
+        <div class="social-share"></div>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js@1.0.16/dist/css/share.min.css">
+<script src="https://cdn.jsdelivr.net/npm/social-share.js@1.0.16/dist/js/social-share.min.js"></script>
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="menu-label has-text-centered">喜欢这篇文章？打赏一下作者吧</h3>
+        <div class="buttons is-centered">
+            
+                
+<a class="button is-info donate">
+    <span class="icon is-small">
+        <i class="fab fa-alipay"></i>
+    </span>
+    <span>支付宝</span>
+    <div class="qrcode"><img src="/images/zhi.jpg" alt="支付宝"></div>
+</a>
+
+                
+                
+<a class="button is-success donate">
+    <span class="icon is-small">
+        <i class="fab fa-weixin"></i>
+    </span>
+    <span>微信</span>
+    <div class="qrcode"><img src="/images/wei.png" alt="微信"></div>
+</a>
+
+                
+        </div>
+    </div>
+</div>
+
+
+
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        <div class="level-start">
+            <a class="level level-item has-link-grey  article-nav-prev" href="/Java7%E6%96%B0%E7%89%B9%E6%80%A7%E5%8F%8A%E4%BD%BF%E7%94%A8/">
+                <i class="level-item fas fa-chevron-left"></i>
+                <span class="level-item">Java7新特性及使用</span>
+            </a>
+        </div>
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/%E5%B8%B8%E7%94%A8Bash%E5%91%BD%E4%BB%A4%E6%95%B4%E7%90%86%E4%B9%8B%E6%96%87%E6%9C%AC%E5%A4%84%E7%90%86/">
+                <span class="level-item">常用Bash命令整理之文本处理</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="title is-5 has-text-weight-normal">评论</h3>
+        
+<div id="valine-thread" class="content"></div>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+<script>
+    new Valine({
+        el: '#valine-thread' ,
+        notify: false,
+        verify: false,
+        app_id: 'pGtDpK5EpiLy1oMGmpFXAaV6-gzGzoHsz',
+        app_key: 'ra40Npwa5HY3ex482cDELW5j',
+        placeholder: 'xxxxxxxx'
+    });
+</script>
+
+    </div>
+</div>
+</div>
+                
+
+
+
+
+<div class="column is-4-tablet is-4-desktop is-3-widescreen  has-order-1 column-left ">
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <nav class="level">
+            <div class="level-item has-text-centered" style="flex-shrink: 1">
+                <div>
+                    
+                    <figure class="image is-128x128 has-mb-6">
+                        <img class="" src="/images/xueshao110.jpg" alt="一抹离愁">
+                    </figure>
+                    
+                    <p class="is-size-4 is-block">
+                        一抹离愁
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-block">
+                        一抹离愁
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-flex is-flex-center has-text-grey">
+                        <i class="fas fa-map-marker-alt has-mr-7"></i>
+                        <span>西安</span>
+                    </p>
+                    
+                </div>
+            </div>
+        </nav>
+        <nav class="level is-mobile">
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        文章
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        59
+                    </p>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        分类
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        9
+                    </p>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        标签
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        28
+                    </p>
+                </div>
+            </div>
+        </nav>
+        
+        <div class="level">
+            <a class="level-item button is-link is-rounded" href="https://github.com/xueliang0614" target="_blank">
+                关注我</a>
+        </div>
+        
+        
+        
+        <div class="level is-mobile">
+            
+            <a class="level-item button is-white is-marginless" target="_blank"
+                title="Github" href="https://github.com/xueliang0614">
+                
+                <i class="fab fa-github"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank"
+                title="CSDN" href="https://blog.csdn.net/xueshao110">
+                
+                <i class="fab fa-github"></i>
+                
+            </a>
+            
+        </div>
+        
+    </div>
+</div>
+    
+        
+    
+        <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+        <h3 class="menu-label">
+            链接
+        </h3>
+        <ul class="menu-list">
+        
+            <li>
+                <a class="level is-mobile" href="https://blog.csdn.net/xueshao110" target="_blank">
+                    <span class="level-left">
+                        <span class="level-item">CSDN</span>
+                    </span>
+                    <span class="level-right">
+                        <span class="level-item tag">blog.csdn.net</span>
+                    </span>
+                </a>
+            </li>
+        
+            <li>
+                <a class="level is-mobile" href="https://github.com/xueliang0614" target="_blank">
+                    <span class="level-left">
+                        <span class="level-item">github</span>
+                    </span>
+                    <span class="level-right">
+                        <span class="level-item tag">github.com</span>
+                    </span>
+                </a>
+            </li>
+        
+        </ul>
+        </div>
+    </div>
+</div>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css">
+<script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script>
+<!-- require MetingJS -->
+<script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script>
+
+    <meting-js style="margin-top: 1.5rem;width: auto;height: auto;"
+    server="netease"
+    type="playlist"
+    id="408894554"
+    theme="#2980b9"
+    loop="all"
+    autoplay="true"
+    order="random"
+    storageName="aplayer-setting"
+    lrctype= 0
+    >
+    </meting-js>
+<style>
+    .aplayer{
+        margin: 1.5rem 0;
+    }
+</style>
+
+
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                分类
+            </h3>
+            <ul class="menu-list">
+            <li>
+        <a class="level is-marginless" href="/categories/Android/">
+            <span class="level-start">
+                <span class="level-item">Android</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">5</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/%E5%89%8D%E7%AB%AF/">
+            <span class="level-start">
+                <span class="level-item">前端</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">4</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/%E5%90%8E%E7%AB%AF/">
+            <span class="level-start">
+                <span class="level-item">后端</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">21</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/%E5%AE%89%E5%85%A8/">
+            <span class="level-start">
+                <span class="level-item">安全</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/%E5%B0%8F%E7%A8%8B%E5%BA%8F/">
+            <span class="level-start">
+                <span class="level-item">小程序</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/">
+            <span class="level-start">
+                <span class="level-item">数据库</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/%E7%BC%96%E7%A8%8B%E4%B9%8B%E9%81%93/">
+            <span class="level-start">
+                <span class="level-item">编程之道</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">3</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E5%85%B7/">
+            <span class="level-start">
+                <span class="level-item">软件工具</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">8</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/%E8%BD%AF%E4%BB%B6%E8%AE%BE%E8%AE%A1/">
+            <span class="level-start">
+                <span class="level-item">软件设计</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">14</span>
+            </span>
+        </a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+    
+        <div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            标签云
+        </h3>
+        <a href="/tags/Android/" style="font-size: 16.67px;">Android</a> <a href="/tags/Apache/" style="font-size: 15px;">Apache</a> <a href="/tags/CPU%E7%BC%93%E5%AD%98/" style="font-size: 10px;">CPU缓存</a> <a href="/tags/DevOps/" style="font-size: 10px;">DevOps</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/GitLab-CI/" style="font-size: 10px;">GitLab CI</a> <a href="/tags/Google/" style="font-size: 10px;">Google</a> <a href="/tags/Java/" style="font-size: 20px;">Java</a> <a href="/tags/JavaScript/" style="font-size: 15px;">JavaScript</a> <a href="/tags/Jenkins/" style="font-size: 10px;">Jenkins</a> <a href="/tags/Linux/" style="font-size: 15px;">Linux</a> <a href="/tags/MVEL/" style="font-size: 11.67px;">MVEL</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/PostgreSQL/" style="font-size: 10px;">PostgreSQL</a> <a href="/tags/Spring/" style="font-size: 10px;">Spring</a> <a href="/tags/Typora/" style="font-size: 10px;">Typora</a> <a href="/tags/UML/" style="font-size: 11.67px;">UML</a> <a href="/tags/Vue/" style="font-size: 10px;">Vue</a> <a href="/tags/%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95/" style="font-size: 10px;">单元测试</a> <a href="/tags/%E5%AE%89%E5%85%A8/" style="font-size: 10px;">安全</a> <a href="/tags/%E5%B0%8F%E7%A8%8B%E5%BA%8F/" style="font-size: 10px;">小程序</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" style="font-size: 10px;">数据库</a> <a href="/tags/%E6%95%B4%E6%B4%81%E4%BB%A3%E7%A0%81/" style="font-size: 10px;">整洁代码</a> <a href="/tags/%E6%B5%8B%E8%AF%95/" style="font-size: 10px;">测试</a> <a href="/tags/%E8%AE%BE%E8%AE%A1%E5%8E%9F%E5%88%99/" style="font-size: 10px;">设计原则</a> <a href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" style="font-size: 18.33px;">设计模式</a> <a href="/tags/%E9%87%8D%E6%9E%84/" style="font-size: 10px;">重构</a> <a href="/tags/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%BC%96%E7%A8%8B/" style="font-size: 13.33px;">面向对象编程</a>
+    </div>
+</div>
+    
+    
+        <div class="column-right-shadow is-hidden-widescreen ">
+        
+            <div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            最新文章
+        </h3>
+        
+        <article class="media">
+            
+            <a href="/hello-world/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Hello World">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-03-06T03:18:23.363Z">2020-03-06</time></div>
+                    <a href="/hello-world/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Hello World</a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/%E5%85%B3%E4%BA%8E%E5%B0%8F%E7%A8%8B%E5%BA%8F/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/gallery/thumbnails/x.jpeg" alt="关于小程序">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-10-20T14:10:22.000Z">2019-10-20</time></div>
+                    <a href="/%E5%85%B3%E4%BA%8E%E5%B0%8F%E7%A8%8B%E5%BA%8F/" class="title has-link-black-ter is-size-6 has-text-weight-normal">关于小程序</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/%E5%B0%8F%E7%A8%8B%E5%BA%8F/">小程序</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/Android-%E8%87%AA%E5%AE%9A%E4%B9%89%E7%9B%B8%E6%9C%BA/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/gallery/thumbnails/c.jpg" alt="Android 自定义相机">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-04-21T14:42:52.000Z">2019-04-21</time></div>
+                    <a href="/Android-%E8%87%AA%E5%AE%9A%E4%B9%89%E7%9B%B8%E6%9C%BA/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Android 自定义相机</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Android/">Android</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/Android%E5%AE%9E%E7%8E%B0%E4%B8%AA%E4%BA%BA%E4%B8%AD%E5%BF%83%E8%AE%BE%E7%BD%AE%E7%95%8C%E9%9D%A2/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/gallery/thumbnails/b.jpg" alt="Android实现个人中心设置界面">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-03-28T14:35:49.000Z">2019-03-28</time></div>
+                    <a href="/Android%E5%AE%9E%E7%8E%B0%E4%B8%AA%E4%BA%BA%E4%B8%AD%E5%BF%83%E8%AE%BE%E7%BD%AE%E7%95%8C%E9%9D%A2/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Android实现个人中心设置界面</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Android/">Android</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/%E5%9F%BA%E4%BA%8E%E8%B0%B7%E6%AD%8Cmvp%E6%9E%B6%E6%9E%84/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/gallery/thumbnails/a.jpg" alt="基于谷歌mvp架构">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-03-03T14:27:59.000Z">2019-03-03</time></div>
+                    <a href="/%E5%9F%BA%E4%BA%8E%E8%B0%B7%E6%AD%8Cmvp%E6%9E%B6%E6%9E%84/" class="title has-link-black-ter is-size-6 has-text-weight-normal">基于谷歌mvp架构</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Android/">Android</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+    </div>
+</div>
+        
+            <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+        <h3 class="menu-label">
+            归档
+        </h3>
+        <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/03/">
+                <span class="level-start">
+                    <span class="level-item">三月 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/10/">
+                <span class="level-start">
+                    <span class="level-item">十月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/04/">
+                <span class="level-start">
+                    <span class="level-item">四月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/03/">
+                <span class="level-start">
+                    <span class="level-item">三月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">2</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/02/">
+                <span class="level-start">
+                    <span class="level-item">二月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2018/11/">
+                <span class="level-start">
+                    <span class="level-item">十一月 2018</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">4</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2018/10/">
+                <span class="level-start">
+                    <span class="level-item">十月 2018</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">7</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2018/09/">
+                <span class="level-start">
+                    <span class="level-item">九月 2018</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">9</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2018/08/">
+                <span class="level-start">
+                    <span class="level-item">八月 2018</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">2</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2018/07/">
+                <span class="level-start">
+                    <span class="level-item">七月 2018</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">4</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2018/06/">
+                <span class="level-start">
+                    <span class="level-item">六月 2018</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">4</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2018/05/">
+                <span class="level-start">
+                    <span class="level-item">五月 2018</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2018/04/">
+                <span class="level-start">
+                    <span class="level-item">四月 2018</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">2</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2018/03/">
+                <span class="level-start">
+                    <span class="level-item">三月 2018</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">4</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2018/02/">
+                <span class="level-start">
+                    <span class="level-item">二月 2018</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2018/01/">
+                <span class="level-start">
+                    <span class="level-item">一月 2018</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">4</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2017/12/">
+                <span class="level-start">
+                    <span class="level-item">十二月 2017</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2017/11/">
+                <span class="level-start">
+                    <span class="level-item">十一月 2017</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">3</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2017/10/">
+                <span class="level-start">
+                    <span class="level-item">十月 2017</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">2</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2017/09/">
+                <span class="level-start">
+                    <span class="level-item">九月 2017</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">3</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2017/06/">
+                <span class="level-start">
+                    <span class="level-item">六月 2017</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2017/04/">
+                <span class="level-start">
+                    <span class="level-item">四月 2017</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        </ul>
+        </div>
+    </div>
+</div>
+        
+            <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                标签
+            </h3>
+            <div class="field is-grouped is-grouped-multiline">
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Android/">
+                        <span class="tag">Android</span>
+                        <span class="tag is-grey">5</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Apache/">
+                        <span class="tag">Apache</span>
+                        <span class="tag is-grey">4</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/CPU%E7%BC%93%E5%AD%98/">
+                        <span class="tag">CPU缓存</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/DevOps/">
+                        <span class="tag">DevOps</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Git/">
+                        <span class="tag">Git</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/GitLab-CI/">
+                        <span class="tag">GitLab CI</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Google/">
+                        <span class="tag">Google</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Java/">
+                        <span class="tag">Java</span>
+                        <span class="tag is-grey">37</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/JavaScript/">
+                        <span class="tag">JavaScript</span>
+                        <span class="tag is-grey">4</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Jenkins/">
+                        <span class="tag">Jenkins</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Linux/">
+                        <span class="tag">Linux</span>
+                        <span class="tag is-grey">4</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/MVEL/">
+                        <span class="tag">MVEL</span>
+                        <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Markdown/">
+                        <span class="tag">Markdown</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/PostgreSQL/">
+                        <span class="tag">PostgreSQL</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Spring/">
+                        <span class="tag">Spring</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Typora/">
+                        <span class="tag">Typora</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/UML/">
+                        <span class="tag">UML</span>
+                        <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Vue/">
+                        <span class="tag">Vue</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95/">
+                        <span class="tag">单元测试</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/%E5%AE%89%E5%85%A8/">
+                        <span class="tag">安全</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/%E5%B0%8F%E7%A8%8B%E5%BA%8F/">
+                        <span class="tag">小程序</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/">
+                        <span class="tag">数据库</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/%E6%95%B4%E6%B4%81%E4%BB%A3%E7%A0%81/">
+                        <span class="tag">整洁代码</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/%E6%B5%8B%E8%AF%95/">
+                        <span class="tag">测试</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/%E8%AE%BE%E8%AE%A1%E5%8E%9F%E5%88%99/">
+                        <span class="tag">设计原则</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">
+                        <span class="tag">设计模式</span>
+                        <span class="tag is-grey">12</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/%E9%87%8D%E6%9E%84/">
+                        <span class="tag">重构</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%BC%96%E7%A8%8B/">
+                        <span class="tag">面向对象编程</span>
+                        <span class="tag is-grey">3</span>
+                    </a>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</div>
+        
+        </div>
+    
+</div>
+
+                
+
+
+
+
+<div class="column is-4-tablet is-4-desktop is-3-widescreen is-hidden-touch is-hidden-desktop-only has-order-3 column-right ">
+    
+        <div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            最新文章
+        </h3>
+        
+        <article class="media">
+            
+            <a href="/hello-world/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Hello World">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-03-06T03:18:23.363Z">2020-03-06</time></div>
+                    <a href="/hello-world/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Hello World</a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/%E5%85%B3%E4%BA%8E%E5%B0%8F%E7%A8%8B%E5%BA%8F/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/gallery/thumbnails/x.jpeg" alt="关于小程序">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-10-20T14:10:22.000Z">2019-10-20</time></div>
+                    <a href="/%E5%85%B3%E4%BA%8E%E5%B0%8F%E7%A8%8B%E5%BA%8F/" class="title has-link-black-ter is-size-6 has-text-weight-normal">关于小程序</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/%E5%B0%8F%E7%A8%8B%E5%BA%8F/">小程序</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/Android-%E8%87%AA%E5%AE%9A%E4%B9%89%E7%9B%B8%E6%9C%BA/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/gallery/thumbnails/c.jpg" alt="Android 自定义相机">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-04-21T14:42:52.000Z">2019-04-21</time></div>
+                    <a href="/Android-%E8%87%AA%E5%AE%9A%E4%B9%89%E7%9B%B8%E6%9C%BA/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Android 自定义相机</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Android/">Android</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/Android%E5%AE%9E%E7%8E%B0%E4%B8%AA%E4%BA%BA%E4%B8%AD%E5%BF%83%E8%AE%BE%E7%BD%AE%E7%95%8C%E9%9D%A2/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/gallery/thumbnails/b.jpg" alt="Android实现个人中心设置界面">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-03-28T14:35:49.000Z">2019-03-28</time></div>
+                    <a href="/Android%E5%AE%9E%E7%8E%B0%E4%B8%AA%E4%BA%BA%E4%B8%AD%E5%BF%83%E8%AE%BE%E7%BD%AE%E7%95%8C%E9%9D%A2/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Android实现个人中心设置界面</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Android/">Android</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/%E5%9F%BA%E4%BA%8E%E8%B0%B7%E6%AD%8Cmvp%E6%9E%B6%E6%9E%84/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/gallery/thumbnails/a.jpg" alt="基于谷歌mvp架构">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-03-03T14:27:59.000Z">2019-03-03</time></div>
+                    <a href="/%E5%9F%BA%E4%BA%8E%E8%B0%B7%E6%AD%8Cmvp%E6%9E%B6%E6%9E%84/" class="title has-link-black-ter is-size-6 has-text-weight-normal">基于谷歌mvp架构</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Android/">Android</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+    </div>
+</div>
+    
+        <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+        <h3 class="menu-label">
+            归档
+        </h3>
+        <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/03/">
+                <span class="level-start">
+                    <span class="level-item">三月 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/10/">
+                <span class="level-start">
+                    <span class="level-item">十月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/04/">
+                <span class="level-start">
+                    <span class="level-item">四月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/03/">
+                <span class="level-start">
+                    <span class="level-item">三月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">2</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/02/">
+                <span class="level-start">
+                    <span class="level-item">二月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2018/11/">
+                <span class="level-start">
+                    <span class="level-item">十一月 2018</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">4</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2018/10/">
+                <span class="level-start">
+                    <span class="level-item">十月 2018</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">7</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2018/09/">
+                <span class="level-start">
+                    <span class="level-item">九月 2018</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">9</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2018/08/">
+                <span class="level-start">
+                    <span class="level-item">八月 2018</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">2</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2018/07/">
+                <span class="level-start">
+                    <span class="level-item">七月 2018</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">4</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2018/06/">
+                <span class="level-start">
+                    <span class="level-item">六月 2018</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">4</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2018/05/">
+                <span class="level-start">
+                    <span class="level-item">五月 2018</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2018/04/">
+                <span class="level-start">
+                    <span class="level-item">四月 2018</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">2</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2018/03/">
+                <span class="level-start">
+                    <span class="level-item">三月 2018</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">4</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2018/02/">
+                <span class="level-start">
+                    <span class="level-item">二月 2018</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2018/01/">
+                <span class="level-start">
+                    <span class="level-item">一月 2018</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">4</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2017/12/">
+                <span class="level-start">
+                    <span class="level-item">十二月 2017</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2017/11/">
+                <span class="level-start">
+                    <span class="level-item">十一月 2017</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">3</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2017/10/">
+                <span class="level-start">
+                    <span class="level-item">十月 2017</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">2</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2017/09/">
+                <span class="level-start">
+                    <span class="level-item">九月 2017</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">3</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2017/06/">
+                <span class="level-start">
+                    <span class="level-item">六月 2017</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2017/04/">
+                <span class="level-start">
+                    <span class="level-item">四月 2017</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        </ul>
+        </div>
+    </div>
+</div>
+    
+        <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                标签
+            </h3>
+            <div class="field is-grouped is-grouped-multiline">
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Android/">
+                        <span class="tag">Android</span>
+                        <span class="tag is-grey">5</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Apache/">
+                        <span class="tag">Apache</span>
+                        <span class="tag is-grey">4</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/CPU%E7%BC%93%E5%AD%98/">
+                        <span class="tag">CPU缓存</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/DevOps/">
+                        <span class="tag">DevOps</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Git/">
+                        <span class="tag">Git</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/GitLab-CI/">
+                        <span class="tag">GitLab CI</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Google/">
+                        <span class="tag">Google</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Java/">
+                        <span class="tag">Java</span>
+                        <span class="tag is-grey">37</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/JavaScript/">
+                        <span class="tag">JavaScript</span>
+                        <span class="tag is-grey">4</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Jenkins/">
+                        <span class="tag">Jenkins</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Linux/">
+                        <span class="tag">Linux</span>
+                        <span class="tag is-grey">4</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/MVEL/">
+                        <span class="tag">MVEL</span>
+                        <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Markdown/">
+                        <span class="tag">Markdown</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/PostgreSQL/">
+                        <span class="tag">PostgreSQL</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Spring/">
+                        <span class="tag">Spring</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Typora/">
+                        <span class="tag">Typora</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/UML/">
+                        <span class="tag">UML</span>
+                        <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Vue/">
+                        <span class="tag">Vue</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95/">
+                        <span class="tag">单元测试</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/%E5%AE%89%E5%85%A8/">
+                        <span class="tag">安全</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/%E5%B0%8F%E7%A8%8B%E5%BA%8F/">
+                        <span class="tag">小程序</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/">
+                        <span class="tag">数据库</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/%E6%95%B4%E6%B4%81%E4%BB%A3%E7%A0%81/">
+                        <span class="tag">整洁代码</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/%E6%B5%8B%E8%AF%95/">
+                        <span class="tag">测试</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/%E8%AE%BE%E8%AE%A1%E5%8E%9F%E5%88%99/">
+                        <span class="tag">设计原则</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">
+                        <span class="tag">设计模式</span>
+                        <span class="tag is-grey">12</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/%E9%87%8D%E6%9E%84/">
+                        <span class="tag">重构</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%BC%96%E7%A8%8B/">
+                        <span class="tag">面向对象编程</span>
+                        <span class="tag is-grey">3</span>
+                    </a>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</div>
+    
+    
+</div>
+
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+    <div class="container">
+        <div class="level">
+            <div class="level-start has-text-centered-mobile">
+			
+			<script type="text/javascript" src="//rf.revolvermaps.com/0/0/6.js?i=5spvzwvaykj&amp;m=7&amp;c=e63100&amp;cr1=ffffff&amp;f=arial&amp;l=0&amp;bv=90&amp;lx=-420&amp;ly=420&amp;hi=20&amp;he=7&amp;hc=a8ddff&amp;rs=80" async="async"></script>
+			
+                <a class="footer-logo is-block has-mb-6" href="/">
+                
+                    <img src="/images/ava.png" alt="Java6新特性及使用" height="28">
+                
+                </a>
+                <p class="is-size-7">
+                &copy; 2020 blinkfox&nbsp;
+                Powered by <a href="https://hexo.io/" target="_blank">Hexo</a> & <a
+                        href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank">Icarus</a>
+                
+                </p>
+            </div>
+            <div class="level-end">
+            
+                <div class="field has-addons is-flex-center-mobile has-mt-5-mobile is-flex-wrap is-flex-middle">
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="Creative Commons" href="https://creativecommons.org/">
+                        
+                        <i class="fab fa-creative-commons"></i>
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/">
+                        
+                        <i class="fab fa-creative-commons-by"></i>
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="Download on GitHub" href="https://github.com/ppoffice/hexo-theme-icarus">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                </p>
+                
+                </div>
+            
+            </div>
+        </div>
+    </div>
+</footer>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script>
+<script>moment.locale("zh-CN");</script>
+
+<script>
+var IcarusThemeSettings = {
+    article: {
+        highlight: {
+            clipboard: true,
+            fold: 'unfolded'
+        }
+    }
+};
+</script>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script>
+
+
+
+    
+    
+<script src="/js/animation.js"></script>
+
+    
+    
+<script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script>
+<script src="/js/gallery.js" defer></script>
+
+    
+    
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/" target="_blank" rel="noopener">Update
+            my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.js" defer></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        });
+    });
+</script>
+
+    
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.5/unpacked/MathJax.js?config=TeX-MML-AM_CHTML" defer></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    MathJax.Hub.Config({
+        'HTML-CSS': {
+            matchFontHeight: false
+        },
+        SVG: {
+            matchFontHeight: false
+        },
+        CommonHTML: {
+            matchFontHeight: false
+        },
+        tex2jax: {
+            inlineMath: [
+                ['$','$'],
+                ['\\(','\\)']
+            ]
+        }
+    });
+});
+</script>
+    
+    
+<a id="back-to-top" title="回到顶端" href="javascript:;">
+    <i class="fas fa-chevron-up"></i>
+</a>
+<script src="/js/back-to-top.js" defer></script>
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+
+<script src="/js/main.js" defer></script>
+
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="想要查找什么..." />
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '页面',
+                CATEGORIES: '分类',
+                TAGS: '标签',
+                UNTITLED: '(无标题)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script src="/js/insight.js" defer></script>
+<link rel="stylesheet" href="/css/search.css">
+<link rel="stylesheet" href="/css/insight.css">
+    
+	
+	<!-- 雪花特效 -->
+    <script type="text/javascript">
+      var windowWidth = $(window).width();
+      if (windowWidth > 480) {
+        document.write('<script type="text/javascript" src="/js/src/snow.js"><\/script>');
+      }
+    </script>
+	
+	<script type="text/javascript" src="//rf.revolvermaps.com/0/0/6.js?i=5spvzwvaykj&amp;m=7&amp;c=e63100&amp;cr1=ffffff&amp;f=arial&amp;l=0&amp;bv=90&amp;lx=-420&amp;ly=420&amp;hi=20&amp;he=7&amp;hc=a8ddff&amp;rs=80" async="async"></script>
+
+</body>
+</html>

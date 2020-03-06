@@ -1,0 +1,2087 @@
+<!DOCTYPE html>
+<html  lang="zh">
+<head>
+    <meta charset="utf-8" />
+
+<meta name="generator" content="Hexo 4.2.0" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+<title>Spring基础介绍 - һĨ���</title>
+
+
+    <meta name="description" content="一、Spring 概述（一）Spring 的简史Spring 的历史网上有很多的介绍，下面是 Spring 发展历程的一个简介。 1. 第一阶段：xml 配置在 Spring 1.x 时代，使用 Spring 开发满眼都是 xml 配置的 Bean，随着项目的扩大，我们需要把 xml 配置文件放到不同的配置文件里，那时候需要频繁地在开发的类和配置文件之间切换。 2. 第二阶段：注解配置在 Spri">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Spring基础介绍">
+<meta property="og:url" content="http://www.xl06.xyz/Spring%E5%9F%BA%E7%A1%80%E4%BB%8B%E7%BB%8D/index.html">
+<meta property="og:site_name" content="һĨ���">
+<meta property="og:description" content="一、Spring 概述（一）Spring 的简史Spring 的历史网上有很多的介绍，下面是 Spring 发展历程的一个简介。 1. 第一阶段：xml 配置在 Spring 1.x 时代，使用 Spring 开发满眼都是 xml 配置的 Bean，随着项目的扩大，我们需要把 xml 配置文件放到不同的配置文件里，那时候需要频繁地在开发的类和配置文件之间切换。 2. 第二阶段：注解配置在 Spri">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://www.xl06.xyz/images/og_image.png">
+<meta property="article:published_time" content="2018-09-17T14:32:00.000Z">
+<meta property="article:modified_time" content="2018-11-23T16:45:01.000Z">
+<meta property="article:author" content="һĨ���">
+<meta property="article:tag" content="Java">
+<meta property="article:tag" content="Spring">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://www.xl06.xyz/images/og_image.png">
+
+
+
+
+
+
+
+<link rel="icon" href="/images/favicon.svg">
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-light.css">
+
+
+    
+    
+<style>body>.footer,body>.navbar,body>.section{opacity:0}</style>
+
+    
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css">
+
+    
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.css">
+
+    
+    
+    
+    
+<link rel="stylesheet" href="/css/back-to-top.css">
+
+    
+    
+    
+    
+    
+    
+    
+    <link rel="stylesheet" href="/css/progressbar.css">
+<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+    
+    
+    
+
+
+<link rel="stylesheet" href="/css/style.css">
+	<script src="/js/src/click.js"></script>
+</head>
+<body class="is-3-column">
+    <nav class="navbar navbar-main">
+    <div class="container">
+        <div class="navbar-brand is-flex-center">
+            <a class="navbar-item navbar-logo" href="/">
+            
+                <img src="/images/ava.png" alt="Spring基础介绍" height="28">
+            
+            </a>
+        </div>
+        <div class="navbar-menu">
+            
+            <div class="navbar-start">
+                
+                <a class="navbar-item"
+                href="/">首页</a>
+                
+                <a class="navbar-item"
+                href="/archives">归档</a>
+                
+                <a class="navbar-item"
+                href="/categories">分类</a>
+                
+                <a class="navbar-item"
+                href="/tags">标签</a>
+                
+                <a class="navbar-item"
+                href="/about">关于</a>
+                
+                <a class="navbar-item"
+                href="/project">作品</a>
+                
+            </div>
+            
+            <div class="navbar-end">
+                
+                    
+                    <a class="navbar-item" target="_blank" title="Download on GitHub" href="https://github.com/xueliang0614">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                    
+                
+                
+                
+                <a class="navbar-item search" title="搜索" href="javascript:;">
+                    <i class="fas fa-search"></i>
+                </a>
+                
+            </div>
+        </div>
+    </div>
+</nav>
+    
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main">
+<div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2018-09-17T14:32:00.000Z">2018-09-17</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/%E5%90%8E%E7%AB%AF/">后端</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    29 分钟 读完 (大约 4305 个字)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                Spring基础介绍
+            
+        </h1>
+        <div class="content">
+            <html><head></head><body><h2 id="一、Spring-概述"><a href="#一、Spring-概述" class="headerlink" title="一、Spring 概述"></a>一、Spring 概述</h2><h3 id="（一）Spring-的简史"><a href="#（一）Spring-的简史" class="headerlink" title="（一）Spring 的简史"></a>（一）Spring 的简史</h3><p><a href="https://spring.io/" target="_blank" rel="noopener">Spring</a> 的历史网上有很多的介绍，下面是 Spring 发展历程的一个简介。</p>
+<h4 id="1-第一阶段：xml-配置"><a href="#1-第一阶段：xml-配置" class="headerlink" title="1. 第一阶段：xml 配置"></a>1. 第一阶段：xml 配置</h4><p>在 Spring 1.x 时代，使用 Spring 开发满眼都是 xml 配置的 Bean，随着项目的扩大，我们需要把 xml 配置文件放到不同的配置文件里，那时候需要频繁地在开发的类和配置文件之间切换。</p>
+<h4 id="2-第二阶段：注解配置"><a href="#2-第二阶段：注解配置" class="headerlink" title="2. 第二阶段：注解配置"></a>2. 第二阶段：注解配置</h4><p>在 Spring 2.x 时代，随着 JDK 1.5 带来的注解支持，Spring 提供了声明 Bean 的注解（如：@Component、@Service），大大减少了配置量。这时 Spring 圈子里存在着一种争论：注解配置和 xml 配置究竟哪个更好？我们最终的选择是应用的基本配置（如：数据库配置）用 xml，业务配置用注解。</p>
+<h4 id="3-第三阶段：Java-配置"><a href="#3-第三阶段：Java-配置" class="headerlink" title="3. 第三阶段：Java 配置"></a>3. 第三阶段：Java 配置</h4><p>从 Spring 3.x 到现在，Spring 提供了 Java 配置的能力，使用 Java 配置可以让你更理解你配置的 Bean。我们目前刚好处于这个时代，Spring 4.x 和 Spring Boot 都推荐使用 Java 配置。</p>
+<h3 id="（二）Spring-概述"><a href="#（二）Spring-概述" class="headerlink" title="（二）Spring 概述"></a>（二）Spring 概述</h3><p>Spring 框架是一个轻量级的企业级开发的一站式解决方案。所谓解决方案就是可以基于 Spring 解决 JavaEE 开发的所有问题。Spring 框架主要提供了<code>IoC</code>容器、AOP、数据访问、Web 开发、消息、测试等相关技术的支持。</p>
+<p>Spring 使用简单的 POJO（<code>Plain Old Java Object</code>，即无任何限制的普通Java对象）来进行企业级开发。每一个被 Spring 管理的 Java 对象都被称之为 Bean；而 Spring 提供了一个 IoC 容器用来初始化对象，解决对象间的依赖管理和对象的使用。</p>
+<h4 id="1-Spring-的模块"><a href="#1-Spring-的模块" class="headerlink" title="1. Spring 的模块"></a>1. Spring 的模块</h4><p>Spring 是模块化的，这意味着你可以只使用你需要的Spring的模块。如下图所示：</p>
+<p><img src="http://static.blinkfox.com/spring_moudle.png" alt="Spring 模块"></p>
+<p>图中的每个最小单元，Spring 都至少有一个对应的 jar 包。</p>
+<h5 id="（1）核心容器（Core-Contariner）"><a href="#（1）核心容器（Core-Contariner）" class="headerlink" title="（1）核心容器（Core Contariner）"></a>（1）核心容器（Core Contariner）</h5><ul>
+<li>Spring-Core：核心工具类，Spring 其他模块大量使用 Spring-Core</li>
+<li>Spring-Beans：Spring 定义 Bean 的支持</li>
+<li>Spring-Context：运行时 Spring 容器</li>
+<li>Spring-Context-Support：容器对第三方包的集成支持</li>
+<li>Spring-Expression：使用表达式语言在运行时查询和操作对象</li>
+</ul>
+<h5 id="（2）AOP"><a href="#（2）AOP" class="headerlink" title="（2）AOP"></a>（2）AOP</h5><ul>
+<li>Spring-AOP：基于代理的 AOP 支持</li>
+<li>Spring-Aspects：基于 AspectJ 的 AOP 支持</li>
+</ul>
+<h5 id="（3）消息（Messaging）"><a href="#（3）消息（Messaging）" class="headerlink" title="（3）消息（Messaging）"></a>（3）消息（Messaging）</h5><ul>
+<li>Spring-Messaging：对消息架构和协议的支持</li>
+</ul>
+<h5 id="（4）Web"><a href="#（4）Web" class="headerlink" title="（4）Web"></a>（4）Web</h5><ul>
+<li>Spring-Web：提供基础的 Web 集成的功能，在 Web 项目中提供 Spring 的容器</li>
+<li>Spring-Webmvc：提供基于 Servlet 的 Spring MVC</li>
+<li>Spring-WebSocket：提供 WebSocket 功能</li>
+<li>Spring-Webmvc-Portlet：提供 Portlet 环境功能</li>
+</ul>
+<h5 id="（5）数据访问-集成（Data-Access-Integration）"><a href="#（5）数据访问-集成（Data-Access-Integration）" class="headerlink" title="（5）数据访问/集成（Data Access/Integration）"></a>（5）数据访问/集成（Data Access/Integration）</h5><ul>
+<li>Spring-JDBC：提供以 JDBC 访问数据库的支持</li>
+<li>Spring-TX：提供编程式和声明式的事务支持</li>
+<li>Spring-ORM：提供对对象/关系映射技术的支持</li>
+<li>Spring-OXM：提供对对象/xml 映射技术的支持</li>
+<li>Spring-JMS：提供对 JMS 的支持</li>
+</ul>
+<h4 id="1-Spring-的生态"><a href="#1-Spring-的生态" class="headerlink" title="1. Spring 的生态"></a>1. Spring 的生态</h4><p>Spring 发展到现在已经不仅仅是 Spring 框架本身的内容，Spring 目前提供了大量的基于 Spring 的项目，可以用来更深入地降低我们的开发难度，提高开发效率。<br>目前 Spring 的生态里主要有以下项目，我们可以根据自己项目的需要来选择使用相应的项目。</p>
+<ul>
+<li>Spring Boot：使用默认开发配置来实现快速开发</li>
+<li>Spring XD：用来简化大数据应用开发</li>
+<li>Spring Cloud：为分布式系统开发提供工具集</li>
+<li>Spring Data：对主流关系型和 NoSQL 数据库的支持</li>
+<li>Spring Integration：通过消息机制对企业集成模式（EIP）的支持</li>
+<li>Spring Batch：简化及优化大量数据的批处理操作</li>
+<li>Spring Security：通过认证和授权保护应用</li>
+<li>Spring HATEOAS：基于 HATEOAS 原则简化 REST 服务开发</li>
+<li>Spring Social：与社交网络 API（如：Facebook、新浪微博等）的集成</li>
+<li>Spring AMQP：对基于 AMQP 的消息的支持</li>
+<li>Spring Mobile：提供对手机设备检测的功能，给不同的设备返回不同的页面的功能</li>
+<li>Spring for Android：主要提供在 Android 上消费 RESTful API 的功能</li>
+<li>Spring Web Flow：基于 SpringMVC 提供基于向导流程式的 Web 应用开发</li>
+<li>Spring Web Services：提供了基于协议有限的 SOAP/Web 服务</li>
+<li>Spring LDAP：简化使用 LDAP 开发</li>
+<li>Spring Session：提供一个 API 及实现来管理用户会话信息</li>
+</ul>
+<h2 id="二、Spring-项目快速搭建"><a href="#二、Spring-项目快速搭建" class="headerlink" title="二、Spring 项目快速搭建"></a>二、Spring 项目快速搭建</h2><p>这里我们使用目前 Java 主流的项目构建工具<a href="http://maven.apache.org/" target="_blank" rel="noopener">Maven</a>来搭建项目。</p>
+<h3 id="（一）Maven-介绍"><a href="#（一）Maven-介绍" class="headerlink" title="（一）Maven 介绍"></a>（一）Maven 介绍</h3><p>Apache Maven 是一个基于项目对象模型（Project Object Model，POM）的软件项目管理工具。Maven 可用来管理项目的依赖、编译、打包、文档等信息。使用 Maven 来管理项目时，项目依赖的 jar 包将不再包含在项目内，而是集中放置在用户目录下的 .m2 文件夹下。关于 Maven 的详细安装介绍可参考<a href="http://blinkfox.com/linux-debianxia-mavende-an-zhuang-he-shi-yong/" target="_blank" rel="noopener">这里</a>。</p>
+<h3 id="（二）创建项目"><a href="#（二）创建项目" class="headerlink" title="（二）创建项目"></a>（二）创建项目</h3><p>在创建项目之前，须确保你的计算机上已经安装好有 Java 和 Maven 环境。然后，打开终端通过以下简单的命令就可以在你的当前目录下创建一个 Jave web 的项目结构：</p>
+<figure class="highlight bash hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mvn archetype:generate -DgroupId=com.blinkfox -DartifactId=springdemo -DpackageName=com.blinkfox.springdemo -DarchetypeArtifactId=maven-archetype-webapp -DinteractiveMode=<span class="hljs-literal">false</span></span><br></pre></td></tr></tbody></table></figure>
+
+<p>其中<code>-DgroupId=com.blinkfox</code>是组织名，<code>-DartifactId=springdemo</code>是该组织下的项目名称，<code>-DarchetypeArtifactId=maven-archetype-webapp</code>代表创建一个简单的 webapp 项目。</p>
+<p>创建项目的时候，Maven会自动下载一些需要用到的 jar 包和 Maven 插件。如果顺利创建成功的话，就会在你的当前目录下看到名为 springdemo 的项目，其中包含<code>src</code>的文件夹和<code>pom.xml</code>文件。且在你的终端会看到如下输出：</p>
+<p><img src="http://static.blinkfox.com/maven_build_project.png" alt="Maven创建项目成功"></p>
+<h3 id="（三）添加-Spring-依赖"><a href="#（三）添加-Spring-依赖" class="headerlink" title="（三）添加 Spring 依赖"></a>（三）添加 Spring 依赖</h3><p>接下来需要通过修改 pom.xml 来添加 Spring 的依赖，添加编译插件，且将编译级别设置为1.7，pom.xml文件的修改如下：</p>
+<figure class="highlight xml hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-tag"><<span class="hljs-name">project</span> <span class="hljs-attr">xmlns</span>=<span class="hljs-string">"http://maven.apache.org/POM/4.0.0"</span> <span class="hljs-attr">xmlns:xsi</span>=<span class="hljs-string">"http://www.w3.org/2001/XMLSchema-instance"</span> <span class="hljs-attr">xsi:schemaLocation</span>=<span class="hljs-string">"http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd"</span>></span></span><br><span class="line">    <span class="hljs-tag"><<span class="hljs-name">modelVersion</span>></span>4.0.0<span class="hljs-tag"></<span class="hljs-name">modelVersion</span>></span></span><br><span class="line">    <span class="hljs-tag"><<span class="hljs-name">groupId</span>></span>com.blinkfox<span class="hljs-tag"></<span class="hljs-name">groupId</span>></span></span><br><span class="line">    <span class="hljs-tag"><<span class="hljs-name">artifactId</span>></span>springdemo<span class="hljs-tag"></<span class="hljs-name">artifactId</span>></span></span><br><span class="line">    <span class="hljs-tag"><<span class="hljs-name">packaging</span>></span>war<span class="hljs-tag"></<span class="hljs-name">packaging</span>></span></span><br><span class="line">    <span class="hljs-tag"><<span class="hljs-name">version</span>></span>1.0-SNAPSHOT<span class="hljs-tag"></<span class="hljs-name">version</span>></span></span><br><span class="line">    <span class="hljs-tag"><<span class="hljs-name">name</span>></span>springdemo Maven Webapp<span class="hljs-tag"></<span class="hljs-name">name</span>></span></span><br><span class="line">    <span class="hljs-tag"><<span class="hljs-name">url</span>></span>http://maven.apache.org<span class="hljs-tag"></<span class="hljs-name">url</span>></span></span><br><span class="line"></span><br><span class="line">    <span class="hljs-tag"><<span class="hljs-name">properties</span>></span></span><br><span class="line">        <span class="hljs-tag"><<span class="hljs-name">java.version</span>></span>1.7<span class="hljs-tag"></<span class="hljs-name">java.version</span>></span></span><br><span class="line">    <span class="hljs-tag"></<span class="hljs-name">properties</span>></span></span><br><span class="line"></span><br><span class="line">    <span class="hljs-tag"><<span class="hljs-name">dependencies</span>></span></span><br><span class="line">        <span class="hljs-tag"><<span class="hljs-name">dependency</span>></span></span><br><span class="line">            <span class="hljs-tag"><<span class="hljs-name">groupId</span>></span>junit<span class="hljs-tag"></<span class="hljs-name">groupId</span>></span></span><br><span class="line">            <span class="hljs-tag"><<span class="hljs-name">artifactId</span>></span>junit<span class="hljs-tag"></<span class="hljs-name">artifactId</span>></span></span><br><span class="line">            <span class="hljs-tag"><<span class="hljs-name">version</span>></span>4.12<span class="hljs-tag"></<span class="hljs-name">version</span>></span></span><br><span class="line">            <span class="hljs-tag"><<span class="hljs-name">scope</span>></span>test<span class="hljs-tag"></<span class="hljs-name">scope</span>></span></span><br><span class="line">        <span class="hljs-tag"></<span class="hljs-name">dependency</span>></span></span><br><span class="line">        <span class="hljs-tag"><<span class="hljs-name">dependency</span>></span></span><br><span class="line">            <span class="hljs-tag"><<span class="hljs-name">groupId</span>></span>org.springframework<span class="hljs-tag"></<span class="hljs-name">groupId</span>></span></span><br><span class="line">            <span class="hljs-tag"><<span class="hljs-name">artifactId</span>></span>spring-context<span class="hljs-tag"></<span class="hljs-name">artifactId</span>></span></span><br><span class="line">            <span class="hljs-tag"><<span class="hljs-name">version</span>></span>4.3.3.RELEASE<span class="hljs-tag"></<span class="hljs-name">version</span>></span></span><br><span class="line">        <span class="hljs-tag"></<span class="hljs-name">dependency</span>></span></span><br><span class="line">    <span class="hljs-tag"></<span class="hljs-name">dependencies</span>></span></span><br><span class="line">    <span class="hljs-tag"><<span class="hljs-name">build</span>></span></span><br><span class="line">        <span class="hljs-tag"><<span class="hljs-name">finalName</span>></span>springdemo<span class="hljs-tag"></<span class="hljs-name">finalName</span>></span></span><br><span class="line">        <span class="hljs-comment"><!-- 指定maven的默认操作为 --></span></span><br><span class="line">        <span class="hljs-tag"><<span class="hljs-name">defaultGoal</span>></span>compile<span class="hljs-tag"></<span class="hljs-name">defaultGoal</span>></span></span><br><span class="line">        <span class="hljs-tag"><<span class="hljs-name">plugins</span>></span></span><br><span class="line">            <span class="hljs-tag"><<span class="hljs-name">plugin</span>></span></span><br><span class="line">                <span class="hljs-tag"><<span class="hljs-name">groupId</span>></span>org.apache.maven.plugins<span class="hljs-tag"></<span class="hljs-name">groupId</span>></span></span><br><span class="line">                <span class="hljs-tag"><<span class="hljs-name">artifactId</span>></span>maven-compiler-plugin<span class="hljs-tag"></<span class="hljs-name">artifactId</span>></span></span><br><span class="line">                <span class="hljs-tag"><<span class="hljs-name">version</span>></span>3.1<span class="hljs-tag"></<span class="hljs-name">version</span>></span></span><br><span class="line">                <span class="hljs-tag"><<span class="hljs-name">configuration</span>></span></span><br><span class="line">                    <span class="hljs-tag"><<span class="hljs-name">source</span>></span>${java.version}<span class="hljs-tag"></<span class="hljs-name">source</span>></span></span><br><span class="line">                    <span class="hljs-tag"><<span class="hljs-name">target</span>></span>${java.version}<span class="hljs-tag"></<span class="hljs-name">target</span>></span></span><br><span class="line">                    <span class="hljs-tag"><<span class="hljs-name">encoding</span>></span>UTF-8<span class="hljs-tag"></<span class="hljs-name">encoding</span>></span></span><br><span class="line">                <span class="hljs-tag"></<span class="hljs-name">configuration</span>></span></span><br><span class="line">            <span class="hljs-tag"></<span class="hljs-name">plugin</span>></span></span><br><span class="line">        <span class="hljs-tag"></<span class="hljs-name">plugins</span>></span></span><br><span class="line">    <span class="hljs-tag"></<span class="hljs-name">build</span>></span></span><br><span class="line"><span class="hljs-tag"></<span class="hljs-name">project</span>></span></span><br></pre></td></tr></tbody></table></figure>
+
+<h2 id="三、Spring-基础配置"><a href="#三、Spring-基础配置" class="headerlink" title="三、Spring 基础配置"></a>三、Spring 基础配置</h2><p>Spring 框架本身有四大原则：</p>
+<ul>
+<li>使用 POJO 进行轻量级和最小侵入式开发</li>
+<li>通过依赖注入和面向接口编程来实现松耦合</li>
+<li>通过 AOP 和默认习惯进行声明式编程</li>
+<li>使用 AOP 和模板(template)减少模式化代码</li>
+</ul>
+<p>Spring 的所有功能设计和实现都是基于此四大原则。</p>
+<h3 id="（一）依赖注入"><a href="#（一）依赖注入" class="headerlink" title="（一）依赖注入"></a>（一）依赖注入</h3><h4 id="1-重点说明"><a href="#1-重点说明" class="headerlink" title="1. 重点说明"></a>1. 重点说明</h4><p>我们经常说的控制反转（Inversion of Control，IoC）和依赖注入（dependency injection，DI）在 Spring 环境下是等同的概念，控制反转是通过依赖注入实现的。所谓依赖注入指的是容器负责创建对象和维护对象间的依赖关系，而不是通过对象本身负责自己的创建和解决自己的依赖。</p>
+<p>依赖注入的主要目的是为了解耦，体现了一种“组合”的理念。如果你希望你的类具备某项功能的时候，是继承自一个具有此功能的父类好呢？还是组合另外一个具有这个功能的类好呢？答案是不言而喻的，继承一个父类，之类将与父类耦合，组合另外一个类则使耦合度大大降低。</p>
+<p>Spring IoC 容器（ApplicationContext）负责创建 Bean，并通过容器将功能类 Bean 注入到你需要的 Bean 中。Spring 提供使用 xml、注解、Java 配置、groovy 配置实现 Bean 的创建和注入。</p>
+<p>无论是 xml 配置、注解配置还是 Java 配置，都被称为配置元数据，所谓元数据即描述数据的数据。元数据本身不具备任何可执行的能力，只能通过外界代码来对这些元数据行解析后进行一些有意义操作。Spring 容器解析这些配置元数据进行 Bean 初始化、配置和管理依赖。</p>
+<p>声明 Bean 的注解：</p>
+<ul>
+<li><code>@Component</code>: 组件，没有明确角色</li>
+<li><code>@Controller</code>: 在展现层（MVC -> Spring MVC）使用</li>
+<li><code>@Service</code>: 在业务逻辑层（service层）使用</li>
+<li><code>@Repository</code>: 在数据访问层（dao层）使用</li>
+</ul>
+<p>注入 Bean 的注解，一般情况下通用：</p>
+<ul>
+<li><code>@Autowired</code>: Spring 提供的注解</li>
+<li><code>@Inject</code>: JSR-330 提供的注解</li>
+<li><code>@Resource</code>: JSR-250 提供的注解</li>
+</ul>
+<p><code>@Autowired</code>、<code>@Inject</code>、<code>@Resource</code>可注解在 set 方法上或者属性上，推荐注解在属性上，优点是代码更少、层次更清晰。</p>
+<h4 id="2-代码示例"><a href="#2-代码示例" class="headerlink" title="2. 代码示例"></a>2. 代码示例</h4><p>（1）编写功能类的 Bean。</p>
+<figure class="highlight java hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">package</span> com.blinkfox.service.impl;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">import</span> org.springframework.stereotype.Service;</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">/**</span></span><br><span class="line"><span class="hljs-comment"> * Created by blinkfox on 2016/10/27.</span></span><br><span class="line"><span class="hljs-comment"> */</span></span><br><span class="line"><span class="hljs-meta">@Service</span></span><br><span class="line"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">FunctionService</span> </span>{</span><br><span class="line"></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">sayHello</span><span class="hljs-params">(String word)</span> </span>{</span><br><span class="line">        <span class="hljs-keyword">return</span> <span class="hljs-string">"Hello "</span> + word + <span class="hljs-string">"!"</span>;</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<blockquote>
+<p><strong>代码解释</strong>：</p>
+<ol>
+<li>使用 @Service 注解声明当前 FunctionService 类是 Spring 管理的一个 Bean。其中，使用 @Component、@Service、@Repository、@Controller 是等效的，可根据需要选用。</li>
+</ol>
+</blockquote>
+<p>（2）使用功能类的 Bean。</p>
+<figure class="highlight java hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">package</span> com.blinkfox.service.impl;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">import</span> org.springframework.beans.factory.annotation.Autowired;</span><br><span class="line"><span class="hljs-keyword">import</span> org.springframework.stereotype.Service;</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">/**</span></span><br><span class="line"><span class="hljs-comment"> * Created by blinkfox on 2016/10/27.</span></span><br><span class="line"><span class="hljs-comment"> */</span></span><br><span class="line"><span class="hljs-meta">@Service</span></span><br><span class="line"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">UseFunctionService</span> </span>{</span><br><span class="line"></span><br><span class="line">    <span class="hljs-meta">@Autowired</span></span><br><span class="line">    <span class="hljs-keyword">private</span> FunctionService functionService;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">sayHello</span><span class="hljs-params">(String word)</span> </span>{</span><br><span class="line">        <span class="hljs-keyword">return</span> functionService.sayHello(word);</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<blockquote>
+<p><strong>代码解释</strong>：</p>
+<ol>
+<li>使用 @Service 注解声明当前 UseFunctionService 类是 Spring 管理的一个 Bean。</li>
+<li>使用 @Autowired 将 FunctionService 的实体 Bean 注入到 UseFunctionService 中，让 UseFunctionService 具备 FunctionService 的功能，此处使用 JSR-330 的 @Inject 注解或者 JSR-250 的 @Resource 注解是等效的。</li>
+</ol>
+</blockquote>
+<p>（3）配置类。</p>
+<figure class="highlight java hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">package</span> com.blinkfox.config;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">import</span> org.springframework.context.annotation.ComponentScan;</span><br><span class="line"><span class="hljs-keyword">import</span> org.springframework.context.annotation.Configuration;</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">/**</span></span><br><span class="line"><span class="hljs-comment"> * Created by blinkfox on 2016/10/27.</span></span><br><span class="line"><span class="hljs-comment"> */</span></span><br><span class="line"><span class="hljs-meta">@Configuration</span></span><br><span class="line"><span class="hljs-meta">@ComponentScan</span>(<span class="hljs-string">"com.blinkfox.service.impl"</span>)</span><br><span class="line"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">DiConfig</span> </span>{</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<blockquote>
+<p><strong>代码解释</strong>：</p>
+<ol>
+<li>使用 @Configuration 注解声明当前类是一个配置类。</li>
+<li>使用 @ComponentScan 将 自动扫描包名下所有使用的 @Component、@Service、@Repository、@Controller 类，并注册为 Bean。</li>
+</ol>
+</blockquote>
+<p>（4）运行。</p>
+<figure class="highlight java hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">package</span> com.blinkfox.maintest;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">import</span> com.blinkfox.config.DiConfig;</span><br><span class="line"><span class="hljs-keyword">import</span> com.blinkfox.service.impl.UseFunctionService;</span><br><span class="line"><span class="hljs-keyword">import</span> org.springframework.context.annotation.AnnotationConfigApplicationContext;</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">/**</span></span><br><span class="line"><span class="hljs-comment"> * Created by blinkfox on 2016/10/27.</span></span><br><span class="line"><span class="hljs-comment"> */</span></span><br><span class="line"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">FunctionMain</span> </span>{</span><br><span class="line"></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>{</span><br><span class="line">        AnnotationConfigApplicationContext context =</span><br><span class="line">                <span class="hljs-keyword">new</span> AnnotationConfigApplicationContext(DiConfig<span class="hljs-class">.<span class="hljs-keyword">class</span>)</span>;</span><br><span class="line">        UseFunctionService useFunctionService = context.getBean(UseFunctionService<span class="hljs-class">.<span class="hljs-keyword">class</span>)</span>;</span><br><span class="line">        System.out.println(useFunctionService.sayHello(<span class="hljs-string">"Spring"</span>));</span><br><span class="line">        context.close();</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<blockquote>
+<p><strong>代码解释</strong>：</p>
+<ol>
+<li>使用 AnnotationConfigApplicationContext 作为 Spring 容器，接收使用一个配置类作为参数。</li>
+<li>获得声明配置的 UseFunctionService 的 Bean。</li>
+</ol>
+</blockquote>
+<h3 id="（二）Java-配置"><a href="#（二）Java-配置" class="headerlink" title="（二）Java 配置"></a>（二）Java 配置</h3><h4 id="1-重点说明-1"><a href="#1-重点说明-1" class="headerlink" title="1. 重点说明"></a>1. 重点说明</h4><p>Java 配置是 Spring4.x 推荐的配置方式，可以完全替代 xml 配置；Java 配置也是 Spring Boot 推荐的配置方式。</p>
+<p>Java 配置是通过 @Configuration 和 @Bean 来实现的。</p>
+<ul>
+<li>@Configuration 声明当前类是一个配置类，相当于一个Spring配置的 xml 文件。</li>
+<li>@Bean 注解在方法上，声明当前方法的返回值是一个 Bean。</li>
+</ul>
+<p>何时使用 Java 配置或者注解配置呢？我们主要的原则是：全局配置使用 Java 配置（如数据库相关配置、MVC相关配置），业务 Bean 的配置使用注解配置（@Service、@Component、@Repository、@Controller）。</p>
+<h4 id="2-Java配置代码示例"><a href="#2-Java配置代码示例" class="headerlink" title="2. Java配置代码示例"></a>2. Java配置代码示例</h4><p>（1）编写功能类的 Bean</p>
+<figure class="highlight java hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">package</span> com.blinkfox.service.impl;</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">/**</span></span><br><span class="line"><span class="hljs-comment"> * Created by blinkfox on 2016/10/27.</span></span><br><span class="line"><span class="hljs-comment"> */</span></span><br><span class="line"><span class="hljs-comment">// 1</span></span><br><span class="line"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">JavaConfigService</span> </span>{</span><br><span class="line"></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">sayHello</span><span class="hljs-params">(String word)</span> </span>{</span><br><span class="line">        <span class="hljs-keyword">return</span> <span class="hljs-string">"Hello "</span> + word + <span class="hljs-string">"!"</span>;</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<blockquote>
+<p><strong>代码解释</strong>：</p>
+<ol>
+<li>此处没有使用 @Service 声明 Bean。</li>
+</ol>
+</blockquote>
+<p>（2）使用功能类的 Bean</p>
+<figure class="highlight java hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">package</span> com.blinkfox.service.impl;</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">/**</span></span><br><span class="line"><span class="hljs-comment"> * Created by blinkfox on 2016/10/27.</span></span><br><span class="line"><span class="hljs-comment"> */</span></span><br><span class="line"><span class="hljs-comment">// 1</span></span><br><span class="line"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">UseJavaConfigService</span> </span>{</span><br><span class="line">    <span class="hljs-comment">// 2</span></span><br><span class="line">    <span class="hljs-keyword">private</span> JavaConfigService javaConfigService;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">setJavaConfigService</span><span class="hljs-params">(JavaConfigService javaConfigService)</span> </span>{</span><br><span class="line">        <span class="hljs-keyword">this</span>.javaConfigService = javaConfigService;</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">sayHello</span><span class="hljs-params">(String word)</span> </span>{</span><br><span class="line">        <span class="hljs-keyword">return</span> javaConfigService.sayHello(word);</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<blockquote>
+<p><strong>代码解释</strong>：</p>
+<ol>
+<li>此处没有使用 @Service 声明 Bean。</li>
+<li>此处没有使用 @Autowired 注解注入 Bean。</li>
+</ol>
+</blockquote>
+<p>（3）Java 配置类</p>
+<figure class="highlight java hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">package</span> com.blinkfox.config;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">import</span> com.blinkfox.service.impl.JavaConfigService;</span><br><span class="line"><span class="hljs-keyword">import</span> com.blinkfox.service.impl.UseJavaConfigService;</span><br><span class="line"><span class="hljs-keyword">import</span> org.springframework.context.annotation.Bean;</span><br><span class="line"><span class="hljs-keyword">import</span> org.springframework.context.annotation.Configuration;</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">/**</span></span><br><span class="line"><span class="hljs-comment"> * Created by blinkfox on 2016/10/27.</span></span><br><span class="line"><span class="hljs-comment"> */</span></span><br><span class="line"><span class="hljs-meta">@Configuration</span> <span class="hljs-comment">// 1</span></span><br><span class="line"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">JavaConfig</span> </span>{</span><br><span class="line"></span><br><span class="line">    <span class="hljs-meta">@Bean</span>  <span class="hljs-comment">// 2</span></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> JavaConfigService <span class="hljs-title">javaConfigService</span><span class="hljs-params">()</span> </span>{</span><br><span class="line">        <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> JavaConfigService();</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="hljs-meta">@Bean</span></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> UseJavaConfigService <span class="hljs-title">useJavaConfigService</span><span class="hljs-params">()</span> </span>{</span><br><span class="line">        UseJavaConfigService useJavaConfigService = <span class="hljs-keyword">new</span> UseJavaConfigService();</span><br><span class="line">        useJavaConfigService.setJavaConfigService(javaConfigService()); <span class="hljs-comment">// 3</span></span><br><span class="line">        <span class="hljs-keyword">return</span> useJavaConfigService;</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<blockquote>
+<p><strong>代码解释</strong>：</p>
+<ol>
+<li>使用 @Configuration 注解表明当前类是一个配置类，这意味着这个类型里可能有0个或者多个 @Bean 注解，此处没有使用包扫描，是因为所有的 Bean 都在此类中定义了。</li>
+<li>使用 @Bean 注解声明当前方法 JavaConfigService 的返回值是一个 Bean，Bean的名称是方法名。</li>
+<li>注入 FunctionService 的 Bean 时候直接调用 javaConfigService()。</li>
+</ol>
+</blockquote>
+<p>（4）运行</p>
+<figure class="highlight java hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">package</span> com.blinkfox.maintest;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">import</span> com.blinkfox.config.JavaConfig;</span><br><span class="line"><span class="hljs-keyword">import</span> com.blinkfox.service.impl.UseJavaConfigService;</span><br><span class="line"><span class="hljs-keyword">import</span> org.springframework.context.annotation.AnnotationConfigApplicationContext;</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">/**</span></span><br><span class="line"><span class="hljs-comment"> * Created by blinkfox on 2016/10/27.</span></span><br><span class="line"><span class="hljs-comment"> */</span></span><br><span class="line"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">JavaConfigMain</span> </span>{</span><br><span class="line"></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>{</span><br><span class="line">        AnnotationConfigApplicationContext context =</span><br><span class="line">                <span class="hljs-keyword">new</span> AnnotationConfigApplicationContext(JavaConfig<span class="hljs-class">.<span class="hljs-keyword">class</span>)</span>;</span><br><span class="line">        UseJavaConfigService useJavaConfigService = context.getBean(UseJavaConfigService<span class="hljs-class">.<span class="hljs-keyword">class</span>)</span>;</span><br><span class="line">        System.out.println(useJavaConfigService.sayHello(<span class="hljs-string">"Spring Java Config"</span>));</span><br><span class="line">        context.close();</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<h3 id="（三）AOP"><a href="#（三）AOP" class="headerlink" title="（三）AOP"></a>（三）AOP</h3><h4 id="1-重点说明-2"><a href="#1-重点说明-2" class="headerlink" title="1. 重点说明"></a>1. 重点说明</h4><p>AOP：面向切面编程，是面向对象编程（OOP）的补充。</p>
+<p>Spring 的 AOP 的存在目的是为了解耦。AOP 可以让一组类共享相同的行为。在 OOP 中只能通过继承和实现接口来共享相同的行为，从而使代码的耦合度增强，且类继承只能为单继承，阻碍更多行为添加到一组类上，AOP 弥补了 OOP 的不足。</p>
+<p>Spring 支持 AspectJ 的注解式切面编程。</p>
+<ul>
+<li>使用 @AspectJ 声明是一个切面。</li>
+<li>使用 @After、@Before、Around 定义通知（advice）类型，可直接将拦截规则（切点）作为参数。</li>
+<li>其中 @After、@Before、Around 参数的拦截规则为切点（PointCut），为了使切点复用，可使用 @PointCut 专门定义拦截规则，然后在 @After、@Before、Around 的参数中调用。</li>
+<li>其中符合条件的每一个拦截处为连接点（JoinPoint）。</li>
+</ul>
+<p>Spring本身在事务处理（@Transcational）和数据缓存（@Cacheable）等都使用注解拦截。下面示例将演示基于注解和方法规则的拦截方式，演示一种模拟记录操作的日志系统的实现。</p>
+<h4 id="2-注解拦截代码示例"><a href="#2-注解拦截代码示例" class="headerlink" title="2. 注解拦截代码示例"></a>2. 注解拦截代码示例</h4><p>（1）添加 Spring aop 支持及 AspectJ 依赖。</p>
+<figure class="highlight hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><dependency></span><br><span class="line">	<groupId>org.springframework</groupId></span><br><span class="line">	<artifactId>spring-aop</artifactId></span><br><span class="line">	<version>4.3.3.RELEASE</version></span><br><span class="line"></dependency></span><br><span class="line"><dependency></span><br><span class="line">	<groupId>org.aspectj</groupId></span><br><span class="line">	<artifactId>aspectjrt</artifactId></span><br><span class="line">	<version>1.8.9</version></span><br><span class="line"></dependency></span><br><span class="line"><dependency></span><br><span class="line">	<groupId>org.aspectj</groupId></span><br><span class="line">	<artifactId>aspectjweaver</artifactId></span><br><span class="line">	<version>1.8.9</version></span><br><span class="line"></dependency></span><br></pre></td></tr></tbody></table></figure>
+<p>（2）编写拦截规则的注解。</p>
+<figure class="highlight java hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">package</span> com.blinkfox.annotation;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">import</span> java.lang.annotation.*;</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">/**</span></span><br><span class="line"><span class="hljs-comment"> * Created by blinkfox on 2016/10/29.</span></span><br><span class="line"><span class="hljs-comment"> */</span></span><br><span class="line"><span class="hljs-meta">@Target</span>(ElementType.METHOD)</span><br><span class="line"><span class="hljs-meta">@Retention</span>(RetentionPolicy.RUNTIME)</span><br><span class="line"><span class="hljs-meta">@Documented</span></span><br><span class="line"><span class="hljs-keyword">public</span> <span class="hljs-meta">@interface</span> LogAction {</span><br><span class="line"></span><br><span class="line">    <span class="hljs-function">String <span class="hljs-title">name</span><span class="hljs-params">()</span> <span class="hljs-keyword">default</span> "这是默认的操作名称"</span>;</span><br><span class="line"></span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<blockquote>
+<p><strong>代码解释</strong>：<br>注解本身是没有功能的，就和 xml 一样。注解和 xml 都是一种元数据，元数据即解释数据的数据，这就是所谓的配置。注解的功能来自用这个注解的地方。</p>
+</blockquote>
+<p>（3）编写使用注解的被拦截类。</p>
+<figure class="highlight java hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">package</span> com.blinkfox.service.impl;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">import</span> com.blinkfox.annotation.LogAction;</span><br><span class="line"><span class="hljs-keyword">import</span> org.springframework.stereotype.Service;</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">/**</span></span><br><span class="line"><span class="hljs-comment"> * Created by blinkfox on 2016/10/29.</span></span><br><span class="line"><span class="hljs-comment"> */</span></span><br><span class="line"><span class="hljs-meta">@Service</span></span><br><span class="line"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">DemoAnnotationService</span> </span>{</span><br><span class="line"></span><br><span class="line">    <span class="hljs-meta">@LogAction</span>(name = <span class="hljs-string">"注解式拦截的 add 操作"</span>)</span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">add</span><span class="hljs-params">()</span> </span>{</span><br><span class="line"></span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<p>（4）编写使用方法规则被拦截规类。</p>
+<figure class="highlight java hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">package</span> com.blinkfox.service.impl;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">import</span> org.springframework.stereotype.Service;</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">/**</span></span><br><span class="line"><span class="hljs-comment"> * Created by blinkfox on 2016/10/29.</span></span><br><span class="line"><span class="hljs-comment"> */</span></span><br><span class="line"><span class="hljs-meta">@Service</span></span><br><span class="line"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">DemoMethodService</span> </span>{</span><br><span class="line"></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">add</span><span class="hljs-params">()</span> </span>{</span><br><span class="line"></span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<p>（5）编写切面。</p>
+<figure class="highlight java hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">package</span> com.blinkfox.aop;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">import</span> com.blinkfox.annotation.LogAction;</span><br><span class="line"><span class="hljs-keyword">import</span> org.aspectj.lang.JoinPoint;</span><br><span class="line"><span class="hljs-keyword">import</span> org.aspectj.lang.annotation.After;</span><br><span class="line"><span class="hljs-keyword">import</span> org.aspectj.lang.annotation.Aspect;</span><br><span class="line"><span class="hljs-keyword">import</span> org.aspectj.lang.annotation.Pointcut;</span><br><span class="line"><span class="hljs-keyword">import</span> org.aspectj.lang.reflect.MethodSignature;</span><br><span class="line"><span class="hljs-keyword">import</span> org.springframework.stereotype.Component;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">import</span> java.lang.reflect.Method;</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">/**</span></span><br><span class="line"><span class="hljs-comment"> * Created by blinkfox on 2016/10/29.</span></span><br><span class="line"><span class="hljs-comment"> */</span></span><br><span class="line"><span class="hljs-meta">@Aspect</span> <span class="hljs-comment">// 1</span></span><br><span class="line"><span class="hljs-meta">@Component</span> <span class="hljs-comment">// 2</span></span><br><span class="line"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">LogAspect</span> </span>{</span><br><span class="line"></span><br><span class="line">    <span class="hljs-meta">@Pointcut</span>(<span class="hljs-string">"@annotation(com.blinkfox.annotation.LogAction)"</span>) <span class="hljs-comment">// 3</span></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">annotationPointCut</span><span class="hljs-params">()</span> </span>{</span><br><span class="line"></span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="hljs-meta">@After</span>(<span class="hljs-string">"annotationPointCut()"</span>) <span class="hljs-comment">// 4</span></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">after</span><span class="hljs-params">(JoinPoint joinPoint)</span> </span>{</span><br><span class="line">        MethodSignature signature = (MethodSignature) joinPoint.getSignature();</span><br><span class="line">        Method method = signature.getMethod();</span><br><span class="line">        LogAction logAction = method.getAnnotation(LogAction<span class="hljs-class">.<span class="hljs-keyword">class</span>)</span>;</span><br><span class="line">        System.out.println(<span class="hljs-string">"---注解式拦截:"</span> + logAction.name()); <span class="hljs-comment">// 5</span></span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="hljs-meta">@After</span>(<span class="hljs-string">"execution(* com.blinkfox.service.impl.DemoMethodService.*(..))"</span>) <span class="hljs-comment">// 6</span></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">before</span><span class="hljs-params">(JoinPoint joinPoint)</span> </span>{</span><br><span class="line">        MethodSignature signature = (MethodSignature) joinPoint.getSignature();</span><br><span class="line">        Method method = signature.getMethod();</span><br><span class="line">        System.out.println(<span class="hljs-string">"---方法规则式拦截:"</span> + method.getName());</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<blockquote>
+<p><strong>代码解释</strong>：</p>
+<ol>
+<li>通过 @Aspect 注解声明一个切面。</li>
+<li>通过 @Component 让此切面成为 Spring 容器管理的Bean。</li>
+<li>通过 @PointCut 注解声明切点。</li>
+<li>通过 @After 注解声明一个通知类型，并使用 @PointCut定义的切点。</li>
+<li>通过可获得注解上的属性，然后做日志记录相关的操作，下面相同。</li>
+<li>通过 @Before 注解声明一个通知类型，此通知直接使用拦截规则作为参数。</li>
+</ol>
+</blockquote>
+<p>（6）配置类。</p>
+<figure class="highlight java hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">package</span> com.blinkfox.config;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">import</span> org.springframework.context.annotation.ComponentScan;</span><br><span class="line"><span class="hljs-keyword">import</span> org.springframework.context.annotation.Configuration;</span><br><span class="line"><span class="hljs-keyword">import</span> org.springframework.context.annotation.EnableAspectJAutoProxy;</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">/**</span></span><br><span class="line"><span class="hljs-comment"> * Created by blinkfox on 2016/10/29.</span></span><br><span class="line"><span class="hljs-comment"> */</span></span><br><span class="line"><span class="hljs-meta">@Configuration</span></span><br><span class="line"><span class="hljs-meta">@ComponentScan</span>(<span class="hljs-string">"com.blinkfox"</span>)</span><br><span class="line"><span class="hljs-meta">@EnableAspectJAutoProxy</span></span><br><span class="line"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">AopConfig</span> </span>{</span><br><span class="line"></span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<blockquote>
+<p><strong>代码解释</strong>：</p>
+<ol>
+<li>使用 @EnableAspectJAutoProxy 注解开启 Spring 对 AspectJ的支持。</li>
+</ol>
+</blockquote>
+<p>（6）运行。</p>
+<figure class="highlight java hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">package</span> com.blinkfox.maintest;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">import</span> com.blinkfox.config.AopConfig;</span><br><span class="line"><span class="hljs-keyword">import</span> com.blinkfox.service.impl.DemoAnnotationService;</span><br><span class="line"><span class="hljs-keyword">import</span> com.blinkfox.service.impl.DemoMethodService;</span><br><span class="line"><span class="hljs-keyword">import</span> org.springframework.context.annotation.AnnotationConfigApplicationContext;</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">/**</span></span><br><span class="line"><span class="hljs-comment"> * Created by blinkfox on 2016/10/29.</span></span><br><span class="line"><span class="hljs-comment"> */</span></span><br><span class="line"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">AopMain</span> </span>{</span><br><span class="line"></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>{</span><br><span class="line">        AnnotationConfigApplicationContext context =</span><br><span class="line">                <span class="hljs-keyword">new</span> AnnotationConfigApplicationContext(AopConfig<span class="hljs-class">.<span class="hljs-keyword">class</span>)</span>;</span><br><span class="line">        DemoAnnotationService demoAnnotationService = context.getBean(DemoAnnotationService<span class="hljs-class">.<span class="hljs-keyword">class</span>)</span>;</span><br><span class="line">        DemoMethodService demoMethodService = context.getBean(DemoMethodService<span class="hljs-class">.<span class="hljs-keyword">class</span>)</span>;</span><br><span class="line">        demoAnnotationService.add();</span><br><span class="line">        demoMethodService.add();</span><br><span class="line">        context.close();</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+</body></html>
+        </div>
+        
+        <div class="level is-size-7 is-uppercase">
+            <div class="level-start">
+                <div class="level-item">
+                    <span class="is-size-6 has-text-grey has-mr-7">#</span>
+                    <a class="has-link-grey -link" href="/tags/Java/" rel="tag">Java</a>, <a class="has-link-grey -link" href="/tags/Spring/" rel="tag">Spring</a>
+                </div>
+            </div>
+        </div>
+        
+        
+        
+        <div class="social-share"></div>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js@1.0.16/dist/css/share.min.css">
+<script src="https://cdn.jsdelivr.net/npm/social-share.js@1.0.16/dist/js/social-share.min.js"></script>
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="menu-label has-text-centered">喜欢这篇文章？打赏一下作者吧</h3>
+        <div class="buttons is-centered">
+            
+                
+<a class="button is-info donate">
+    <span class="icon is-small">
+        <i class="fab fa-alipay"></i>
+    </span>
+    <span>支付宝</span>
+    <div class="qrcode"><img src="/images/zhi.jpg" alt="支付宝"></div>
+</a>
+
+                
+                
+<a class="button is-success donate">
+    <span class="icon is-small">
+        <i class="fab fa-weixin"></i>
+    </span>
+    <span>微信</span>
+    <div class="qrcode"><img src="/images/wei.png" alt="微信"></div>
+</a>
+
+                
+        </div>
+    </div>
+</div>
+
+
+
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        <div class="level-start">
+            <a class="level level-item has-link-grey  article-nav-prev" href="/MVEL2.x%E8%AF%AD%E6%B3%95%E6%8C%87%E5%8D%97/">
+                <i class="level-item fas fa-chevron-left"></i>
+                <span class="level-item">MVEL 2.x语法指南</span>
+            </a>
+        </div>
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/Commons%20Collections%E5%8C%85%E5%92%8C%E7%AE%80%E4%BB%8B/">
+                <span class="level-item">Apache Commons Collections包和简介</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="title is-5 has-text-weight-normal">评论</h3>
+        
+<div id="valine-thread" class="content"></div>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+<script>
+    new Valine({
+        el: '#valine-thread' ,
+        notify: false,
+        verify: false,
+        app_id: 'pGtDpK5EpiLy1oMGmpFXAaV6-gzGzoHsz',
+        app_key: 'ra40Npwa5HY3ex482cDELW5j',
+        placeholder: 'xxxxxxxx'
+    });
+</script>
+
+    </div>
+</div>
+</div>
+                
+
+
+
+
+<div class="column is-4-tablet is-4-desktop is-3-widescreen  has-order-1 column-left ">
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <nav class="level">
+            <div class="level-item has-text-centered" style="flex-shrink: 1">
+                <div>
+                    
+                    <figure class="image is-128x128 has-mb-6">
+                        <img class="" src="/images/xueshao110.jpg" alt="一抹离愁">
+                    </figure>
+                    
+                    <p class="is-size-4 is-block">
+                        一抹离愁
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-block">
+                        一抹离愁
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-flex is-flex-center has-text-grey">
+                        <i class="fas fa-map-marker-alt has-mr-7"></i>
+                        <span>西安</span>
+                    </p>
+                    
+                </div>
+            </div>
+        </nav>
+        <nav class="level is-mobile">
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        文章
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        59
+                    </p>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        分类
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        9
+                    </p>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        标签
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        28
+                    </p>
+                </div>
+            </div>
+        </nav>
+        
+        <div class="level">
+            <a class="level-item button is-link is-rounded" href="https://github.com/xueliang0614" target="_blank">
+                关注我</a>
+        </div>
+        
+        
+        
+        <div class="level is-mobile">
+            
+            <a class="level-item button is-white is-marginless" target="_blank"
+                title="Github" href="https://github.com/xueliang0614">
+                
+                <i class="fab fa-github"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank"
+                title="CSDN" href="https://blog.csdn.net/xueshao110">
+                
+                <i class="fab fa-github"></i>
+                
+            </a>
+            
+        </div>
+        
+    </div>
+</div>
+    
+        
+    
+        <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+        <h3 class="menu-label">
+            链接
+        </h3>
+        <ul class="menu-list">
+        
+            <li>
+                <a class="level is-mobile" href="https://blog.csdn.net/xueshao110" target="_blank">
+                    <span class="level-left">
+                        <span class="level-item">CSDN</span>
+                    </span>
+                    <span class="level-right">
+                        <span class="level-item tag">blog.csdn.net</span>
+                    </span>
+                </a>
+            </li>
+        
+            <li>
+                <a class="level is-mobile" href="https://github.com/xueliang0614" target="_blank">
+                    <span class="level-left">
+                        <span class="level-item">github</span>
+                    </span>
+                    <span class="level-right">
+                        <span class="level-item tag">github.com</span>
+                    </span>
+                </a>
+            </li>
+        
+        </ul>
+        </div>
+    </div>
+</div>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css">
+<script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script>
+<!-- require MetingJS -->
+<script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script>
+
+    <meting-js style="margin-top: 1.5rem;width: auto;height: auto;"
+    server="netease"
+    type="playlist"
+    id="408894554"
+    theme="#2980b9"
+    loop="all"
+    autoplay="true"
+    order="random"
+    storageName="aplayer-setting"
+    lrctype= 0
+    >
+    </meting-js>
+<style>
+    .aplayer{
+        margin: 1.5rem 0;
+    }
+</style>
+
+
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                分类
+            </h3>
+            <ul class="menu-list">
+            <li>
+        <a class="level is-marginless" href="/categories/Android/">
+            <span class="level-start">
+                <span class="level-item">Android</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">5</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/%E5%89%8D%E7%AB%AF/">
+            <span class="level-start">
+                <span class="level-item">前端</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">4</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/%E5%90%8E%E7%AB%AF/">
+            <span class="level-start">
+                <span class="level-item">后端</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">21</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/%E5%AE%89%E5%85%A8/">
+            <span class="level-start">
+                <span class="level-item">安全</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/%E5%B0%8F%E7%A8%8B%E5%BA%8F/">
+            <span class="level-start">
+                <span class="level-item">小程序</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/">
+            <span class="level-start">
+                <span class="level-item">数据库</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/%E7%BC%96%E7%A8%8B%E4%B9%8B%E9%81%93/">
+            <span class="level-start">
+                <span class="level-item">编程之道</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">3</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E5%85%B7/">
+            <span class="level-start">
+                <span class="level-item">软件工具</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">8</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/%E8%BD%AF%E4%BB%B6%E8%AE%BE%E8%AE%A1/">
+            <span class="level-start">
+                <span class="level-item">软件设计</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">14</span>
+            </span>
+        </a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+    
+        <div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            标签云
+        </h3>
+        <a href="/tags/Android/" style="font-size: 16.67px;">Android</a> <a href="/tags/Apache/" style="font-size: 15px;">Apache</a> <a href="/tags/CPU%E7%BC%93%E5%AD%98/" style="font-size: 10px;">CPU缓存</a> <a href="/tags/DevOps/" style="font-size: 10px;">DevOps</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/GitLab-CI/" style="font-size: 10px;">GitLab CI</a> <a href="/tags/Google/" style="font-size: 10px;">Google</a> <a href="/tags/Java/" style="font-size: 20px;">Java</a> <a href="/tags/JavaScript/" style="font-size: 15px;">JavaScript</a> <a href="/tags/Jenkins/" style="font-size: 10px;">Jenkins</a> <a href="/tags/Linux/" style="font-size: 15px;">Linux</a> <a href="/tags/MVEL/" style="font-size: 11.67px;">MVEL</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/PostgreSQL/" style="font-size: 10px;">PostgreSQL</a> <a href="/tags/Spring/" style="font-size: 10px;">Spring</a> <a href="/tags/Typora/" style="font-size: 10px;">Typora</a> <a href="/tags/UML/" style="font-size: 11.67px;">UML</a> <a href="/tags/Vue/" style="font-size: 10px;">Vue</a> <a href="/tags/%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95/" style="font-size: 10px;">单元测试</a> <a href="/tags/%E5%AE%89%E5%85%A8/" style="font-size: 10px;">安全</a> <a href="/tags/%E5%B0%8F%E7%A8%8B%E5%BA%8F/" style="font-size: 10px;">小程序</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" style="font-size: 10px;">数据库</a> <a href="/tags/%E6%95%B4%E6%B4%81%E4%BB%A3%E7%A0%81/" style="font-size: 10px;">整洁代码</a> <a href="/tags/%E6%B5%8B%E8%AF%95/" style="font-size: 10px;">测试</a> <a href="/tags/%E8%AE%BE%E8%AE%A1%E5%8E%9F%E5%88%99/" style="font-size: 10px;">设计原则</a> <a href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" style="font-size: 18.33px;">设计模式</a> <a href="/tags/%E9%87%8D%E6%9E%84/" style="font-size: 10px;">重构</a> <a href="/tags/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%BC%96%E7%A8%8B/" style="font-size: 13.33px;">面向对象编程</a>
+    </div>
+</div>
+    
+    
+        <div class="column-right-shadow is-hidden-widescreen ">
+        
+            <div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            最新文章
+        </h3>
+        
+        <article class="media">
+            
+            <a href="/hello-world/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Hello World">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-03-06T03:18:23.363Z">2020-03-06</time></div>
+                    <a href="/hello-world/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Hello World</a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/%E5%85%B3%E4%BA%8E%E5%B0%8F%E7%A8%8B%E5%BA%8F/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/gallery/thumbnails/x.jpeg" alt="关于小程序">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-10-20T14:10:22.000Z">2019-10-20</time></div>
+                    <a href="/%E5%85%B3%E4%BA%8E%E5%B0%8F%E7%A8%8B%E5%BA%8F/" class="title has-link-black-ter is-size-6 has-text-weight-normal">关于小程序</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/%E5%B0%8F%E7%A8%8B%E5%BA%8F/">小程序</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/Android-%E8%87%AA%E5%AE%9A%E4%B9%89%E7%9B%B8%E6%9C%BA/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/gallery/thumbnails/c.jpg" alt="Android 自定义相机">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-04-21T14:42:52.000Z">2019-04-21</time></div>
+                    <a href="/Android-%E8%87%AA%E5%AE%9A%E4%B9%89%E7%9B%B8%E6%9C%BA/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Android 自定义相机</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Android/">Android</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/Android%E5%AE%9E%E7%8E%B0%E4%B8%AA%E4%BA%BA%E4%B8%AD%E5%BF%83%E8%AE%BE%E7%BD%AE%E7%95%8C%E9%9D%A2/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/gallery/thumbnails/b.jpg" alt="Android实现个人中心设置界面">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-03-28T14:35:49.000Z">2019-03-28</time></div>
+                    <a href="/Android%E5%AE%9E%E7%8E%B0%E4%B8%AA%E4%BA%BA%E4%B8%AD%E5%BF%83%E8%AE%BE%E7%BD%AE%E7%95%8C%E9%9D%A2/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Android实现个人中心设置界面</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Android/">Android</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/%E5%9F%BA%E4%BA%8E%E8%B0%B7%E6%AD%8Cmvp%E6%9E%B6%E6%9E%84/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/gallery/thumbnails/a.jpg" alt="基于谷歌mvp架构">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-03-03T14:27:59.000Z">2019-03-03</time></div>
+                    <a href="/%E5%9F%BA%E4%BA%8E%E8%B0%B7%E6%AD%8Cmvp%E6%9E%B6%E6%9E%84/" class="title has-link-black-ter is-size-6 has-text-weight-normal">基于谷歌mvp架构</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Android/">Android</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+    </div>
+</div>
+        
+            <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+        <h3 class="menu-label">
+            归档
+        </h3>
+        <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/03/">
+                <span class="level-start">
+                    <span class="level-item">三月 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/10/">
+                <span class="level-start">
+                    <span class="level-item">十月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/04/">
+                <span class="level-start">
+                    <span class="level-item">四月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/03/">
+                <span class="level-start">
+                    <span class="level-item">三月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">2</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/02/">
+                <span class="level-start">
+                    <span class="level-item">二月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2018/11/">
+                <span class="level-start">
+                    <span class="level-item">十一月 2018</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">4</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2018/10/">
+                <span class="level-start">
+                    <span class="level-item">十月 2018</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">7</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2018/09/">
+                <span class="level-start">
+                    <span class="level-item">九月 2018</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">9</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2018/08/">
+                <span class="level-start">
+                    <span class="level-item">八月 2018</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">2</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2018/07/">
+                <span class="level-start">
+                    <span class="level-item">七月 2018</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">4</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2018/06/">
+                <span class="level-start">
+                    <span class="level-item">六月 2018</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">4</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2018/05/">
+                <span class="level-start">
+                    <span class="level-item">五月 2018</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2018/04/">
+                <span class="level-start">
+                    <span class="level-item">四月 2018</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">2</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2018/03/">
+                <span class="level-start">
+                    <span class="level-item">三月 2018</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">4</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2018/02/">
+                <span class="level-start">
+                    <span class="level-item">二月 2018</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2018/01/">
+                <span class="level-start">
+                    <span class="level-item">一月 2018</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">4</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2017/12/">
+                <span class="level-start">
+                    <span class="level-item">十二月 2017</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2017/11/">
+                <span class="level-start">
+                    <span class="level-item">十一月 2017</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">3</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2017/10/">
+                <span class="level-start">
+                    <span class="level-item">十月 2017</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">2</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2017/09/">
+                <span class="level-start">
+                    <span class="level-item">九月 2017</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">3</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2017/06/">
+                <span class="level-start">
+                    <span class="level-item">六月 2017</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2017/04/">
+                <span class="level-start">
+                    <span class="level-item">四月 2017</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        </ul>
+        </div>
+    </div>
+</div>
+        
+            <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                标签
+            </h3>
+            <div class="field is-grouped is-grouped-multiline">
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Android/">
+                        <span class="tag">Android</span>
+                        <span class="tag is-grey">5</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Apache/">
+                        <span class="tag">Apache</span>
+                        <span class="tag is-grey">4</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/CPU%E7%BC%93%E5%AD%98/">
+                        <span class="tag">CPU缓存</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/DevOps/">
+                        <span class="tag">DevOps</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Git/">
+                        <span class="tag">Git</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/GitLab-CI/">
+                        <span class="tag">GitLab CI</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Google/">
+                        <span class="tag">Google</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Java/">
+                        <span class="tag">Java</span>
+                        <span class="tag is-grey">37</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/JavaScript/">
+                        <span class="tag">JavaScript</span>
+                        <span class="tag is-grey">4</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Jenkins/">
+                        <span class="tag">Jenkins</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Linux/">
+                        <span class="tag">Linux</span>
+                        <span class="tag is-grey">4</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/MVEL/">
+                        <span class="tag">MVEL</span>
+                        <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Markdown/">
+                        <span class="tag">Markdown</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/PostgreSQL/">
+                        <span class="tag">PostgreSQL</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Spring/">
+                        <span class="tag">Spring</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Typora/">
+                        <span class="tag">Typora</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/UML/">
+                        <span class="tag">UML</span>
+                        <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Vue/">
+                        <span class="tag">Vue</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95/">
+                        <span class="tag">单元测试</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/%E5%AE%89%E5%85%A8/">
+                        <span class="tag">安全</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/%E5%B0%8F%E7%A8%8B%E5%BA%8F/">
+                        <span class="tag">小程序</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/">
+                        <span class="tag">数据库</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/%E6%95%B4%E6%B4%81%E4%BB%A3%E7%A0%81/">
+                        <span class="tag">整洁代码</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/%E6%B5%8B%E8%AF%95/">
+                        <span class="tag">测试</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/%E8%AE%BE%E8%AE%A1%E5%8E%9F%E5%88%99/">
+                        <span class="tag">设计原则</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">
+                        <span class="tag">设计模式</span>
+                        <span class="tag is-grey">12</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/%E9%87%8D%E6%9E%84/">
+                        <span class="tag">重构</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%BC%96%E7%A8%8B/">
+                        <span class="tag">面向对象编程</span>
+                        <span class="tag is-grey">3</span>
+                    </a>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</div>
+        
+        </div>
+    
+</div>
+
+                
+
+
+
+
+<div class="column is-4-tablet is-4-desktop is-3-widescreen is-hidden-touch is-hidden-desktop-only has-order-3 column-right ">
+    
+        <div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            最新文章
+        </h3>
+        
+        <article class="media">
+            
+            <a href="/hello-world/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Hello World">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-03-06T03:18:23.363Z">2020-03-06</time></div>
+                    <a href="/hello-world/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Hello World</a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/%E5%85%B3%E4%BA%8E%E5%B0%8F%E7%A8%8B%E5%BA%8F/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/gallery/thumbnails/x.jpeg" alt="关于小程序">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-10-20T14:10:22.000Z">2019-10-20</time></div>
+                    <a href="/%E5%85%B3%E4%BA%8E%E5%B0%8F%E7%A8%8B%E5%BA%8F/" class="title has-link-black-ter is-size-6 has-text-weight-normal">关于小程序</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/%E5%B0%8F%E7%A8%8B%E5%BA%8F/">小程序</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/Android-%E8%87%AA%E5%AE%9A%E4%B9%89%E7%9B%B8%E6%9C%BA/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/gallery/thumbnails/c.jpg" alt="Android 自定义相机">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-04-21T14:42:52.000Z">2019-04-21</time></div>
+                    <a href="/Android-%E8%87%AA%E5%AE%9A%E4%B9%89%E7%9B%B8%E6%9C%BA/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Android 自定义相机</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Android/">Android</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/Android%E5%AE%9E%E7%8E%B0%E4%B8%AA%E4%BA%BA%E4%B8%AD%E5%BF%83%E8%AE%BE%E7%BD%AE%E7%95%8C%E9%9D%A2/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/gallery/thumbnails/b.jpg" alt="Android实现个人中心设置界面">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-03-28T14:35:49.000Z">2019-03-28</time></div>
+                    <a href="/Android%E5%AE%9E%E7%8E%B0%E4%B8%AA%E4%BA%BA%E4%B8%AD%E5%BF%83%E8%AE%BE%E7%BD%AE%E7%95%8C%E9%9D%A2/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Android实现个人中心设置界面</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Android/">Android</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/%E5%9F%BA%E4%BA%8E%E8%B0%B7%E6%AD%8Cmvp%E6%9E%B6%E6%9E%84/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/gallery/thumbnails/a.jpg" alt="基于谷歌mvp架构">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-03-03T14:27:59.000Z">2019-03-03</time></div>
+                    <a href="/%E5%9F%BA%E4%BA%8E%E8%B0%B7%E6%AD%8Cmvp%E6%9E%B6%E6%9E%84/" class="title has-link-black-ter is-size-6 has-text-weight-normal">基于谷歌mvp架构</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Android/">Android</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+    </div>
+</div>
+    
+        <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+        <h3 class="menu-label">
+            归档
+        </h3>
+        <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/03/">
+                <span class="level-start">
+                    <span class="level-item">三月 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/10/">
+                <span class="level-start">
+                    <span class="level-item">十月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/04/">
+                <span class="level-start">
+                    <span class="level-item">四月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/03/">
+                <span class="level-start">
+                    <span class="level-item">三月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">2</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/02/">
+                <span class="level-start">
+                    <span class="level-item">二月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2018/11/">
+                <span class="level-start">
+                    <span class="level-item">十一月 2018</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">4</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2018/10/">
+                <span class="level-start">
+                    <span class="level-item">十月 2018</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">7</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2018/09/">
+                <span class="level-start">
+                    <span class="level-item">九月 2018</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">9</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2018/08/">
+                <span class="level-start">
+                    <span class="level-item">八月 2018</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">2</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2018/07/">
+                <span class="level-start">
+                    <span class="level-item">七月 2018</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">4</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2018/06/">
+                <span class="level-start">
+                    <span class="level-item">六月 2018</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">4</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2018/05/">
+                <span class="level-start">
+                    <span class="level-item">五月 2018</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2018/04/">
+                <span class="level-start">
+                    <span class="level-item">四月 2018</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">2</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2018/03/">
+                <span class="level-start">
+                    <span class="level-item">三月 2018</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">4</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2018/02/">
+                <span class="level-start">
+                    <span class="level-item">二月 2018</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2018/01/">
+                <span class="level-start">
+                    <span class="level-item">一月 2018</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">4</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2017/12/">
+                <span class="level-start">
+                    <span class="level-item">十二月 2017</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2017/11/">
+                <span class="level-start">
+                    <span class="level-item">十一月 2017</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">3</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2017/10/">
+                <span class="level-start">
+                    <span class="level-item">十月 2017</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">2</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2017/09/">
+                <span class="level-start">
+                    <span class="level-item">九月 2017</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">3</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2017/06/">
+                <span class="level-start">
+                    <span class="level-item">六月 2017</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2017/04/">
+                <span class="level-start">
+                    <span class="level-item">四月 2017</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        </ul>
+        </div>
+    </div>
+</div>
+    
+        <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                标签
+            </h3>
+            <div class="field is-grouped is-grouped-multiline">
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Android/">
+                        <span class="tag">Android</span>
+                        <span class="tag is-grey">5</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Apache/">
+                        <span class="tag">Apache</span>
+                        <span class="tag is-grey">4</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/CPU%E7%BC%93%E5%AD%98/">
+                        <span class="tag">CPU缓存</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/DevOps/">
+                        <span class="tag">DevOps</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Git/">
+                        <span class="tag">Git</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/GitLab-CI/">
+                        <span class="tag">GitLab CI</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Google/">
+                        <span class="tag">Google</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Java/">
+                        <span class="tag">Java</span>
+                        <span class="tag is-grey">37</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/JavaScript/">
+                        <span class="tag">JavaScript</span>
+                        <span class="tag is-grey">4</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Jenkins/">
+                        <span class="tag">Jenkins</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Linux/">
+                        <span class="tag">Linux</span>
+                        <span class="tag is-grey">4</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/MVEL/">
+                        <span class="tag">MVEL</span>
+                        <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Markdown/">
+                        <span class="tag">Markdown</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/PostgreSQL/">
+                        <span class="tag">PostgreSQL</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Spring/">
+                        <span class="tag">Spring</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Typora/">
+                        <span class="tag">Typora</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/UML/">
+                        <span class="tag">UML</span>
+                        <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Vue/">
+                        <span class="tag">Vue</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95/">
+                        <span class="tag">单元测试</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/%E5%AE%89%E5%85%A8/">
+                        <span class="tag">安全</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/%E5%B0%8F%E7%A8%8B%E5%BA%8F/">
+                        <span class="tag">小程序</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/">
+                        <span class="tag">数据库</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/%E6%95%B4%E6%B4%81%E4%BB%A3%E7%A0%81/">
+                        <span class="tag">整洁代码</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/%E6%B5%8B%E8%AF%95/">
+                        <span class="tag">测试</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/%E8%AE%BE%E8%AE%A1%E5%8E%9F%E5%88%99/">
+                        <span class="tag">设计原则</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">
+                        <span class="tag">设计模式</span>
+                        <span class="tag is-grey">12</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/%E9%87%8D%E6%9E%84/">
+                        <span class="tag">重构</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%BC%96%E7%A8%8B/">
+                        <span class="tag">面向对象编程</span>
+                        <span class="tag is-grey">3</span>
+                    </a>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</div>
+    
+    
+</div>
+
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+    <div class="container">
+        <div class="level">
+            <div class="level-start has-text-centered-mobile">
+			
+			<script type="text/javascript" src="//rf.revolvermaps.com/0/0/6.js?i=5spvzwvaykj&amp;m=7&amp;c=e63100&amp;cr1=ffffff&amp;f=arial&amp;l=0&amp;bv=90&amp;lx=-420&amp;ly=420&amp;hi=20&amp;he=7&amp;hc=a8ddff&amp;rs=80" async="async"></script>
+			
+                <a class="footer-logo is-block has-mb-6" href="/">
+                
+                    <img src="/images/ava.png" alt="Spring基础介绍" height="28">
+                
+                </a>
+                <p class="is-size-7">
+                &copy; 2020 blinkfox&nbsp;
+                Powered by <a href="https://hexo.io/" target="_blank">Hexo</a> & <a
+                        href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank">Icarus</a>
+                
+                </p>
+            </div>
+            <div class="level-end">
+            
+                <div class="field has-addons is-flex-center-mobile has-mt-5-mobile is-flex-wrap is-flex-middle">
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="Creative Commons" href="https://creativecommons.org/">
+                        
+                        <i class="fab fa-creative-commons"></i>
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/">
+                        
+                        <i class="fab fa-creative-commons-by"></i>
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="Download on GitHub" href="https://github.com/ppoffice/hexo-theme-icarus">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                </p>
+                
+                </div>
+            
+            </div>
+        </div>
+    </div>
+</footer>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script>
+<script>moment.locale("zh-CN");</script>
+
+<script>
+var IcarusThemeSettings = {
+    article: {
+        highlight: {
+            clipboard: true,
+            fold: 'unfolded'
+        }
+    }
+};
+</script>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script>
+
+
+
+    
+    
+<script src="/js/animation.js"></script>
+
+    
+    
+<script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script>
+<script src="/js/gallery.js" defer></script>
+
+    
+    
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/" target="_blank" rel="noopener">Update
+            my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.js" defer></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        });
+    });
+</script>
+
+    
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.5/unpacked/MathJax.js?config=TeX-MML-AM_CHTML" defer></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    MathJax.Hub.Config({
+        'HTML-CSS': {
+            matchFontHeight: false
+        },
+        SVG: {
+            matchFontHeight: false
+        },
+        CommonHTML: {
+            matchFontHeight: false
+        },
+        tex2jax: {
+            inlineMath: [
+                ['$','$'],
+                ['\\(','\\)']
+            ]
+        }
+    });
+});
+</script>
+    
+    
+<a id="back-to-top" title="回到顶端" href="javascript:;">
+    <i class="fas fa-chevron-up"></i>
+</a>
+<script src="/js/back-to-top.js" defer></script>
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+
+<script src="/js/main.js" defer></script>
+
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="想要查找什么..." />
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '页面',
+                CATEGORIES: '分类',
+                TAGS: '标签',
+                UNTITLED: '(无标题)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script src="/js/insight.js" defer></script>
+<link rel="stylesheet" href="/css/search.css">
+<link rel="stylesheet" href="/css/insight.css">
+    
+	
+	<!-- 雪花特效 -->
+    <script type="text/javascript">
+      var windowWidth = $(window).width();
+      if (windowWidth > 480) {
+        document.write('<script type="text/javascript" src="/js/src/snow.js"><\/script>');
+      }
+    </script>
+	
+	<script type="text/javascript" src="//rf.revolvermaps.com/0/0/6.js?i=5spvzwvaykj&amp;m=7&amp;c=e63100&amp;cr1=ffffff&amp;f=arial&amp;l=0&amp;bv=90&amp;lx=-420&amp;ly=420&amp;hi=20&amp;he=7&amp;hc=a8ddff&amp;rs=80" async="async"></script>
+
+</body>
+</html>

@@ -1,0 +1,2139 @@
+<!DOCTYPE html>
+<html  lang="zh">
+<head>
+    <meta charset="utf-8" />
+
+<meta name="generator" content="Hexo 4.2.0" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+<title>Java8新特性及使用(一) - һĨ���</title>
+
+
+    <meta name="description" content="新特性列表以下是Java8中的引入的部分新特性。关于Java8新特性更详细的介绍可参考这里。  接口默认方法和静态方法 Lambda 表达式 函数式接口 方法引用 Stream Optional Date&#x2F;Time API 重复注解 扩展注解的支持 Base64 JavaFX 其它 JDBC4.2规范 更好的类型推测机制 HashMap性能提升 IO&#x2F;NIO 的改进 JavaScript引擎Nas">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java8新特性及使用(一)">
+<meta property="og:url" content="http://www.xl06.xyz/Java8%E6%96%B0%E7%89%B9%E6%80%A7%E5%8F%8A%E4%BD%BF%E7%94%A8(%E4%B8%80)/index.html">
+<meta property="og:site_name" content="һĨ���">
+<meta property="og:description" content="新特性列表以下是Java8中的引入的部分新特性。关于Java8新特性更详细的介绍可参考这里。  接口默认方法和静态方法 Lambda 表达式 函数式接口 方法引用 Stream Optional Date&#x2F;Time API 重复注解 扩展注解的支持 Base64 JavaFX 其它 JDBC4.2规范 更好的类型推测机制 HashMap性能提升 IO&#x2F;NIO 的改进 JavaScript引擎Nas">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://www.xl06.xyz/images/og_image.png">
+<meta property="article:published_time" content="2018-09-13T14:30:00.000Z">
+<meta property="article:modified_time" content="2018-12-03T10:05:58.214Z">
+<meta property="article:author" content="һĨ���">
+<meta property="article:tag" content="Java">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://www.xl06.xyz/images/og_image.png">
+
+
+
+
+
+
+
+<link rel="icon" href="/images/favicon.svg">
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-light.css">
+
+
+    
+    
+<style>body>.footer,body>.navbar,body>.section{opacity:0}</style>
+
+    
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css">
+
+    
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.css">
+
+    
+    
+    
+    
+<link rel="stylesheet" href="/css/back-to-top.css">
+
+    
+    
+    
+    
+    
+    
+    
+    <link rel="stylesheet" href="/css/progressbar.css">
+<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+    
+    
+    
+
+
+<link rel="stylesheet" href="/css/style.css">
+	<script src="/js/src/click.js"></script>
+</head>
+<body class="is-3-column">
+    <nav class="navbar navbar-main">
+    <div class="container">
+        <div class="navbar-brand is-flex-center">
+            <a class="navbar-item navbar-logo" href="/">
+            
+                <img src="/images/ava.png" alt="Java8新特性及使用(一)" height="28">
+            
+            </a>
+        </div>
+        <div class="navbar-menu">
+            
+            <div class="navbar-start">
+                
+                <a class="navbar-item"
+                href="/">首页</a>
+                
+                <a class="navbar-item"
+                href="/archives">归档</a>
+                
+                <a class="navbar-item"
+                href="/categories">分类</a>
+                
+                <a class="navbar-item"
+                href="/tags">标签</a>
+                
+                <a class="navbar-item"
+                href="/about">关于</a>
+                
+                <a class="navbar-item"
+                href="/project">作品</a>
+                
+            </div>
+            
+            <div class="navbar-end">
+                
+                    
+                    <a class="navbar-item" target="_blank" title="Download on GitHub" href="https://github.com/xueliang0614">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                    
+                
+                
+                
+                <a class="navbar-item search" title="搜索" href="javascript:;">
+                    <i class="fas fa-search"></i>
+                </a>
+                
+            </div>
+        </div>
+    </div>
+</nav>
+    
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main">
+<div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2018-09-13T14:30:00.000Z">2018-09-13</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/%E5%90%8E%E7%AB%AF/">后端</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    44 分钟 读完 (大约 6539 个字)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                Java8新特性及使用(一)
+            
+        </h1>
+        <div class="content">
+            <html><head></head><body><h2 id="新特性列表"><a href="#新特性列表" class="headerlink" title="新特性列表"></a>新特性列表</h2><p>以下是Java8中的引入的部分新特性。关于Java8新特性更详细的介绍可参考<a href="http://www.oracle.com/technetwork/java/javase/8-whats-new-2157071.html" target="_blank" rel="noopener">这里</a>。</p>
+<ul>
+<li>接口默认方法和静态方法</li>
+<li>Lambda 表达式</li>
+<li>函数式接口</li>
+<li>方法引用</li>
+<li>Stream</li>
+<li>Optional</li>
+<li>Date/Time API</li>
+<li>重复注解</li>
+<li>扩展注解的支持</li>
+<li>Base64</li>
+<li>JavaFX</li>
+<li>其它<ul>
+<li>JDBC4.2规范</li>
+<li>更好的类型推测机制</li>
+<li>HashMap性能提升</li>
+<li>IO/NIO 的改进</li>
+<li>JavaScript引擎Nashorn</li>
+<li>并发（Concurrency）</li>
+<li>类依赖分析器jdeps</li>
+<li>JVM的PermGen空间被移除</li>
+</ul>
+</li>
+</ul>
+<h2 id="一、接口默认方法和静态方法"><a href="#一、接口默认方法和静态方法" class="headerlink" title="一、接口默认方法和静态方法"></a>一、接口默认方法和静态方法</h2><p>Java 8用默认方法与静态方法这两个新概念来扩展接口的声明。与传统的接口又有些不一样，它允许在已有的接口中添加新方法，而同时又保持了与旧版本代码的兼容性。</p>
+<h3 id="1-接口默认方法"><a href="#1-接口默认方法" class="headerlink" title="1. 接口默认方法"></a>1. 接口默认方法</h3><p>默认方法与抽象方法不同之处在于抽象方法必须要求实现，但是默认方法则没有这个要求。相反，每个接口都必须提供一个所谓的默认实现，这样所有的接口实现者将会默认继承它（如果有必要的话，可以覆盖这个默认实现）。让我们看看下面的例子：</p>
+<figure class="highlight java hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">private</span> <span class="hljs-class"><span class="hljs-keyword">interface</span> <span class="hljs-title">Defaulable</span> </span>{</span><br><span class="line">    <span class="hljs-comment">// Interfaces now allow default methods, the implementer may or</span></span><br><span class="line">    <span class="hljs-comment">// may not implement (override) them.</span></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">default</span> String <span class="hljs-title">notRequired</span><span class="hljs-params">()</span> </span>{</span><br><span class="line">        <span class="hljs-keyword">return</span> <span class="hljs-string">"Default implementation"</span>;</span><br><span class="line">    }</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">DefaultableImpl</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">Defaulable</span> </span>{</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">OverridableImpl</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">Defaulable</span> </span>{</span><br><span class="line">    <span class="hljs-meta">@Override</span></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">notRequired</span><span class="hljs-params">()</span> </span>{</span><br><span class="line">        <span class="hljs-keyword">return</span> <span class="hljs-string">"Overridden implementation"</span>;</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<p><code>Defaulable</code>接口用关键字<code>default</code>声明了一个默认方法<code>notRequired()</code>，<code>Defaulable</code>接口的实现者之一<code>DefaultableImpl</code>实现了这个接口，并且让默认方法保持原样。<code>Defaulable</code>接口的另一个实现者<code>OverridableImpl</code>用自己的方法覆盖了默认方法。</p>
+<h4 id="1-多重继承的冲突说明"><a href="#1-多重继承的冲突说明" class="headerlink" title="(1). 多重继承的冲突说明"></a>(1). 多重继承的冲突说明</h4><p>由于同一个方法可以从不同的接口引入，自然而然的会有冲突的现象，规则如下：</p>
+<ul>
+<li>一个声明在类里面的方法优先于任何默认方法</li>
+<li>优先选取最具体的实现</li>
+</ul>
+<figure class="highlight java hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">interface</span> <span class="hljs-title">A</span> </span>{</span><br><span class="line"></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">default</span> <span class="hljs-keyword">void</span> <span class="hljs-title">hello</span><span class="hljs-params">()</span> </span>{</span><br><span class="line">        System.out.println(<span class="hljs-string">"Hello A"</span>);</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<figure class="highlight java hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">interface</span> <span class="hljs-title">B</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">A</span> </span>{</span><br><span class="line"></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">default</span> <span class="hljs-keyword">void</span> <span class="hljs-title">hello</span><span class="hljs-params">()</span> </span>{</span><br><span class="line">        System.out.println(<span class="hljs-string">"Hello B"</span>);</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<figure class="highlight java hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">C</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">A</span>, <span class="hljs-title">B</span> </span>{</span><br><span class="line"></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>{</span><br><span class="line">        <span class="hljs-keyword">new</span> C().hello(); <span class="hljs-comment">// 输出 Hello B</span></span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<h4 id="2-优缺点"><a href="#2-优缺点" class="headerlink" title="(2). 优缺点"></a>(2). 优缺点</h4><ul>
+<li><strong>优点</strong>: 可以在不破坏代码的前提下扩展原有库的功能。它通过一个很优雅的方式使得接口变得更智能，同时还避免了代码冗余，并且扩展类库。</li>
+<li><strong>缺点</strong>: 使得<strong>接口作为协议，类作为具体实现</strong>的界限开始变得有点模糊。</li>
+</ul>
+<h4 id="3-接口默认方法不能重载Object类的任何方法"><a href="#3-接口默认方法不能重载Object类的任何方法" class="headerlink" title="(3). 接口默认方法不能重载Object类的任何方法"></a>(3). 接口默认方法不能重载Object类的任何方法</h4><p><strong>接口不能提供对Object类的任何方法的默认实现</strong>。简单地讲，每一个java类都是Object的子类，也都继承了它类中的<code>equals()</code>/<code>hashCode()</code>/<code>toString()</code>方法，那么在类的接口上包含这些默认方法是没有意义的，它们也从来不会被编译。</p>
+<p>在JVM中，默认方法的实现是非常高效的，并且通过字节码指令为方法调用提供了支持。默认方法允许继续使用现有的Java接口，而同时能够保障正常的编译过程。这方面好的例子是大量的方法被添加到<code>java.util.Collection</code>接口中去：<code>stream()</code>，<code>parallelStream()</code>，<code>forEach()</code>，<code>removeIf()</code>等。尽管默认方法非常强大，但是在使用默认方法时我们需要小心注意一个地方：在声明一个默认方法前，请仔细思考是不是真的有必要使用默认方法。</p>
+<h3 id="2-接口静态方法"><a href="#2-接口静态方法" class="headerlink" title="2. 接口静态方法"></a>2. 接口静态方法</h3><p>Java 8带来的另一个有趣的特性是接口可以声明（并且可以提供实现）静态方法。在接口中定义静态方法，使用<code>static</code>关键字，例如：</p>
+<figure class="highlight java hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">interface</span> <span class="hljs-title">StaticInterface</span> </span>{</span><br><span class="line"></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">method</span><span class="hljs-params">()</span> </span>{</span><br><span class="line">        System.out.println(<span class="hljs-string">"这是Java8接口中的静态方法!"</span>);</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<p>下面的一小段代码是上面静态方法的使用。</p>
+<figure class="highlight java hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Main</span> </span>{</span><br><span class="line"></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>{</span><br><span class="line">        StaticInterface.method(); <span class="hljs-comment">// 输出 这是Java8接口中的静态方法!</span></span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<p>Java支持一个实现类可以实现多个接口，如果多个接口中存在同样的<code>static</code>方法会怎么样呢？如果有两个接口中的静态方法一模一样，并且一个实现类同时实现了这两个接口，此时并不会产生错误，因为Java8中只能通过接口类调用接口中的静态方法，所以对编译器来说是可以区分的。</p>
+<p>二、Lambda 表达式</p>
+<p><code>Lambda</code>表达式（也称为闭包）是整个Java 8发行版中最受期待的在Java语言层面上的改变，Lambda允许把函数作为一个方法的参数（即：<strong>行为参数化</strong>，函数作为参数传递进方法中）。</p>
+<p>一个<code>Lambda</code>可以由用逗号分隔的参数列表、<code>–></code>符号与函数体三部分表示。</p>
+<p>首先看看在老版本的Java中是如何排列字符串的：</p>
+<figure class="highlight java hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">List<String> names = Arrays.asList(<span class="hljs-string">"peter"</span>, <span class="hljs-string">"anna"</span>, <span class="hljs-string">"mike"</span>, <span class="hljs-string">"xenia"</span>);</span><br><span class="line">Collections.sort(names, <span class="hljs-keyword">new</span> Comparator<String>() {</span><br><span class="line"></span><br><span class="line">    <span class="hljs-meta">@Override</span></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">compare</span><span class="hljs-params">(String a, String b)</span> </span>{</span><br><span class="line">        <span class="hljs-keyword">return</span> b.compareTo(a);</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">});</span><br></pre></td></tr></tbody></table></figure>
+
+<p>只需要给静态方法<code>Collections.sort</code>传入一个List对象以及一个比较器来按指定顺序排列。通常做法都是创建一个匿名的比较器对象然后将其传递给sort方法。<br>在Java 8 中你就没必要使用这种传统的匿名对象的方式了，Java 8提供了更简洁的语法，lambda表达式：</p>
+<figure class="highlight java hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Collections.sort(names, (String a, String b) -> {</span><br><span class="line">    <span class="hljs-keyword">return</span> b.compareTo(a);</span><br><span class="line">});</span><br></pre></td></tr></tbody></table></figure>
+
+<p>看到了吧，代码变得更段且更具有可读性，但是实际上还可以写得更短：</p>
+<figure class="highlight java hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Collections.sort(names, (String a, String b) -> b.compareTo(a));</span><br></pre></td></tr></tbody></table></figure>
+
+<p>对于函数体只有一行代码的，你可以去掉大括号<code>{}</code>以及<code>return</code>关键字，但是你还可以写得更短点：</p>
+<figure class="highlight java hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Collections.sort(names, (a, b) -> b.compareTo(a));</span><br></pre></td></tr></tbody></table></figure>
+
+<p>Java编译器可以自动推导出参数类型，所以你可以不用再写一次类型。</p>
+<h2 id="三、函数式接口"><a href="#三、函数式接口" class="headerlink" title="三、函数式接口"></a>三、函数式接口</h2><p><code>Lambda</code>表达式是如何在Java的类型系统中表示的呢？每一个Lambda表达式都对应一个类型，通常是接口类型。而<strong>函数式接口</strong>是指仅仅只包含一个抽象方法的接口，每一个该类型的Lambda表达式都会被匹配到这个抽象方法。因为<strong>默认方法</strong>不算抽象方法，所以你也可以给你的函数式接口添加默认方法。</p>
+<p>我们可以将Lambda表达式当作任意只包含一个抽象方法的接口类型，确保你的接口一定达到这个要求，你只需要给你的接口添加<code>@FunctionalInterface</code>注解，编译器如果发现你标注了这个注解的接口有多于一个抽象方法的时候会报错的。</p>
+<p>示例如下：</p>
+<figure class="highlight java hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">@FunctionalInterface</span></span><br><span class="line"><span class="hljs-class"><span class="hljs-keyword">interface</span> <span class="hljs-title">Converter</span><<span class="hljs-title">F</span>, <span class="hljs-title">T</span>> </span>{</span><br><span class="line">    <span class="hljs-function">T <span class="hljs-title">convert</span><span class="hljs-params">(F from)</span></span>;</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line">Converter<String, Integer> converter = (from) -> Integer.valueOf(from);</span><br><span class="line">Integer converted = converter.convert(<span class="hljs-string">"123"</span>);</span><br><span class="line">System.out.println(converted); <span class="hljs-comment">// 123</span></span><br></pre></td></tr></tbody></table></figure>
+
+<blockquote>
+<p><strong>注</strong>：如果<code>@FunctionalInterface</code>如果没有指定，上面的代码也是对的。</p>
+</blockquote>
+<p>Java8 API包含了很多内建的函数式接口，在老Java中常用到的比如<code>Comparator</code>或者<code>Runnable</code>接口，这些接口都增加了<code>@FunctionalInterface</code>注解以便能用在<code>Lambda</code>上。</p>
+<p>Java8 API同样还提供了很多全新的函数式接口来让工作更加方便，有一些接口是来自Google Guava库里的，即便你对这些很熟悉了，还是有必要看看这些是如何扩展到lambda上使用的。</p>
+<h3 id="1-Comparator-比较器接口"><a href="#1-Comparator-比较器接口" class="headerlink" title="1. Comparator (比较器接口)"></a>1. Comparator (比较器接口)</h3><p><code>Comparator</code>是老Java中的经典接口， Java 8在此之上添加了多种默认方法。源代码及使用示例如下:</p>
+<figure class="highlight java hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">@FunctionalInterface</span></span><br><span class="line"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">interface</span> <span class="hljs-title">Comparator</span><<span class="hljs-title">T</span>> </span>{</span><br><span class="line"></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">compare</span><span class="hljs-params">(T o1, T o2)</span></span>;</span><br><span class="line"></span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<figure class="highlight java hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Comparator<Person> comparator = (p1, p2) -> p1.firstName.compareTo(p2.firstName);</span><br><span class="line">Person p1 = <span class="hljs-keyword">new</span> Person(<span class="hljs-string">"John"</span>, <span class="hljs-string">"Doe"</span>);</span><br><span class="line">Person p2 = <span class="hljs-keyword">new</span> Person(<span class="hljs-string">"Alice"</span>, <span class="hljs-string">"Wonderland"</span>);</span><br><span class="line">comparator.compare(p1, p2);             <span class="hljs-comment">// > 0</span></span><br><span class="line">comparator.reversed().compare(p1, p2);  <span class="hljs-comment">// < 0</span></span><br></pre></td></tr></tbody></table></figure>
+
+<h3 id="2-Consumer-消费型接口"><a href="#2-Consumer-消费型接口" class="headerlink" title="2. Consumer (消费型接口)"></a>2. Consumer (消费型接口)</h3><p><code>Consumer</code>接口表示执行在单个参数上的操作。源代码及使用示例如下:</p>
+<figure class="highlight java hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">@FunctionalInterface</span></span><br><span class="line"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">interface</span> <span class="hljs-title">Consumer</span><<span class="hljs-title">T</span>> </span>{</span><br><span class="line"></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">accept</span><span class="hljs-params">(T t)</span></span>;</span><br><span class="line"></span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<figure class="highlight java hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Consumer<Person> greeter = (p) -> System.out.println(<span class="hljs-string">"Hello, "</span> + p.firstName);</span><br><span class="line">greeter.accept(<span class="hljs-keyword">new</span> Person(<span class="hljs-string">"Luke"</span>, <span class="hljs-string">"Skywalker"</span>));</span><br></pre></td></tr></tbody></table></figure>
+
+<h4 id="更多的Consumer接口"><a href="#更多的Consumer接口" class="headerlink" title="更多的Consumer接口"></a>更多的Consumer接口</h4><ul>
+<li><code>BiConsumer：void accept(T t, U u);</code>: 接受两个参数的二元函数</li>
+<li><code>DoubleConsumer：void accept(double value);</code>: 接受一个double参数的一元函数</li>
+<li><code>IntConsumer：void accept(int value);</code>: 接受一个int参数的一元函数</li>
+<li><code>LongConsumer：void accept(long value);</code>: 接受一个long参数的一元函数</li>
+<li><code>ObjDoubleConsumer：void accept(T t, double value);</code>: 接受一个泛型参数一个double参数的二元函数</li>
+<li><code>ObjIntConsumer：void accept(T t, int value);</code>: 接受一个泛型参数一个int参数的二元函数</li>
+<li><code>ObjLongConsumer：void accept(T t, long value);</code>: 接受一个泛型参数一个long参数的二元函数</li>
+</ul>
+<h3 id="3-Supplier-供应型接口"><a href="#3-Supplier-供应型接口" class="headerlink" title="3. Supplier (供应型接口)"></a>3. Supplier (供应型接口)</h3><p><code>Supplier</code>接口是不需要参数并返回一个任意范型的值。其简洁的声明，会让人以为不是函数。这个抽象方法的声明，同Consumer相反，是一个只声明了返回值，不需要参数的函数。也就是说Supplier其实表达的不是从一个参数空间到结果空间的映射能力，而是表达一种生成能力，因为我们常见的场景中不止是要consume（Consumer）或者是简单的map（Function），还包括了new这个动作。而Supplier就表达了这种能力。源代码及使用示例如下:</p>
+<figure class="highlight java hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">@FunctionalInterface</span></span><br><span class="line"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">interface</span> <span class="hljs-title">Supplier</span><<span class="hljs-title">T</span>> </span>{</span><br><span class="line"></span><br><span class="line">    <span class="hljs-function">T <span class="hljs-title">get</span><span class="hljs-params">()</span></span>;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<figure class="highlight java hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Supplier<Person> personSupplier = Person::<span class="hljs-keyword">new</span>;</span><br><span class="line">personSupplier.get();   <span class="hljs-comment">// new Person</span></span><br></pre></td></tr></tbody></table></figure>
+
+<h4 id="更多Supplier接口"><a href="#更多Supplier接口" class="headerlink" title="更多Supplier接口"></a>更多Supplier接口</h4><ul>
+<li><code>BooleanSupplier：boolean getAsBoolean();</code>: 返回boolean的无参函数</li>
+<li><code>DoubleSupplier：double getAsDouble();</code>: 返回double的无参函数</li>
+<li><code>IntSupplier：int getAsInt();</code>: 返回int的无参函数</li>
+<li><code>LongSupplier：long getAsLong();</code>: 返回long的无参函数</li>
+</ul>
+<h3 id="4-Predicate-断言型接口"><a href="#4-Predicate-断言型接口" class="headerlink" title="4. Predicate (断言型接口)"></a>4. Predicate (断言型接口)</h3><p><code>Predicate</code>接口只有一个参数，返回<code>boolean</code>类型。该接口包含多种默认方法来将<code>Predicate</code>组合成其他复杂的逻辑（比如：<strong>与</strong>，<strong>或</strong>，<strong>非</strong>）。<code>Stream</code>的<code>filter</code>方法就是接受<code>Predicate</code>作为入参的。这个具体在后面使用<code>Stream</code>的时候再分析深入。源代码及使用示例如下:</p>
+<figure class="highlight java hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">@FunctionalInterface</span></span><br><span class="line"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">interface</span> <span class="hljs-title">Predicate</span><<span class="hljs-title">T</span>> </span>{</span><br><span class="line"></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">boolean</span> <span class="hljs-title">test</span><span class="hljs-params">(T t)</span></span>;</span><br><span class="line"></span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<figure class="highlight java hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Predicate<String> predicate = (s) -> s.length() > <span class="hljs-number">0</span>;</span><br><span class="line">predicate.test(<span class="hljs-string">"foo"</span>);            <span class="hljs-comment">// true</span></span><br><span class="line">predicate.negate().test(<span class="hljs-string">"foo"</span>);     <span class="hljs-comment">// false</span></span><br><span class="line">Predicate<Boolean> nonNull = Objects::nonNull;</span><br><span class="line">Predicate<Boolean> isNull = Objects::isNull;</span><br><span class="line">Predicate<String> isEmpty = String::isEmpty;</span><br><span class="line">Predicate<String> isNotEmpty = isEmpty.negate();</span><br></pre></td></tr></tbody></table></figure>
+
+<h4 id="更多的Predicate接口"><a href="#更多的Predicate接口" class="headerlink" title="更多的Predicate接口"></a>更多的Predicate接口</h4><ul>
+<li><code>BiPredicate：boolean test(T t, U u);</code>: 接受两个参数的二元断言函数</li>
+<li><code>DoublePredicate：boolean test(double value);</code>: 入参为double的断言函数</li>
+<li><code>IntPredicate：boolean test(int value);</code>: 入参为int的断言函数</li>
+<li><code>LongPredicate：boolean test(long value);</code>: 入参为long的断言函数</li>
+</ul>
+<h3 id="5-Function-功能型接口"><a href="#5-Function-功能型接口" class="headerlink" title="5. Function (功能型接口)"></a>5. Function (功能型接口)</h3><p><code>Function</code>接口有一个参数并且返回一个结果，并附带了一些可以和其他函数组合的默认方法（<code>compose</code>, <code>andThen</code>）。源代码及使用示例如下:</p>
+<figure class="highlight java hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">@FunctionalInterface</span></span><br><span class="line"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">interface</span> <span class="hljs-title">Function</span><<span class="hljs-title">T</span>, <span class="hljs-title">R</span>> </span>{</span><br><span class="line"></span><br><span class="line">    <span class="hljs-function">R <span class="hljs-title">apply</span><span class="hljs-params">(T t)</span></span>;</span><br><span class="line"></span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<figure class="highlight java hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Function<String, Integer> toInteger = Integer::valueOf;</span><br><span class="line">Function<String, String> backToString = toInteger.andThen(String::valueOf);</span><br><span class="line">backToString.apply(<span class="hljs-string">"123"</span>);     <span class="hljs-comment">// "123"</span></span><br></pre></td></tr></tbody></table></figure>
+
+<h4 id="更多的Function接口"><a href="#更多的Function接口" class="headerlink" title="更多的Function接口"></a>更多的Function接口</h4><ul>
+<li><code>BiFunction ：R apply(T t, U u);</code>: 接受两个参数，返回一个值，代表一个二元函数；</li>
+<li><code>DoubleFunction ：R apply(double value);</code>: 只处理double类型的一元函数；</li>
+<li><code>IntFunction ：R apply(int value);</code>: 只处理int参数的一元函数；</li>
+<li><code>LongFunction ：R apply(long value);</code>: 只处理long参数的一元函数；</li>
+<li><code>ToDoubleFunction：double applyAsDouble(T value);</code>: 返回double的一元函数；</li>
+<li><code>ToDoubleBiFunction：double applyAsDouble(T t, U u);</code>: 返回double的二元函数；</li>
+<li><code>ToIntFunction：int applyAsInt(T value);</code>: 返回int的一元函数；</li>
+<li><code>ToIntBiFunction：int applyAsInt(T t, U u);</code>: 返回int的二元函数；</li>
+<li><code>ToLongFunction：long applyAsLong(T value);</code>: 返回long的一元函数；</li>
+<li><code>ToLongBiFunction：long applyAsLong(T t, U u);</code>: 返回long的二元函数；</li>
+<li><code>DoubleToIntFunction：int applyAsInt(double value);</code>: 接受double返回int的一元函数；</li>
+<li><code>DoubleToLongFunction：long applyAsLong(double value);</code>: 接受double返回long的一元函数；</li>
+<li><code>IntToDoubleFunction：double applyAsDouble(int value);</code>: 接受int返回double的一元函数；</li>
+<li><code>IntToLongFunction：long applyAsLong(int value);</code>: 接受int返回long的一元函数；</li>
+<li><code>LongToDoubleFunction：double applyAsDouble(long value);</code>: 接受long返回double的一元函数；</li>
+<li><code>LongToIntFunction：int applyAsInt(long value);</code>: 接受long返回int的一元函数；</li>
+</ul>
+<h3 id="6-Operator"><a href="#6-Operator" class="headerlink" title="6. Operator"></a>6. Operator</h3><p><code>Operator</code>其实就是<code>Function</code>，函数有时候也叫作算子。算子在Java8中接口描述更像是函数的补充，和上面的很多类型映射型函数类似。算子Operator包括：<code>UnaryOperator</code>和<code>BinaryOperator</code>。分别对应单（一）元算子和二元算子。</p>
+<p>算子的接口声明如下：</p>
+<figure class="highlight java hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">@FunctionalInterface</span></span><br><span class="line"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">interface</span> <span class="hljs-title">UnaryOperator</span><<span class="hljs-title">T</span>> <span class="hljs-keyword">extends</span> <span class="hljs-title">Function</span><<span class="hljs-title">T</span>, <span class="hljs-title">T</span>> </span>{</span><br><span class="line"></span><br><span class="line">    <span class="hljs-keyword">static</span> <T> <span class="hljs-function">UnaryOperator<T> <span class="hljs-title">identity</span><span class="hljs-params">()</span> </span>{</span><br><span class="line">        <span class="hljs-keyword">return</span> t -> t;</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<figure class="highlight java hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">@FunctionalInterface</span></span><br><span class="line"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">interface</span> <span class="hljs-title">BinaryOperator</span><<span class="hljs-title">T</span>> <span class="hljs-keyword">extends</span> <span class="hljs-title">BiFunction</span><<span class="hljs-title">T</span>,<span class="hljs-title">T</span>,<span class="hljs-title">T</span>> </span>{</span><br><span class="line"></span><br><span class="line">    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <T> <span class="hljs-function">BinaryOperator<T> <span class="hljs-title">minBy</span><span class="hljs-params">(Comparator<? <span class="hljs-keyword">super</span> T> comparator)</span> </span>{</span><br><span class="line">        Objects.requireNonNull(comparator);</span><br><span class="line">        <span class="hljs-keyword">return</span> (a, b) -> comparator.compare(a, b) <= <span class="hljs-number">0</span> ? a : b;</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <T> <span class="hljs-function">BinaryOperator<T> <span class="hljs-title">maxBy</span><span class="hljs-params">(Comparator<? <span class="hljs-keyword">super</span> T> comparator)</span> </span>{</span><br><span class="line">        Objects.requireNonNull(comparator);</span><br><span class="line">        <span class="hljs-keyword">return</span> (a, b) -> comparator.compare(a, b) >= <span class="hljs-number">0</span> ? a : b;</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<p><code>Operator</code>只需声明一个泛型参数T即可。对应的使用示例如下：</p>
+<figure class="highlight java hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">UnaryOperator<Integer> increment = x -> x + <span class="hljs-number">1</span>;</span><br><span class="line">System.out.println(<span class="hljs-string">"递增:"</span> + increment.apply(<span class="hljs-number">2</span>)); <span class="hljs-comment">// 输出 递增:3</span></span><br><span class="line"></span><br><span class="line">BinaryOperator<Integer> add = (x, y) -> x + y;</span><br><span class="line">System.out.println(<span class="hljs-string">"相加:"</span> + add.apply(<span class="hljs-number">2</span>, <span class="hljs-number">3</span>)); <span class="hljs-comment">// 输出 相加:5</span></span><br><span class="line"></span><br><span class="line">BinaryOperator<Integer> min = BinaryOperator.minBy((o1, o2) -> o1 - o2);</span><br><span class="line">System.out.println(<span class="hljs-string">"最小值:"</span> + min.apply(<span class="hljs-number">2</span>, <span class="hljs-number">3</span>)); <span class="hljs-comment">// 输出 最小值:2</span></span><br></pre></td></tr></tbody></table></figure>
+
+<h4 id="更多的Operator接口"><a href="#更多的Operator接口" class="headerlink" title="更多的Operator接口"></a>更多的Operator接口</h4><ul>
+<li><code>LongUnaryOperator：long applyAsLong(long operand);</code>: 对long类型做操作的一元算子</li>
+<li><code>IntUnaryOperator：int applyAsInt(int operand);</code>: 对int类型做操作的一元算子</li>
+<li><code>DoubleUnaryOperator：double applyAsDouble(double operand);</code>: 对double类型做操作的一元算子</li>
+<li><code>DoubleBinaryOperator：double applyAsDouble(double left, double right);</code>: 对double类型做操作的二元算子</li>
+<li><code>IntBinaryOperator：int applyAsInt(int left, int right);</code>: 对int类型做操作的二元算子</li>
+<li><code>LongBinaryOperator：long applyAsLong(long left, long right);</code>: 对long类型做操作的二元算子</li>
+</ul>
+<h3 id="6-其它函数式接口"><a href="#6-其它函数式接口" class="headerlink" title="6. 其它函数式接口"></a>6. 其它函数式接口</h3><ul>
+<li>java.lang.Runnable</li>
+<li>java.util.concurrent.Callable</li>
+<li>java.security.PrivilegedAction</li>
+<li>java.io.FileFilter</li>
+<li>java.nio.file.PathMatcher </li>
+<li>java.lang.reflect.InvocationHandler</li>
+<li>java.beans.PropertyChangeListener</li>
+<li>java.awt.event.ActionListener  </li>
+<li>javax.swing.event.ChangeListener</li>
+</ul>
+<h2 id="四、方法引用"><a href="#四、方法引用" class="headerlink" title="四、方法引用"></a>四、方法引用</h2><h3 id="1-概述"><a href="#1-概述" class="headerlink" title="1. 概述"></a>1. 概述</h3><p>在学习了Lambda表达式之后，我们通常使用Lambda表达式来创建匿名方法。然而，有时候我们仅仅是调用了一个已存在的方法。如下：</p>
+<figure class="highlight java hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Arrays.sort(strArray, (s1, s2) -> s1.compareToIgnoreCase(s2));</span><br></pre></td></tr></tbody></table></figure>
+
+<p>在Java8中，我们可以直接通过方法引用来简写Lambda表达式中已经存在的方法。</p>
+<figure class="highlight java hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Arrays.sort(strArray, String::compareToIgnoreCase);</span><br></pre></td></tr></tbody></table></figure>
+
+<p>这种特性就叫做<strong>方法引用</strong>(<code>Method Reference</code>)。</p>
+<p><strong>方法引用</strong>是用来直接访问类或者实例的已经存在的方法或者构造方法。方法引用提供了一种引用而不执行方法的方式，它需要由兼容的函数式接口构成的目标类型上下文。计算时，方法引用会创建函数式接口的一个实例。当Lambda表达式中只是执行一个方法调用时，不用Lambda表达式，直接通过方法引用的形式可读性更高一些。方法引用是一种更简洁易懂的Lambda表达式。</p>
+<blockquote>
+<p><strong>注意</strong>: 方法引用是一个Lambda表达式，其中方法引用的操作符是双冒号<code>::</code>。</p>
+</blockquote>
+<h3 id="2-分类"><a href="#2-分类" class="headerlink" title="2. 分类"></a>2. 分类</h3><p>方法引用的标准形式是：<code>类名::方法名</code>。（注意：只需要写方法名，不需要写括号）</p>
+<p>有以下四种形式的方法引用：</p>
+<ul>
+<li>引用静态方法: ContainingClass::staticMethodName</li>
+<li>引用某个对象的实例方法: containingObject::instanceMethodName</li>
+<li>引用某个类型的任意对象的实例方法:ContainingType::methodName</li>
+<li>引用构造方法: ClassName::new</li>
+</ul>
+<h3 id="3-示例"><a href="#3-示例" class="headerlink" title="3. 示例"></a>3. 示例</h3><p>使用示例如下：</p>
+<figure class="highlight java hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Person</span> </span>{</span><br><span class="line"></span><br><span class="line">    String name;</span><br><span class="line"></span><br><span class="line">    LocalDate birthday;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">Person</span><span class="hljs-params">(String name, LocalDate birthday)</span> </span>{</span><br><span class="line">        <span class="hljs-keyword">this</span>.name = name;</span><br><span class="line">        <span class="hljs-keyword">this</span>.birthday = birthday;</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> LocalDate <span class="hljs-title">getBirthday</span><span class="hljs-params">()</span> </span>{</span><br><span class="line">        <span class="hljs-keyword">return</span> birthday;</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">int</span> <span class="hljs-title">compareByAge</span><span class="hljs-params">(Person a, Person b)</span> </span>{</span><br><span class="line">        <span class="hljs-keyword">return</span> a.birthday.compareTo(b.birthday);</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="hljs-meta">@Override</span></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">toString</span><span class="hljs-params">()</span> </span>{</span><br><span class="line">        <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.name;</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<figure class="highlight java hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MethodReferenceTest</span> </span>{</span><br><span class="line"></span><br><span class="line">    <span class="hljs-meta">@Test</span></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>{</span><br><span class="line">        Person[] pArr = <span class="hljs-keyword">new</span> Person[] {</span><br><span class="line">            <span class="hljs-keyword">new</span> Person(<span class="hljs-string">"003"</span>, LocalDate.of(<span class="hljs-number">2016</span>,<span class="hljs-number">9</span>,<span class="hljs-number">1</span>)),</span><br><span class="line">            <span class="hljs-keyword">new</span> Person(<span class="hljs-string">"001"</span>, LocalDate.of(<span class="hljs-number">2016</span>,<span class="hljs-number">2</span>,<span class="hljs-number">1</span>)),</span><br><span class="line">            <span class="hljs-keyword">new</span> Person(<span class="hljs-string">"002"</span>, LocalDate.of(<span class="hljs-number">2016</span>,<span class="hljs-number">3</span>,<span class="hljs-number">1</span>)),</span><br><span class="line">            <span class="hljs-keyword">new</span> Person(<span class="hljs-string">"004"</span>, LocalDate.of(<span class="hljs-number">2016</span>,<span class="hljs-number">12</span>,<span class="hljs-number">1</span>))</span><br><span class="line">        };</span><br><span class="line"></span><br><span class="line">        <span class="hljs-comment">// 使用匿名类</span></span><br><span class="line">        Arrays.sort(pArr, <span class="hljs-keyword">new</span> Comparator<Person>() {</span><br><span class="line">            <span class="hljs-meta">@Override</span></span><br><span class="line">            <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">compare</span><span class="hljs-params">(Person a, Person b)</span> </span>{</span><br><span class="line">                <span class="hljs-keyword">return</span> a.getBirthday().compareTo(b.getBirthday());</span><br><span class="line">            }</span><br><span class="line">        });</span><br><span class="line"></span><br><span class="line">        <span class="hljs-comment">//使用lambda表达式</span></span><br><span class="line">        Arrays.sort(pArr, (Person a, Person b) -> {</span><br><span class="line">            <span class="hljs-keyword">return</span> a.getBirthday().compareTo(b.getBirthday());</span><br><span class="line">        });</span><br><span class="line"></span><br><span class="line">        <span class="hljs-comment">//使用方法引用，引用的是类的静态方法</span></span><br><span class="line">        Arrays.sort(pArr, Person::compareByAge);</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<h2 id="五、Stream"><a href="#五、Stream" class="headerlink" title="五、Stream"></a>五、Stream</h2><p>Java8添加的<code>Stream API(java.util.stream)</code>把真正的函数式编程风格引入到Java中。这是目前为止对Java类库最好的补充，因为<code>Stream API</code>可以极大提供Java程序员的生产力，让程序员写出高效率、干净、简洁的代码。</p>
+<p>流可以是无限的、有状态的，可以是顺序的，也可以是并行的。在使用流的时候，你首先需要从一些来源中获取一个流，执行一个或者多个中间操作，然后执行一个最终操作。中间操作包括<code>filter</code>、<code>map</code>、<code>flatMap</code>、<code>peel</code>、<code>distinct</code>、<code>sorted</code>、<code>limit</code>和<code>substream</code>。终止操作包括<code>forEach</code>、<code>toArray</code>、<code>reduce</code>、<code>collect</code>、<code>min</code>、<code>max</code>、<code>count</code>、<code>anyMatch</code>、<code>allMatch</code>、<code>noneMatch</code>、<code>findFirst</code>和<code>findAny</code>。 <code>java.util.stream.Collectors</code>是一个非常有用的实用类。该类实现了很多归约操作，例如将流转换成集合和聚合元素。</p>
+<h3 id="1-一些重要方法说明"><a href="#1-一些重要方法说明" class="headerlink" title="1. 一些重要方法说明"></a>1. 一些重要方法说明</h3><ul>
+<li><code>stream</code>: 返回数据流，集合作为其源</li>
+<li><code>parallelStream</code>: 返回并行数据流， 集合作为其源</li>
+<li><code>filter</code>: 方法用于过滤出满足条件的元素</li>
+<li><code>map</code>: 方法用于映射每个元素对应的结果</li>
+<li><code>forEach</code>: 方法遍历该流中的每个元素</li>
+<li><code>limit</code>: 方法用于减少流的大小</li>
+<li><code>sorted</code>: 方法用来对流中的元素进行排序</li>
+<li><code>anyMatch</code>: 是否存在任意一个元素满足条件（返回布尔值）</li>
+<li><code>allMatch</code>: 是否所有元素都满足条件（返回布尔值）</li>
+<li><code>noneMatch</code>: 是否所有元素都不满足条件（返回布尔值）</li>
+<li><code>collect</code>: 方法是终端操作，这是通常出现在管道传输操作结束标记流的结束</li>
+</ul>
+<h3 id="2-一些使用示例"><a href="#2-一些使用示例" class="headerlink" title="2. 一些使用示例"></a>2. 一些使用示例</h3><h4 id="1-Filter-过滤"><a href="#1-Filter-过滤" class="headerlink" title="(1). Filter 过滤"></a>(1). Filter 过滤</h4><figure class="highlight java hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">stringCollection</span><br><span class="line">    .stream()</span><br><span class="line">    .filter((s) -> s.startsWith(<span class="hljs-string">"a"</span>))</span><br><span class="line">    .forEach(System.out::println);</span><br></pre></td></tr></tbody></table></figure>
+
+<h3 id="2-Sort-排序"><a href="#2-Sort-排序" class="headerlink" title="(2). Sort 排序"></a>(2). Sort 排序</h3><figure class="highlight java hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">stringCollection</span><br><span class="line">    .stream()</span><br><span class="line">    .sorted()</span><br><span class="line">    .filter((s) -> s.startsWith(<span class="hljs-string">"a"</span>))</span><br><span class="line">    .forEach(System.out::println);</span><br></pre></td></tr></tbody></table></figure>
+
+<h3 id="3-Map-映射"><a href="#3-Map-映射" class="headerlink" title="(3). Map 映射"></a>(3). Map 映射</h3><figure class="highlight java hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">stringCollection</span><br><span class="line">    .stream()</span><br><span class="line">    .map(String::toUpperCase)</span><br><span class="line">    .sorted((a, b) -> b.compareTo(a))</span><br><span class="line">    .forEach(System.out::println);</span><br></pre></td></tr></tbody></table></figure>
+
+<h3 id="4-Match-匹配"><a href="#4-Match-匹配" class="headerlink" title="(4). Match 匹配"></a>(4). Match 匹配</h3><figure class="highlight java hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">boolean</span> anyStartsWithA = stringCollection</span><br><span class="line">        .stream()</span><br><span class="line">        .anyMatch((s) -> s.startsWith(<span class="hljs-string">"a"</span>));</span><br><span class="line">System.out.println(anyStartsWithA);      <span class="hljs-comment">// true</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">boolean</span> allStartsWithA = stringCollection</span><br><span class="line">        .stream()</span><br><span class="line">        .allMatch((s) -> s.startsWith(<span class="hljs-string">"a"</span>));</span><br><span class="line">System.out.println(allStartsWithA);      <span class="hljs-comment">// false</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">boolean</span> noneStartsWithZ = stringCollection</span><br><span class="line">        .stream()</span><br><span class="line">        .noneMatch((s) -> s.startsWith(<span class="hljs-string">"z"</span>));</span><br><span class="line">System.out.println(noneStartsWithZ);      <span class="hljs-comment">// true</span></span><br></pre></td></tr></tbody></table></figure>
+
+<h3 id="5-Count-计数"><a href="#5-Count-计数" class="headerlink" title="(5). Count 计数"></a>(5). Count 计数</h3><figure class="highlight java hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">long</span> startsWithB = stringCollection</span><br><span class="line">        .stream()</span><br><span class="line">        .filter((s) -> s.startsWith(<span class="hljs-string">"b"</span>))</span><br><span class="line">        .count();</span><br><span class="line">System.out.println(startsWithB);    <span class="hljs-comment">// 3</span></span><br></pre></td></tr></tbody></table></figure>
+
+<h3 id="6-Reduce-规约"><a href="#6-Reduce-规约" class="headerlink" title="(6). Reduce 规约"></a>(6). Reduce 规约</h3><p>这是一个最终操作，允许通过指定的函数来将<code>stream</code>中的多个元素规约为一个元素，规越后的结果是通过<code>Optional</code>接口表示的。代码如下:</p>
+<figure class="highlight java hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Optional<String> reduced = stringCollection</span><br><span class="line">        .stream()</span><br><span class="line">        .sorted()</span><br><span class="line">        .reduce((s1, s2) -> s1 + <span class="hljs-string">"#"</span> + s2);</span><br><span class="line">reduced.ifPresent(System.out::println);</span><br></pre></td></tr></tbody></table></figure>
+
+<h2 id="六、Optional"><a href="#六、Optional" class="headerlink" title="六、Optional"></a>六、Optional</h2><p>到目前为止，臭名昭著的空指针异常是导致Java应用程序失败的最常见原因。以前，为了解决空指针异常，Google公司著名的<code>Guava</code>项目引入了<code>Optional</code>类，Guava通过使用检查空值的方式来防止代码污染，它鼓励程序员写更干净的代码。受到Google Guava的启发，<code>Optional</code>类已经成为Java 8类库的一部分。</p>
+<p><code>Optional</code>实际上是个容器：它可以保存类型T的值，或者仅仅保存null。<code>Optional</code>提供很多有用的方法，这样我们就不用显式进行空值检测。</p>
+<p>我们下面用两个小例子来演示如何使用Optional类：一个允许为空值，一个不允许为空值。</p>
+<figure class="highlight java hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Optional<String> fullName = Optional.ofNullable(<span class="hljs-keyword">null</span>);</span><br><span class="line">System.out.println(<span class="hljs-string">"Full Name is set? "</span> + fullName.isPresent());</span><br><span class="line">System.out.println(<span class="hljs-string">"Full Name: "</span> + fullName.orElseGet(() -> <span class="hljs-string">"[none]"</span>));</span><br><span class="line">System.out.println(fullName.map(s -> <span class="hljs-string">"Hey "</span> + s + <span class="hljs-string">"!"</span>).orElse(<span class="hljs-string">"Hey Stranger!"</span>));</span><br></pre></td></tr></tbody></table></figure>
+
+<p>如果<code>Optional</code>类的实例为非空值的话，<code>isPresent()</code>返回<code>true</code>，否从返回<code>false</code>。为了防止Optional为空值，<code>orElseGet()</code>方法通过回调函数来产生一个默认值。<code>map()</code>函数对当前<code>Optional</code>的值进行转化，然后返回一个新的<code>Optional</code>实例。<code>orElse()</code>方法和<code>orElseGet()</code>方法类似，但是<code>orElse</code>接受一个默认值而不是一个回调函数。下面是这个程序的输出：</p>
+<figure class="highlight bash hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Full Name is <span class="hljs-built_in">set</span>? <span class="hljs-literal">false</span></span><br><span class="line">Full Name: [none]</span><br><span class="line">Hey Stranger!</span><br></pre></td></tr></tbody></table></figure>
+
+<p>让我们来看看另一个例子：</p>
+<figure class="highlight java hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Optional<String> firstName = Optional.of(<span class="hljs-string">"Tom"</span>);</span><br><span class="line">System.out.println(<span class="hljs-string">"First Name is set? "</span> + firstName.isPresent());</span><br><span class="line">System.out.println(<span class="hljs-string">"First Name: "</span> + firstName.orElseGet(() -> <span class="hljs-string">"[none]"</span>));</span><br><span class="line">System.out.println(firstName.map(s -> <span class="hljs-string">"Hey "</span> + s + <span class="hljs-string">"!"</span>).orElse(<span class="hljs-string">"Hey Stranger!"</span>));</span><br><span class="line">System.out.println();</span><br></pre></td></tr></tbody></table></figure>
+
+<p>下面是程序的输出：</p>
+<figure class="highlight bash hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">First Name is <span class="hljs-built_in">set</span>? <span class="hljs-literal">true</span></span><br><span class="line">First Name: Tom</span><br><span class="line">Hey Tom!</span><br></pre></td></tr></tbody></table></figure>
+
+<h2 id="七、Date-Time-API"><a href="#七、Date-Time-API" class="headerlink" title="七、Date/Time API"></a>七、Date/Time API</h2><p>Java 8 在包<code>java.time</code>下包含了一组全新的时间日期API。新的日期API和开源的<code>Joda-Time</code>库差不多，但又不完全一样，下面的例子展示了这组新API里最重要的一些部分：</p>
+<h3 id="1-Clock-时钟"><a href="#1-Clock-时钟" class="headerlink" title="1. Clock 时钟"></a>1. Clock 时钟</h3><p><code>Clock</code>类提供了访问当前日期和时间的方法，Clock是时区敏感的，可以用来取代<code>System.currentTimeMillis()</code>来获取当前的微秒数。某一个特定的时间点也可以使用<code>Instant</code>类来表示，<code>Instant</code>类也可以用来创建老的<code>java.util.Date</code>对象。代码如下:</p>
+<figure class="highlight java hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Clock clock = Clock.systemDefaultZone();</span><br><span class="line"><span class="hljs-keyword">long</span> millis = clock.millis();</span><br><span class="line">Instant instant = clock.instant();</span><br><span class="line">Date legacyDate = Date.from(instant);   <span class="hljs-comment">// legacy java.util.Date</span></span><br></pre></td></tr></tbody></table></figure>
+
+<h3 id="2-Timezones-时区"><a href="#2-Timezones-时区" class="headerlink" title="2. Timezones 时区"></a>2. Timezones 时区</h3><p>在新API中时区使用<code>ZoneId</code>来表示。时区可以很方便的使用静态方法<code>of</code>来获取到。时区定义了到UTS时间的时间差，在<code>Instant</code>时间点对象到本地日期对象之间转换的时候是极其重要的。代码如下:</p>
+<figure class="highlight java hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">System.out.println(ZoneId.getAvailableZoneIds());</span><br><span class="line"><span class="hljs-comment">// prints all available timezone ids</span></span><br><span class="line">ZoneId zone1 = ZoneId.of(<span class="hljs-string">"Europe/Berlin"</span>);</span><br><span class="line">ZoneId zone2 = ZoneId.of(<span class="hljs-string">"Brazil/East"</span>);</span><br><span class="line">System.out.println(zone1.getRules());</span><br><span class="line">System.out.println(zone2.getRules());</span><br><span class="line"><span class="hljs-comment">// ZoneRules[currentStandardOffset=+01:00]</span></span><br><span class="line"><span class="hljs-comment">// ZoneRules[currentStandardOffset=-03:00]</span></span><br></pre></td></tr></tbody></table></figure>
+
+<h3 id="3-LocalTime-本地时间"><a href="#3-LocalTime-本地时间" class="headerlink" title="3. LocalTime 本地时间"></a>3. LocalTime 本地时间</h3><p><code>LocalTime</code>定义了一个没有时区信息的时间，例如 晚上10点，或者 17:30:15。下面的例子使用前面代码创建的时区创建了两个本地时间。之后比较时间并以小时和分钟为单位计算两个时间的时间差。代码如下:</p>
+<figure class="highlight java hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">LocalTime now1 = LocalTime.now(zone1);</span><br><span class="line">LocalTime now2 = LocalTime.now(zone2);</span><br><span class="line">System.out.println(now1.isBefore(now2));  <span class="hljs-comment">// false</span></span><br><span class="line"><span class="hljs-keyword">long</span> hoursBetween = ChronoUnit.HOURS.between(now1, now2);</span><br><span class="line"><span class="hljs-keyword">long</span> minutesBetween = ChronoUnit.MINUTES.between(now1, now2);</span><br><span class="line">System.out.println(hoursBetween);       <span class="hljs-comment">// -3</span></span><br><span class="line">System.out.println(minutesBetween);     <span class="hljs-comment">// -239</span></span><br></pre></td></tr></tbody></table></figure>
+
+<p><code>LocalTime</code>提供了多种工厂方法来简化对象的创建，包括解析时间字符串。代码如下:</p>
+<figure class="highlight java hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">LocalTime late = LocalTime.of(<span class="hljs-number">23</span>, <span class="hljs-number">59</span>, <span class="hljs-number">59</span>);</span><br><span class="line">System.out.println(late);       <span class="hljs-comment">// 23:59:59</span></span><br><span class="line">DateTimeFormatter germanFormatter = DateTimeFormatter</span><br><span class="line">        .ofLocalizedTime(FormatStyle.SHORT)</span><br><span class="line">        .withLocale(Locale.GERMAN);</span><br><span class="line">LocalTime leetTime = LocalTime.parse(<span class="hljs-string">"13:37"</span>, germanFormatter);</span><br><span class="line">System.out.println(leetTime);   <span class="hljs-comment">// 13:37</span></span><br></pre></td></tr></tbody></table></figure>
+
+<h3 id="4-LocalDate-本地日期"><a href="#4-LocalDate-本地日期" class="headerlink" title="4. LocalDate 本地日期"></a>4. LocalDate 本地日期</h3><p><code>LocalDate</code>表示了一个确切的日期，比如<code>2014-03-11</code>。该对象值是不可变的，用起来和<code>LocalTime</code>基本一致。下面的例子展示了如何给<code>Date</code>对象加减天/月/年。另外要注意的是这些对象是不可变的，操作返回的总是一个新实例。代码如下:</p>
+<figure class="highlight java hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">LocalDate today = LocalDate.now();</span><br><span class="line">LocalDate tomorrow = today.plus(<span class="hljs-number">1</span>, ChronoUnit.DAYS);</span><br><span class="line">LocalDate yesterday = tomorrow.minusDays(<span class="hljs-number">2</span>);</span><br><span class="line">LocalDate independenceDay = LocalDate.of(<span class="hljs-number">2014</span>, Month.JULY, <span class="hljs-number">4</span>);</span><br><span class="line">DayOfWeek dayOfWeek = independenceDay.getDayOfWeek();</span><br><span class="line"></span><br><span class="line">System.out.println(dayOfWeek);    <span class="hljs-comment">// FRIDAY</span></span><br></pre></td></tr></tbody></table></figure>
+
+<p>从字符串解析一个LocalDate类型和解析LocalTime一样简单。代码如下:</p>
+<figure class="highlight java hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">DateTimeFormatter germanFormatter = DateTimeFormatter</span><br><span class="line">        .ofLocalizedDate(FormatStyle.MEDIUM)</span><br><span class="line">        .withLocale(Locale.GERMAN);</span><br><span class="line">LocalDate xmas = LocalDate.parse(<span class="hljs-string">"24.12.2014"</span>, germanFormatter);</span><br><span class="line">System.out.println(xmas);   <span class="hljs-comment">// 2014-12-24</span></span><br></pre></td></tr></tbody></table></figure>
+
+<h3 id="5-LocalDateTime-本地日期时间"><a href="#5-LocalDateTime-本地日期时间" class="headerlink" title="5. LocalDateTime 本地日期时间"></a>5. LocalDateTime 本地日期时间</h3><p><code>LocalDateTime</code>同时表示了时间和日期，相当于前两节内容合并到一个对象上了。<code>LocalDateTime</code>和<code>LocalTime</code>还有<code>LocalDate</code>一样，都是不可变的。<code>LocalDateTime</code>提供了一些能访问具体字段的方法。代码如下:</p>
+<figure class="highlight java hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">LocalDateTime sylvester = LocalDateTime.of(<span class="hljs-number">2014</span>, Month.DECEMBER, <span class="hljs-number">31</span>, <span class="hljs-number">23</span>, <span class="hljs-number">59</span>, <span class="hljs-number">59</span>);</span><br><span class="line">DayOfWeek dayOfWeek = sylvester.getDayOfWeek();</span><br><span class="line">System.out.println(dayOfWeek);      <span class="hljs-comment">// WEDNESDAY</span></span><br><span class="line">Month month = sylvester.getMonth();</span><br><span class="line">System.out.println(month);          <span class="hljs-comment">// DECEMBER</span></span><br><span class="line"><span class="hljs-keyword">long</span> minuteOfDay = sylvester.getLong(ChronoField.MINUTE_OF_DAY);</span><br><span class="line">System.out.println(minuteOfDay);    <span class="hljs-comment">// 1439</span></span><br></pre></td></tr></tbody></table></figure>
+
+<p>只要附加上时区信息，就可以将其转换为一个时间点<code>Instant</code>对象，<code>Instant</code>时间点对象可以很容易的转换为老式的<code>java.util.Date</code>。代码如下:</p>
+<figure class="highlight java hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Instant instant = sylvester</span><br><span class="line">        .atZone(ZoneId.systemDefault())</span><br><span class="line">        .toInstant();</span><br><span class="line">Date legacyDate = Date.from(instant);</span><br><span class="line">System.out.println(legacyDate);     <span class="hljs-comment">// Wed Dec 31 23:59:59 CET 2014</span></span><br></pre></td></tr></tbody></table></figure>
+
+<p>格式化<code>LocalDateTime</code>和格式化时间和日期一样的，除了使用预定义好的格式外，我们也可以自己定义格式。代码如下:</p>
+<figure class="highlight java hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">DateTimeFormatter formatter =</span><br><span class="line">    DateTimeFormatter</span><br><span class="line">        .ofPattern(<span class="hljs-string">"MMM dd, yyyy - HH:mm"</span>);</span><br><span class="line">LocalDateTime parsed = LocalDateTime.parse(<span class="hljs-string">"Nov 03, 2014 - 07:13"</span>, formatter);</span><br><span class="line">String string = formatter.format(parsed);</span><br><span class="line">System.out.println(string);     <span class="hljs-comment">// Nov 03, 2014 - 07:13</span></span><br></pre></td></tr></tbody></table></figure>
+
+<p>和<code>java.text.NumberFormat</code>不一样的是新版的<code>DateTimeFormatter</code>是不可变的，所以它是线程安全的。</p>
+<p>关于Java8中日期API更多的使用示例可以参考<a href="http://blinkfox.com/java-8zhong-guan-yu-ri-qi-he-shi-jian-apide-20ge-shi-yong-shi-li/" target="_blank" rel="noopener">Java 8中关于日期和时间API的20个使用示例</a>。</p>
+<h2 id="八、重复注解"><a href="#八、重复注解" class="headerlink" title="八、重复注解"></a>八、重复注解</h2><p>自从Java 5引入了注解机制，这一特性就变得非常流行并且广为使用。然而，使用注解的一个限制是相同的注解在同一位置只能声明一次，不能声明多次。Java 8打破了这条规则，引入了重复注解机制，这样相同的注解可以在同一地方声明多次。</p>
+<p>重复注解机制本身必须用<code>@Repeatable</code>注解。事实上，这并不是语言层面上的改变，更多的是编译器的技巧，底层的原理保持不变。让我们看一个快速入门的例子：</p>
+<figure class="highlight java hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">import</span> java.lang.annotation.ElementType;</span><br><span class="line"><span class="hljs-keyword">import</span> java.lang.annotation.Repeatable;</span><br><span class="line"><span class="hljs-keyword">import</span> java.lang.annotation.Retention;</span><br><span class="line"><span class="hljs-keyword">import</span> java.lang.annotation.RetentionPolicy;</span><br><span class="line"><span class="hljs-keyword">import</span> java.lang.annotation.Target;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">RepeatingAnnotations</span> </span>{</span><br><span class="line"></span><br><span class="line">    <span class="hljs-meta">@Target</span>(ElementType.TYPE)</span><br><span class="line">    <span class="hljs-meta">@Retention</span>(RetentionPolicy.RUNTIME)</span><br><span class="line">    <span class="hljs-keyword">public</span> <span class="hljs-meta">@interface</span> Filters {</span><br><span class="line">        Filter[] value();</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="hljs-meta">@Target</span>(ElementType.TYPE)</span><br><span class="line">    <span class="hljs-meta">@Retention</span>(RetentionPolicy.RUNTIME)</span><br><span class="line">    <span class="hljs-meta">@Repeatable</span>(Filters<span class="hljs-class">.<span class="hljs-keyword">class</span>)</span></span><br><span class="line"><span class="hljs-class">    <span class="hljs-title">public</span> @<span class="hljs-title">interface</span> <span class="hljs-title">Filter</span> </span>{</span><br><span class="line">        <span class="hljs-function">String <span class="hljs-title">value</span><span class="hljs-params">()</span></span>;</span><br><span class="line">    };</span><br><span class="line"></span><br><span class="line">    <span class="hljs-meta">@Filter</span>(<span class="hljs-string">"filter1"</span>)</span><br><span class="line">    <span class="hljs-meta">@Filter</span>(<span class="hljs-string">"filter2"</span>)</span><br><span class="line">    <span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">interface</span> <span class="hljs-title">Filterable</span> </span>{</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>{</span><br><span class="line">        <span class="hljs-keyword">for</span>(Filter filter: Filterable<span class="hljs-class">.<span class="hljs-keyword">class</span>.<span class="hljs-title">getAnnotationsByType</span>(<span class="hljs-title">Filter</span>.<span class="hljs-title">class</span>)) </span>{</span><br><span class="line">            System.out.println(filter.value());</span><br><span class="line">        }</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<p>正如我们看到的，这里有个使用<code>@Repeatable(Filters.class)</code>注解的注解类<code>Filter</code>，<code>Filters</code>仅仅是<code>Filter</code>注解的数组，但Java编译器并不想让程序员意识到<code>Filters</code>的存在。这样，接口<code>Filterable</code>就拥有了两次<code>Filter</code>（并没有提到<code>Filter</code>）注解。</p>
+<p>同时，反射相关的API提供了新的函数<code>getAnnotationsByType()</code>来返回重复注解的类型（请注意<code>Filterable.class.getAnnotation(Filters.class</code>)`经编译器处理后将会返回Filters的实例）。</p>
+</body></html>
+        </div>
+        
+        <div class="level is-size-7 is-uppercase">
+            <div class="level-start">
+                <div class="level-item">
+                    <span class="is-size-6 has-text-grey has-mr-7">#</span>
+                    <a class="has-link-grey -link" href="/tags/Java/" rel="tag">Java</a>
+                </div>
+            </div>
+        </div>
+        
+        
+        
+        <div class="social-share"></div>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js@1.0.16/dist/css/share.min.css">
+<script src="https://cdn.jsdelivr.net/npm/social-share.js@1.0.16/dist/js/social-share.min.js"></script>
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="menu-label has-text-centered">喜欢这篇文章？打赏一下作者吧</h3>
+        <div class="buttons is-centered">
+            
+                
+<a class="button is-info donate">
+    <span class="icon is-small">
+        <i class="fab fa-alipay"></i>
+    </span>
+    <span>支付宝</span>
+    <div class="qrcode"><img src="/images/zhi.jpg" alt="支付宝"></div>
+</a>
+
+                
+                
+<a class="button is-success donate">
+    <span class="icon is-small">
+        <i class="fab fa-weixin"></i>
+    </span>
+    <span>微信</span>
+    <div class="qrcode"><img src="/images/wei.png" alt="微信"></div>
+</a>
+
+                
+        </div>
+    </div>
+</div>
+
+
+
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        <div class="level-start">
+            <a class="level level-item has-link-grey  article-nav-prev" href="/Commons%20Collections%E5%8C%85%E5%92%8C%E7%AE%80%E4%BB%8B/">
+                <i class="level-item fas fa-chevron-left"></i>
+                <span class="level-item">Apache Commons Collections包和简介</span>
+            </a>
+        </div>
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/Java8%E6%96%B0%E7%89%B9%E6%80%A7%E5%8F%8A%E4%BD%BF%E7%94%A8(%E4%BA%8C)/">
+                <span class="level-item">Java8新特性及使用(二)</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="title is-5 has-text-weight-normal">评论</h3>
+        
+<div id="valine-thread" class="content"></div>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+<script>
+    new Valine({
+        el: '#valine-thread' ,
+        notify: false,
+        verify: false,
+        app_id: 'pGtDpK5EpiLy1oMGmpFXAaV6-gzGzoHsz',
+        app_key: 'ra40Npwa5HY3ex482cDELW5j',
+        placeholder: 'xxxxxxxx'
+    });
+</script>
+
+    </div>
+</div>
+</div>
+                
+
+
+
+
+<div class="column is-4-tablet is-4-desktop is-3-widescreen  has-order-1 column-left ">
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <nav class="level">
+            <div class="level-item has-text-centered" style="flex-shrink: 1">
+                <div>
+                    
+                    <figure class="image is-128x128 has-mb-6">
+                        <img class="" src="/images/xueshao110.jpg" alt="一抹离愁">
+                    </figure>
+                    
+                    <p class="is-size-4 is-block">
+                        一抹离愁
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-block">
+                        一抹离愁
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-flex is-flex-center has-text-grey">
+                        <i class="fas fa-map-marker-alt has-mr-7"></i>
+                        <span>西安</span>
+                    </p>
+                    
+                </div>
+            </div>
+        </nav>
+        <nav class="level is-mobile">
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        文章
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        59
+                    </p>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        分类
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        9
+                    </p>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        标签
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        28
+                    </p>
+                </div>
+            </div>
+        </nav>
+        
+        <div class="level">
+            <a class="level-item button is-link is-rounded" href="https://github.com/xueliang0614" target="_blank">
+                关注我</a>
+        </div>
+        
+        
+        
+        <div class="level is-mobile">
+            
+            <a class="level-item button is-white is-marginless" target="_blank"
+                title="Github" href="https://github.com/xueliang0614">
+                
+                <i class="fab fa-github"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank"
+                title="CSDN" href="https://blog.csdn.net/xueshao110">
+                
+                <i class="fab fa-github"></i>
+                
+            </a>
+            
+        </div>
+        
+    </div>
+</div>
+    
+        
+    
+        <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+        <h3 class="menu-label">
+            链接
+        </h3>
+        <ul class="menu-list">
+        
+            <li>
+                <a class="level is-mobile" href="https://blog.csdn.net/xueshao110" target="_blank">
+                    <span class="level-left">
+                        <span class="level-item">CSDN</span>
+                    </span>
+                    <span class="level-right">
+                        <span class="level-item tag">blog.csdn.net</span>
+                    </span>
+                </a>
+            </li>
+        
+            <li>
+                <a class="level is-mobile" href="https://github.com/xueliang0614" target="_blank">
+                    <span class="level-left">
+                        <span class="level-item">github</span>
+                    </span>
+                    <span class="level-right">
+                        <span class="level-item tag">github.com</span>
+                    </span>
+                </a>
+            </li>
+        
+        </ul>
+        </div>
+    </div>
+</div>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css">
+<script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script>
+<!-- require MetingJS -->
+<script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script>
+
+    <meting-js style="margin-top: 1.5rem;width: auto;height: auto;"
+    server="netease"
+    type="playlist"
+    id="408894554"
+    theme="#2980b9"
+    loop="all"
+    autoplay="true"
+    order="random"
+    storageName="aplayer-setting"
+    lrctype= 0
+    >
+    </meting-js>
+<style>
+    .aplayer{
+        margin: 1.5rem 0;
+    }
+</style>
+
+
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                分类
+            </h3>
+            <ul class="menu-list">
+            <li>
+        <a class="level is-marginless" href="/categories/Android/">
+            <span class="level-start">
+                <span class="level-item">Android</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">5</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/%E5%89%8D%E7%AB%AF/">
+            <span class="level-start">
+                <span class="level-item">前端</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">4</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/%E5%90%8E%E7%AB%AF/">
+            <span class="level-start">
+                <span class="level-item">后端</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">21</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/%E5%AE%89%E5%85%A8/">
+            <span class="level-start">
+                <span class="level-item">安全</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/%E5%B0%8F%E7%A8%8B%E5%BA%8F/">
+            <span class="level-start">
+                <span class="level-item">小程序</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/">
+            <span class="level-start">
+                <span class="level-item">数据库</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/%E7%BC%96%E7%A8%8B%E4%B9%8B%E9%81%93/">
+            <span class="level-start">
+                <span class="level-item">编程之道</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">3</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E5%85%B7/">
+            <span class="level-start">
+                <span class="level-item">软件工具</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">8</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/%E8%BD%AF%E4%BB%B6%E8%AE%BE%E8%AE%A1/">
+            <span class="level-start">
+                <span class="level-item">软件设计</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">14</span>
+            </span>
+        </a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+    
+        <div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            标签云
+        </h3>
+        <a href="/tags/Android/" style="font-size: 16.67px;">Android</a> <a href="/tags/Apache/" style="font-size: 15px;">Apache</a> <a href="/tags/CPU%E7%BC%93%E5%AD%98/" style="font-size: 10px;">CPU缓存</a> <a href="/tags/DevOps/" style="font-size: 10px;">DevOps</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/GitLab-CI/" style="font-size: 10px;">GitLab CI</a> <a href="/tags/Google/" style="font-size: 10px;">Google</a> <a href="/tags/Java/" style="font-size: 20px;">Java</a> <a href="/tags/JavaScript/" style="font-size: 15px;">JavaScript</a> <a href="/tags/Jenkins/" style="font-size: 10px;">Jenkins</a> <a href="/tags/Linux/" style="font-size: 15px;">Linux</a> <a href="/tags/MVEL/" style="font-size: 11.67px;">MVEL</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/PostgreSQL/" style="font-size: 10px;">PostgreSQL</a> <a href="/tags/Spring/" style="font-size: 10px;">Spring</a> <a href="/tags/Typora/" style="font-size: 10px;">Typora</a> <a href="/tags/UML/" style="font-size: 11.67px;">UML</a> <a href="/tags/Vue/" style="font-size: 10px;">Vue</a> <a href="/tags/%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95/" style="font-size: 10px;">单元测试</a> <a href="/tags/%E5%AE%89%E5%85%A8/" style="font-size: 10px;">安全</a> <a href="/tags/%E5%B0%8F%E7%A8%8B%E5%BA%8F/" style="font-size: 10px;">小程序</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" style="font-size: 10px;">数据库</a> <a href="/tags/%E6%95%B4%E6%B4%81%E4%BB%A3%E7%A0%81/" style="font-size: 10px;">整洁代码</a> <a href="/tags/%E6%B5%8B%E8%AF%95/" style="font-size: 10px;">测试</a> <a href="/tags/%E8%AE%BE%E8%AE%A1%E5%8E%9F%E5%88%99/" style="font-size: 10px;">设计原则</a> <a href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" style="font-size: 18.33px;">设计模式</a> <a href="/tags/%E9%87%8D%E6%9E%84/" style="font-size: 10px;">重构</a> <a href="/tags/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%BC%96%E7%A8%8B/" style="font-size: 13.33px;">面向对象编程</a>
+    </div>
+</div>
+    
+    
+        <div class="column-right-shadow is-hidden-widescreen ">
+        
+            <div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            最新文章
+        </h3>
+        
+        <article class="media">
+            
+            <a href="/hello-world/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Hello World">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-03-06T03:18:23.363Z">2020-03-06</time></div>
+                    <a href="/hello-world/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Hello World</a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/%E5%85%B3%E4%BA%8E%E5%B0%8F%E7%A8%8B%E5%BA%8F/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/gallery/thumbnails/x.jpeg" alt="关于小程序">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-10-20T14:10:22.000Z">2019-10-20</time></div>
+                    <a href="/%E5%85%B3%E4%BA%8E%E5%B0%8F%E7%A8%8B%E5%BA%8F/" class="title has-link-black-ter is-size-6 has-text-weight-normal">关于小程序</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/%E5%B0%8F%E7%A8%8B%E5%BA%8F/">小程序</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/Android-%E8%87%AA%E5%AE%9A%E4%B9%89%E7%9B%B8%E6%9C%BA/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/gallery/thumbnails/c.jpg" alt="Android 自定义相机">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-04-21T14:42:52.000Z">2019-04-21</time></div>
+                    <a href="/Android-%E8%87%AA%E5%AE%9A%E4%B9%89%E7%9B%B8%E6%9C%BA/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Android 自定义相机</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Android/">Android</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/Android%E5%AE%9E%E7%8E%B0%E4%B8%AA%E4%BA%BA%E4%B8%AD%E5%BF%83%E8%AE%BE%E7%BD%AE%E7%95%8C%E9%9D%A2/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/gallery/thumbnails/b.jpg" alt="Android实现个人中心设置界面">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-03-28T14:35:49.000Z">2019-03-28</time></div>
+                    <a href="/Android%E5%AE%9E%E7%8E%B0%E4%B8%AA%E4%BA%BA%E4%B8%AD%E5%BF%83%E8%AE%BE%E7%BD%AE%E7%95%8C%E9%9D%A2/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Android实现个人中心设置界面</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Android/">Android</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/%E5%9F%BA%E4%BA%8E%E8%B0%B7%E6%AD%8Cmvp%E6%9E%B6%E6%9E%84/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/gallery/thumbnails/a.jpg" alt="基于谷歌mvp架构">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-03-03T14:27:59.000Z">2019-03-03</time></div>
+                    <a href="/%E5%9F%BA%E4%BA%8E%E8%B0%B7%E6%AD%8Cmvp%E6%9E%B6%E6%9E%84/" class="title has-link-black-ter is-size-6 has-text-weight-normal">基于谷歌mvp架构</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Android/">Android</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+    </div>
+</div>
+        
+            <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+        <h3 class="menu-label">
+            归档
+        </h3>
+        <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/03/">
+                <span class="level-start">
+                    <span class="level-item">三月 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/10/">
+                <span class="level-start">
+                    <span class="level-item">十月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/04/">
+                <span class="level-start">
+                    <span class="level-item">四月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/03/">
+                <span class="level-start">
+                    <span class="level-item">三月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">2</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/02/">
+                <span class="level-start">
+                    <span class="level-item">二月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2018/11/">
+                <span class="level-start">
+                    <span class="level-item">十一月 2018</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">4</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2018/10/">
+                <span class="level-start">
+                    <span class="level-item">十月 2018</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">7</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2018/09/">
+                <span class="level-start">
+                    <span class="level-item">九月 2018</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">9</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2018/08/">
+                <span class="level-start">
+                    <span class="level-item">八月 2018</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">2</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2018/07/">
+                <span class="level-start">
+                    <span class="level-item">七月 2018</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">4</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2018/06/">
+                <span class="level-start">
+                    <span class="level-item">六月 2018</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">4</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2018/05/">
+                <span class="level-start">
+                    <span class="level-item">五月 2018</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2018/04/">
+                <span class="level-start">
+                    <span class="level-item">四月 2018</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">2</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2018/03/">
+                <span class="level-start">
+                    <span class="level-item">三月 2018</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">4</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2018/02/">
+                <span class="level-start">
+                    <span class="level-item">二月 2018</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2018/01/">
+                <span class="level-start">
+                    <span class="level-item">一月 2018</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">4</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2017/12/">
+                <span class="level-start">
+                    <span class="level-item">十二月 2017</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2017/11/">
+                <span class="level-start">
+                    <span class="level-item">十一月 2017</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">3</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2017/10/">
+                <span class="level-start">
+                    <span class="level-item">十月 2017</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">2</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2017/09/">
+                <span class="level-start">
+                    <span class="level-item">九月 2017</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">3</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2017/06/">
+                <span class="level-start">
+                    <span class="level-item">六月 2017</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2017/04/">
+                <span class="level-start">
+                    <span class="level-item">四月 2017</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        </ul>
+        </div>
+    </div>
+</div>
+        
+            <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                标签
+            </h3>
+            <div class="field is-grouped is-grouped-multiline">
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Android/">
+                        <span class="tag">Android</span>
+                        <span class="tag is-grey">5</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Apache/">
+                        <span class="tag">Apache</span>
+                        <span class="tag is-grey">4</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/CPU%E7%BC%93%E5%AD%98/">
+                        <span class="tag">CPU缓存</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/DevOps/">
+                        <span class="tag">DevOps</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Git/">
+                        <span class="tag">Git</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/GitLab-CI/">
+                        <span class="tag">GitLab CI</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Google/">
+                        <span class="tag">Google</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Java/">
+                        <span class="tag">Java</span>
+                        <span class="tag is-grey">37</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/JavaScript/">
+                        <span class="tag">JavaScript</span>
+                        <span class="tag is-grey">4</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Jenkins/">
+                        <span class="tag">Jenkins</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Linux/">
+                        <span class="tag">Linux</span>
+                        <span class="tag is-grey">4</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/MVEL/">
+                        <span class="tag">MVEL</span>
+                        <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Markdown/">
+                        <span class="tag">Markdown</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/PostgreSQL/">
+                        <span class="tag">PostgreSQL</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Spring/">
+                        <span class="tag">Spring</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Typora/">
+                        <span class="tag">Typora</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/UML/">
+                        <span class="tag">UML</span>
+                        <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Vue/">
+                        <span class="tag">Vue</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95/">
+                        <span class="tag">单元测试</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/%E5%AE%89%E5%85%A8/">
+                        <span class="tag">安全</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/%E5%B0%8F%E7%A8%8B%E5%BA%8F/">
+                        <span class="tag">小程序</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/">
+                        <span class="tag">数据库</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/%E6%95%B4%E6%B4%81%E4%BB%A3%E7%A0%81/">
+                        <span class="tag">整洁代码</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/%E6%B5%8B%E8%AF%95/">
+                        <span class="tag">测试</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/%E8%AE%BE%E8%AE%A1%E5%8E%9F%E5%88%99/">
+                        <span class="tag">设计原则</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">
+                        <span class="tag">设计模式</span>
+                        <span class="tag is-grey">12</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/%E9%87%8D%E6%9E%84/">
+                        <span class="tag">重构</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%BC%96%E7%A8%8B/">
+                        <span class="tag">面向对象编程</span>
+                        <span class="tag is-grey">3</span>
+                    </a>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</div>
+        
+        </div>
+    
+</div>
+
+                
+
+
+
+
+<div class="column is-4-tablet is-4-desktop is-3-widescreen is-hidden-touch is-hidden-desktop-only has-order-3 column-right ">
+    
+        <div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            最新文章
+        </h3>
+        
+        <article class="media">
+            
+            <a href="/hello-world/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Hello World">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-03-06T03:18:23.363Z">2020-03-06</time></div>
+                    <a href="/hello-world/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Hello World</a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/%E5%85%B3%E4%BA%8E%E5%B0%8F%E7%A8%8B%E5%BA%8F/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/gallery/thumbnails/x.jpeg" alt="关于小程序">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-10-20T14:10:22.000Z">2019-10-20</time></div>
+                    <a href="/%E5%85%B3%E4%BA%8E%E5%B0%8F%E7%A8%8B%E5%BA%8F/" class="title has-link-black-ter is-size-6 has-text-weight-normal">关于小程序</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/%E5%B0%8F%E7%A8%8B%E5%BA%8F/">小程序</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/Android-%E8%87%AA%E5%AE%9A%E4%B9%89%E7%9B%B8%E6%9C%BA/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/gallery/thumbnails/c.jpg" alt="Android 自定义相机">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-04-21T14:42:52.000Z">2019-04-21</time></div>
+                    <a href="/Android-%E8%87%AA%E5%AE%9A%E4%B9%89%E7%9B%B8%E6%9C%BA/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Android 自定义相机</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Android/">Android</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/Android%E5%AE%9E%E7%8E%B0%E4%B8%AA%E4%BA%BA%E4%B8%AD%E5%BF%83%E8%AE%BE%E7%BD%AE%E7%95%8C%E9%9D%A2/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/gallery/thumbnails/b.jpg" alt="Android实现个人中心设置界面">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-03-28T14:35:49.000Z">2019-03-28</time></div>
+                    <a href="/Android%E5%AE%9E%E7%8E%B0%E4%B8%AA%E4%BA%BA%E4%B8%AD%E5%BF%83%E8%AE%BE%E7%BD%AE%E7%95%8C%E9%9D%A2/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Android实现个人中心设置界面</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Android/">Android</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/%E5%9F%BA%E4%BA%8E%E8%B0%B7%E6%AD%8Cmvp%E6%9E%B6%E6%9E%84/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/gallery/thumbnails/a.jpg" alt="基于谷歌mvp架构">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-03-03T14:27:59.000Z">2019-03-03</time></div>
+                    <a href="/%E5%9F%BA%E4%BA%8E%E8%B0%B7%E6%AD%8Cmvp%E6%9E%B6%E6%9E%84/" class="title has-link-black-ter is-size-6 has-text-weight-normal">基于谷歌mvp架构</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Android/">Android</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+    </div>
+</div>
+    
+        <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+        <h3 class="menu-label">
+            归档
+        </h3>
+        <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/03/">
+                <span class="level-start">
+                    <span class="level-item">三月 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/10/">
+                <span class="level-start">
+                    <span class="level-item">十月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/04/">
+                <span class="level-start">
+                    <span class="level-item">四月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/03/">
+                <span class="level-start">
+                    <span class="level-item">三月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">2</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/02/">
+                <span class="level-start">
+                    <span class="level-item">二月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2018/11/">
+                <span class="level-start">
+                    <span class="level-item">十一月 2018</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">4</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2018/10/">
+                <span class="level-start">
+                    <span class="level-item">十月 2018</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">7</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2018/09/">
+                <span class="level-start">
+                    <span class="level-item">九月 2018</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">9</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2018/08/">
+                <span class="level-start">
+                    <span class="level-item">八月 2018</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">2</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2018/07/">
+                <span class="level-start">
+                    <span class="level-item">七月 2018</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">4</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2018/06/">
+                <span class="level-start">
+                    <span class="level-item">六月 2018</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">4</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2018/05/">
+                <span class="level-start">
+                    <span class="level-item">五月 2018</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2018/04/">
+                <span class="level-start">
+                    <span class="level-item">四月 2018</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">2</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2018/03/">
+                <span class="level-start">
+                    <span class="level-item">三月 2018</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">4</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2018/02/">
+                <span class="level-start">
+                    <span class="level-item">二月 2018</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2018/01/">
+                <span class="level-start">
+                    <span class="level-item">一月 2018</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">4</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2017/12/">
+                <span class="level-start">
+                    <span class="level-item">十二月 2017</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2017/11/">
+                <span class="level-start">
+                    <span class="level-item">十一月 2017</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">3</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2017/10/">
+                <span class="level-start">
+                    <span class="level-item">十月 2017</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">2</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2017/09/">
+                <span class="level-start">
+                    <span class="level-item">九月 2017</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">3</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2017/06/">
+                <span class="level-start">
+                    <span class="level-item">六月 2017</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2017/04/">
+                <span class="level-start">
+                    <span class="level-item">四月 2017</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        </ul>
+        </div>
+    </div>
+</div>
+    
+        <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                标签
+            </h3>
+            <div class="field is-grouped is-grouped-multiline">
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Android/">
+                        <span class="tag">Android</span>
+                        <span class="tag is-grey">5</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Apache/">
+                        <span class="tag">Apache</span>
+                        <span class="tag is-grey">4</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/CPU%E7%BC%93%E5%AD%98/">
+                        <span class="tag">CPU缓存</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/DevOps/">
+                        <span class="tag">DevOps</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Git/">
+                        <span class="tag">Git</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/GitLab-CI/">
+                        <span class="tag">GitLab CI</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Google/">
+                        <span class="tag">Google</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Java/">
+                        <span class="tag">Java</span>
+                        <span class="tag is-grey">37</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/JavaScript/">
+                        <span class="tag">JavaScript</span>
+                        <span class="tag is-grey">4</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Jenkins/">
+                        <span class="tag">Jenkins</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Linux/">
+                        <span class="tag">Linux</span>
+                        <span class="tag is-grey">4</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/MVEL/">
+                        <span class="tag">MVEL</span>
+                        <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Markdown/">
+                        <span class="tag">Markdown</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/PostgreSQL/">
+                        <span class="tag">PostgreSQL</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Spring/">
+                        <span class="tag">Spring</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Typora/">
+                        <span class="tag">Typora</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/UML/">
+                        <span class="tag">UML</span>
+                        <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Vue/">
+                        <span class="tag">Vue</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95/">
+                        <span class="tag">单元测试</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/%E5%AE%89%E5%85%A8/">
+                        <span class="tag">安全</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/%E5%B0%8F%E7%A8%8B%E5%BA%8F/">
+                        <span class="tag">小程序</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/">
+                        <span class="tag">数据库</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/%E6%95%B4%E6%B4%81%E4%BB%A3%E7%A0%81/">
+                        <span class="tag">整洁代码</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/%E6%B5%8B%E8%AF%95/">
+                        <span class="tag">测试</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/%E8%AE%BE%E8%AE%A1%E5%8E%9F%E5%88%99/">
+                        <span class="tag">设计原则</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">
+                        <span class="tag">设计模式</span>
+                        <span class="tag is-grey">12</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/%E9%87%8D%E6%9E%84/">
+                        <span class="tag">重构</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%BC%96%E7%A8%8B/">
+                        <span class="tag">面向对象编程</span>
+                        <span class="tag is-grey">3</span>
+                    </a>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</div>
+    
+    
+</div>
+
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+    <div class="container">
+        <div class="level">
+            <div class="level-start has-text-centered-mobile">
+			
+			<script type="text/javascript" src="//rf.revolvermaps.com/0/0/6.js?i=5spvzwvaykj&amp;m=7&amp;c=e63100&amp;cr1=ffffff&amp;f=arial&amp;l=0&amp;bv=90&amp;lx=-420&amp;ly=420&amp;hi=20&amp;he=7&amp;hc=a8ddff&amp;rs=80" async="async"></script>
+			
+                <a class="footer-logo is-block has-mb-6" href="/">
+                
+                    <img src="/images/ava.png" alt="Java8新特性及使用(一)" height="28">
+                
+                </a>
+                <p class="is-size-7">
+                &copy; 2020 blinkfox&nbsp;
+                Powered by <a href="https://hexo.io/" target="_blank">Hexo</a> & <a
+                        href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank">Icarus</a>
+                
+                </p>
+            </div>
+            <div class="level-end">
+            
+                <div class="field has-addons is-flex-center-mobile has-mt-5-mobile is-flex-wrap is-flex-middle">
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="Creative Commons" href="https://creativecommons.org/">
+                        
+                        <i class="fab fa-creative-commons"></i>
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/">
+                        
+                        <i class="fab fa-creative-commons-by"></i>
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="Download on GitHub" href="https://github.com/ppoffice/hexo-theme-icarus">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                </p>
+                
+                </div>
+            
+            </div>
+        </div>
+    </div>
+</footer>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script>
+<script>moment.locale("zh-CN");</script>
+
+<script>
+var IcarusThemeSettings = {
+    article: {
+        highlight: {
+            clipboard: true,
+            fold: 'unfolded'
+        }
+    }
+};
+</script>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script>
+
+
+
+    
+    
+<script src="/js/animation.js"></script>
+
+    
+    
+<script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script>
+<script src="/js/gallery.js" defer></script>
+
+    
+    
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/" target="_blank" rel="noopener">Update
+            my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.js" defer></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        });
+    });
+</script>
+
+    
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.5/unpacked/MathJax.js?config=TeX-MML-AM_CHTML" defer></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    MathJax.Hub.Config({
+        'HTML-CSS': {
+            matchFontHeight: false
+        },
+        SVG: {
+            matchFontHeight: false
+        },
+        CommonHTML: {
+            matchFontHeight: false
+        },
+        tex2jax: {
+            inlineMath: [
+                ['$','$'],
+                ['\\(','\\)']
+            ]
+        }
+    });
+});
+</script>
+    
+    
+<a id="back-to-top" title="回到顶端" href="javascript:;">
+    <i class="fas fa-chevron-up"></i>
+</a>
+<script src="/js/back-to-top.js" defer></script>
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+
+<script src="/js/main.js" defer></script>
+
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="想要查找什么..." />
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '页面',
+                CATEGORIES: '分类',
+                TAGS: '标签',
+                UNTITLED: '(无标题)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script src="/js/insight.js" defer></script>
+<link rel="stylesheet" href="/css/search.css">
+<link rel="stylesheet" href="/css/insight.css">
+    
+	
+	<!-- 雪花特效 -->
+    <script type="text/javascript">
+      var windowWidth = $(window).width();
+      if (windowWidth > 480) {
+        document.write('<script type="text/javascript" src="/js/src/snow.js"><\/script>');
+      }
+    </script>
+	
+	<script type="text/javascript" src="//rf.revolvermaps.com/0/0/6.js?i=5spvzwvaykj&amp;m=7&amp;c=e63100&amp;cr1=ffffff&amp;f=arial&amp;l=0&amp;bv=90&amp;lx=-420&amp;ly=420&amp;hi=20&amp;he=7&amp;hc=a8ddff&amp;rs=80" async="async"></script>
+
+</body>
+</html>

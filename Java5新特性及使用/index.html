@@ -1,0 +1,2094 @@
+<!DOCTYPE html>
+<html  lang="zh">
+<head>
+    <meta charset="utf-8" />
+
+<meta name="generator" content="Hexo 4.2.0" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+<title>Java5新特性及使用 - һĨ���</title>
+
+
+    <meta name="description" content="新特性列表以下是Java5中的引入的部分新特性，关于更详细的新特性了解，可参考这里。  泛型(Generics) 增强for循环(Enhanced for Loop) 自动装箱拆箱(Autoboxing&#x2F;Unboxing) 枚举(Enums) 可变参数(Varargs) 静态导入(Static Import) 注解(Annotations) 值得关注 进程构建器(ProcessBuilder) 格">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java5新特性及使用">
+<meta property="og:url" content="http://www.xl06.xyz/Java5%E6%96%B0%E7%89%B9%E6%80%A7%E5%8F%8A%E4%BD%BF%E7%94%A8/index.html">
+<meta property="og:site_name" content="һĨ���">
+<meta property="og:description" content="新特性列表以下是Java5中的引入的部分新特性，关于更详细的新特性了解，可参考这里。  泛型(Generics) 增强for循环(Enhanced for Loop) 自动装箱拆箱(Autoboxing&#x2F;Unboxing) 枚举(Enums) 可变参数(Varargs) 静态导入(Static Import) 注解(Annotations) 值得关注 进程构建器(ProcessBuilder) 格">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://www.xl06.xyz/images/og_image.png">
+<meta property="article:published_time" content="2018-04-08T16:30:00.000Z">
+<meta property="article:modified_time" content="2018-12-03T10:05:00.740Z">
+<meta property="article:author" content="һĨ���">
+<meta property="article:tag" content="Java">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://www.xl06.xyz/images/og_image.png">
+
+
+
+
+
+
+
+<link rel="icon" href="/images/favicon.svg">
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-light.css">
+
+
+    
+    
+<style>body>.footer,body>.navbar,body>.section{opacity:0}</style>
+
+    
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css">
+
+    
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.css">
+
+    
+    
+    
+    
+<link rel="stylesheet" href="/css/back-to-top.css">
+
+    
+    
+    
+    
+    
+    
+    
+    <link rel="stylesheet" href="/css/progressbar.css">
+<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+    
+    
+    
+
+
+<link rel="stylesheet" href="/css/style.css">
+	<script src="/js/src/click.js"></script>
+</head>
+<body class="is-3-column">
+    <nav class="navbar navbar-main">
+    <div class="container">
+        <div class="navbar-brand is-flex-center">
+            <a class="navbar-item navbar-logo" href="/">
+            
+                <img src="/images/ava.png" alt="Java5新特性及使用" height="28">
+            
+            </a>
+        </div>
+        <div class="navbar-menu">
+            
+            <div class="navbar-start">
+                
+                <a class="navbar-item"
+                href="/">首页</a>
+                
+                <a class="navbar-item"
+                href="/archives">归档</a>
+                
+                <a class="navbar-item"
+                href="/categories">分类</a>
+                
+                <a class="navbar-item"
+                href="/tags">标签</a>
+                
+                <a class="navbar-item"
+                href="/about">关于</a>
+                
+                <a class="navbar-item"
+                href="/project">作品</a>
+                
+            </div>
+            
+            <div class="navbar-end">
+                
+                    
+                    <a class="navbar-item" target="_blank" title="Download on GitHub" href="https://github.com/xueliang0614">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                    
+                
+                
+                
+                <a class="navbar-item search" title="搜索" href="javascript:;">
+                    <i class="fas fa-search"></i>
+                </a>
+                
+            </div>
+        </div>
+    </div>
+</nav>
+    
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main">
+<div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2018-04-08T16:30:00.000Z">2018-04-09</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/%E5%90%8E%E7%AB%AF/">后端</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    1 小时 读完 (大约 7695 个字)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                Java5新特性及使用
+            
+        </h1>
+        <div class="content">
+            <html><head></head><body><h2 id="新特性列表"><a href="#新特性列表" class="headerlink" title="新特性列表"></a>新特性列表</h2><p>以下是Java5中的引入的部分新特性，关于更详细的新特性了解，可参考<a href="https://docs.oracle.com/javase/1.5.0/docs/relnotes/features.html" target="_blank" rel="noopener">这里</a>。</p>
+<ul>
+<li>泛型(Generics)</li>
+<li>增强for循环(Enhanced for Loop)</li>
+<li>自动装箱拆箱(Autoboxing/Unboxing)</li>
+<li>枚举(Enums)</li>
+<li>可变参数(Varargs)</li>
+<li>静态导入(Static Import)</li>
+<li>注解(Annotations)</li>
+<li>值得关注<ul>
+<li>进程构建器(ProcessBuilder)</li>
+<li>格式化(Formatter)</li>
+<li>扫描器(Scanner)</li>
+<li>反射(Reflection)</li>
+<li>集合框架(Collections Framework)</li>
+<li>并发工具类(Concurrency Utilities)</li>
+<li>StringBuilder</li>
+</ul>
+</li>
+<li>其它(others)</li>
+</ul>
+<h2 id="一、泛型-Generics"><a href="#一、泛型-Generics" class="headerlink" title="一、泛型(Generics)"></a>一、泛型(Generics)</h2><h3 id="1-概述"><a href="#1-概述" class="headerlink" title="1. 概述"></a>1. 概述</h3><p>Java语言引入泛型的好处是安全简单。可以将运行时错误提前到编译时错误。在Java5之前，没有泛型的情况的下，通过对类型Object的引用来实现参数的<strong>任意化</strong>，<strong>任意化</strong>带来的缺点是要做显式的强制类型转换，而这种转换是要求开发者对实际参数类型可以预知的情况下进行的。对于强制类型转换错误的情况，编译器可能不提示错误，在运行的时候才出现异常，这是一个安全隐患。泛型的好处是在编译的时候检查类型安全，并且所有的强制转换都是自动和隐式的，提高代码的重用率。</p>
+<p>泛型的本质是<strong>参数化类型</strong>，也就是说所操作的数据类型被指定为一个参数。这种参数类型可以用在类、接口和方法中，分别称为泛型类、泛型接口、泛型方法。</p>
+<h3 id="2-泛型类、泛型接口"><a href="#2-泛型类、泛型接口" class="headerlink" title="2. 泛型类、泛型接口"></a>2. 泛型类、泛型接口</h3><p>泛型类中的类型参数几乎可以用于任何可以使用接口名、类名的地方。以下是Jdk中Map接口的定义：</p>
+<figure class="highlight java hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">interface</span> <span class="hljs-title">Map</span><<span class="hljs-title">K</span>,<span class="hljs-title">V</span>> </span>{</span><br><span class="line"></span><br><span class="line">    <span class="hljs-function">V <span class="hljs-title">get</span><span class="hljs-params">(Object key)</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-function">V <span class="hljs-title">put</span><span class="hljs-params">(K key, V value)</span></span>;</span><br><span class="line"></span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<p>当声明或者实例化一个泛型的对象时，必须指定类型参数的值：</p>
+<figure class="highlight java hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Map<Integer, String> map = <span class="hljs-keyword">new</span> HashMap<Integer, String>();</span><br></pre></td></tr></tbody></table></figure>
+
+<p>对于常见的泛型模式，推荐的名称是：</p>
+<ul>
+<li>K: 键</li>
+<li>V: 值</li>
+<li>E: 异常类</li>
+<li>T: 泛型</li>
+</ul>
+<h3 id="3-泛型方法"><a href="#3-泛型方法" class="headerlink" title="3. 泛型方法"></a>3. 泛型方法</h3><h4 id="1-定义泛型方法"><a href="#1-定义泛型方法" class="headerlink" title="(1). 定义泛型方法"></a>(1). 定义泛型方法</h4><p>泛型方法使得该方法能独立于类而产生变化。以下是一个基本的指导原则：<strong>无论何时，只要你能做到，你就应该尽量使用泛型方法</strong>。也就是说，如果使用泛型方法可以取代将整个类泛型化，那么就应该只使用泛型方法，因为它可以使事情更清楚明白。要定义泛型方法，只需<strong>将泛型参数列表置于返回值之前</strong>，就像下面这样：</p>
+<figure class="highlight java hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">GenericMethods</span> </span>{</span><br><span class="line"></span><br><span class="line">    <span class="hljs-comment">//当方法操作的引用数据类型不确定的时候，可以将泛型定义在方法上</span></span><br><span class="line">    <span class="hljs-keyword">public</span> <T> <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">f</span><span class="hljs-params">(T x)</span></span>{</span><br><span class="line">        System.out.println(x.getClass().getName());</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>{</span><br><span class="line">        GenericMethods gm = <span class="hljs-keyword">new</span> GenericMethods();</span><br><span class="line">        gm.f(<span class="hljs-number">99</span>);</span><br><span class="line">        gm.f(<span class="hljs-string">"abc"</span>);</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<h4 id="2-可变参数泛型方法"><a href="#2-可变参数泛型方法" class="headerlink" title="(2). 可变参数泛型方法"></a>(2). 可变参数泛型方法</h4><p>泛型方法与可变参数列表能很好地共存。</p>
+<figure class="highlight java hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">GenericVarargs</span> </span>{</span><br><span class="line"></span><br><span class="line">    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <T> <span class="hljs-function">List<T> <span class="hljs-title">makeList</span><span class="hljs-params">(T... args)</span> </span>{</span><br><span class="line">        List<T> result = <span class="hljs-keyword">new</span> ArrayList<T>();</span><br><span class="line">        <span class="hljs-keyword">for</span>(T item:args) {</span><br><span class="line">            result.add(item);</span><br><span class="line">        }</span><br><span class="line">        <span class="hljs-keyword">return</span> result;</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>{</span><br><span class="line">        List ls = makeList(<span class="hljs-string">"A"</span>);</span><br><span class="line">        System.out.println(ls);</span><br><span class="line">        ls = makeList(<span class="hljs-string">"A"</span>,<span class="hljs-string">"B"</span>,<span class="hljs-string">"C"</span>);</span><br><span class="line">        System.out.println(ls);</span><br><span class="line">        ls = makeList(<span class="hljs-string">"ABCDEFGHIJKLMNOPQRSTUVWXYZ"</span>.split(<span class="hljs-string">""</span>));</span><br><span class="line">        System.out.println(ls);</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<blockquote>
+<p><strong>注</strong>：静态方法无法访问类上定义的泛型。如果静态方法操作的引用数据类型不确定的时候，必须要将泛型定义在方法上。</p>
+</blockquote>
+<h3 id="4-泛型擦除"><a href="#4-泛型擦除" class="headerlink" title="4. 泛型擦除"></a>4. 泛型擦除</h3><p>看以下一段代码：</p>
+<figure class="highlight java hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ErasedTypeEquivalence</span> </span>{</span><br><span class="line"></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>{</span><br><span class="line">        Class c1 = <span class="hljs-keyword">new</span> ArrayList<String>().getClass();</span><br><span class="line">        Class c2 = <span class="hljs-keyword">new</span> ArrayList<Integer>().getClass();</span><br><span class="line">        System.out.println(c1 == c2); <span class="hljs-comment">// 输出true.</span></span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<p>从以上代码的执行结果可以知道，<code>ArrayList<String></code>和<code>ArrayList<Integer></code>是相同的类型。Java中的泛型，只在编译阶段有效。在编译过程中，正确检验泛型结果后，会将泛型的相关信息擦出，并且在对象进入和离开方法的边界处添加类型检查和类型转换的方法。也就是说，成功编译过后的class文件中是不包含任何泛型信息的。泛型信息不会进入到运行时阶段。</p>
+<p>要想在表达式中使用类型，需要显式地传递类型的class对象。</p>
+<figure class="highlight java hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Building</span> </span>{</span><br><span class="line"></span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<figure class="highlight java hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">House</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Building</span> </span>{</span><br><span class="line"></span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<figure class="highlight java hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ClassTypeCapture</span><<span class="hljs-title">T</span>> </span>{</span><br><span class="line"></span><br><span class="line">    Class<T> kind;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">ClassTypeCapture</span><span class="hljs-params">(Class<T> kind)</span> </span>{</span><br><span class="line">        <span class="hljs-keyword">this</span>.kind = kind;</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">f</span><span class="hljs-params">(Object arg)</span> </span>{</span><br><span class="line">        <span class="hljs-keyword">return</span> kind.isInstance(arg);</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>{</span><br><span class="line">        ClassTypeCapture<Building> ctt1 = <span class="hljs-keyword">new</span> ClassTypeCapture<Building>(Building<span class="hljs-class">.<span class="hljs-keyword">class</span>)</span>;</span><br><span class="line">        System.out.println(ctt1.f(<span class="hljs-keyword">new</span> Building())); <span class="hljs-comment">// true</span></span><br><span class="line">        System.out.println(ctt1.f(<span class="hljs-keyword">new</span> House())); <span class="hljs-comment">// true</span></span><br><span class="line">        ClassTypeCapture<House> ctt2 = <span class="hljs-keyword">new</span> ClassTypeCapture<House>(House<span class="hljs-class">.<span class="hljs-keyword">class</span>)</span>;</span><br><span class="line">        System.out.println(ctt2.f(<span class="hljs-keyword">new</span> Building())); <span class="hljs-comment">// false</span></span><br><span class="line">        System.out.println(ctt2.f(<span class="hljs-keyword">new</span> House())); <span class="hljs-comment">// true</span></span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<h3 id="5-通配符及泛型边界"><a href="#5-通配符及泛型边界" class="headerlink" title="5. 通配符及泛型边界"></a>5. 通配符及泛型边界</h3><ul>
+<li>通配符(<code>?</code>): 当操作类型时，不需要使用类型的具体功能时，只使用<code>Object</code>类中的功能。那么可以用<code>?</code>通配符来表未知类型。例如：<code>Class<?> classType = Class.forName("java.lang.String");</code>。</li>
+<li>上界(<code>? extends T</code>): 可以接收<code>T</code>类型或者其子类型的对象。</li>
+<li>下界(<code>? super E</code>): 可以接收<code>T</code>类型或者其父类型的对象。</li>
+</ul>
+<h3 id="6-泛型总结"><a href="#6-泛型总结" class="headerlink" title="6. 泛型总结"></a>6. 泛型总结</h3><ul>
+<li>泛型的类型参数只能是类类型，不能是基本数据类型。</li>
+<li>泛型的类型参数可以有多个。</li>
+<li>所有泛型类的类型参数在编译时都会被擦除。</li>
+<li>创建泛型对象时请指明类型，让编译器尽早的做参数检查。</li>
+<li>不能创建泛型数组。如果想要创建泛型数组，建议使用<code>ArrayList</code>。</li>
+<li>使用带泛型的类创建对象时，等式两边指定的泛型必须一致。</li>
+<li>泛型的好处：<ul>
+<li>类型安全。</li>
+<li>消除强制类型转换。</li>
+<li>提高性能。</li>
+</ul>
+</li>
+</ul>
+<h2 id="二、增强for循环-Enhanced-for-Loop"><a href="#二、增强for循环-Enhanced-for-Loop" class="headerlink" title="二、增强for循环(Enhanced for Loop)"></a>二、增强for循环(Enhanced for Loop)</h2><p>在Java5中，引入了另一种形式的for循环来对集合、数组、Map等进行遍历。如以下示例：</p>
+<figure class="highlight java hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">int</span>[] integers = {<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>};</span><br><span class="line"><span class="hljs-comment">/* 开始遍历 */</span></span><br><span class="line"><span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i : integers) {</span><br><span class="line">    System.out.println(i);<span class="hljs-comment">/* 依次输出“1”、“2”、“3”、“4” */</span></span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<p>借助增强for循环，可以用一种更简单地方式来完成遍历。能用这种方法遍历的对象的类型，可以是数组、<code>Collection</code>、<code>Map</code>或者任何其它实现了<code>java.lang.Iterable</code>接口的类。通过跟同样是在Java5中引入的泛型机制配合使用，可以精确的控制能采用的循环变量的类型。而且，因为这么编写的代码，会在编译期间被自动当成是和传统写法相同的形式，所以不必担心要额外付出性能方面的代价。</p>
+<blockquote>
+<p><strong>注</strong>：Java采用<code>for</code>（而不是意义更明确的<code>foreach</code>）来引导这种一般被叫做<strong>for-each循环</strong>的循环，并使用<code>:</code>（而不是意义更明确的<code>in</code>）来分割循环变量名称和要被遍历的对象。这样做的主要原因，是为了避免因为引入新的关键字，造成兼容性方面的问题——在Java语言中，不允许把关键字当作变量名来使用，虽然使用<code>foreach</code>这名字的情况并不是非常多，但是<code>in</code>却是一个经常用来表示输入流的名字（例如<code>java.lang.System</code>类里，就有一个名字叫做<code>in</code>的<code>static</code>属性，表示<strong>标准输入流</strong>）。</p>
+</blockquote>
+<h2 id="三、自动装箱拆箱-Autoboxing-Unboxing"><a href="#三、自动装箱拆箱-Autoboxing-Unboxing" class="headerlink" title="三、自动装箱拆箱(Autoboxing/Unboxing)"></a>三、自动装箱拆箱(Autoboxing/Unboxing)</h2><h3 id="1-概述-1"><a href="#1-概述-1" class="headerlink" title="1. 概述"></a>1. 概述</h3><p>自动装箱就是Java自动将原始类型值转换成对应的对象，比如将<code>int</code>的变量转换成<code>Integer</code>对象，这个过程叫做装箱，反之将<code>Integer</code>对象转换成<code>int</code>类型值，这个过程叫做拆箱。因为这里的装箱和拆箱是自动进行的非人为转换，所以就称作为自动装箱和拆箱。原始类型<code>byte</code>, <code>short</code>, <code>char</code>, <code>int</code>, <code>long</code>, <code>float</code>, <code>double</code>和<code>boolean</code>对应的封装类分别为<code>Byte</code>, <code>Short</code>, <code>Character</code>, <code>Integer</code>, <code>Long</code>, <code>Float</code>, <code>Double</code>, <code>Boolean</code>。</p>
+<p>自动装箱时编译器调用<code>valueOf</code>将原始类型值转换成对象，同时自动拆箱时，编译器通过调用类似<code>intValue()</code>, <code>doubleValue()</code>这类的方法将对象转换成原始类型值。自动装箱和拆箱在Java中很常见，比如我们有一个方法，接受一个对象类型的参数，如果我们传递一个原始类型值，那么Java会自动将这个原始类型值转换成与之对应的对象。最经典的一个场景就是当我们向<code>ArrayList</code>这样的容器中增加原始类型数据时，就会发生自动装箱。代码示例如下：</p>
+<figure class="highlight java hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">ArrayList<Integer> intList = <span class="hljs-keyword">new</span> ArrayList<Integer>();</span><br><span class="line">intList.add(<span class="hljs-number">1</span>); <span class="hljs-comment">//自动装箱</span></span><br><span class="line">intList.add(<span class="hljs-number">2</span>); <span class="hljs-comment">// 自动装箱</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">int</span> number = intList.get(<span class="hljs-number">0</span>); <span class="hljs-comment">// 自动拆箱</span></span><br></pre></td></tr></tbody></table></figure>
+
+<h3 id="2-对象相等的比较"><a href="#2-对象相等的比较" class="headerlink" title="2. 对象相等的比较"></a>2. 对象相等的比较</h3><p>这是一个比较容易出错的地方，<code>==</code>可以用于原始值进行比较，也可以用于对象进行比较，当用于对象与对象之间比较时，比较的不是对象代表的值，而是检查两个对象是否是同一对象，这个比较过程中<strong>没有自动装箱</strong>发生。进行对象值比较不应该使用<code>==</code>，而应该使用对象对应的<code>equals</code>方法。看一个能说明问题的例子。</p>
+<figure class="highlight java hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">AutoboxingTest</span> </span>{</span><br><span class="line"></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String args[])</span> </span>{</span><br><span class="line">        <span class="hljs-comment">// 示例 1: 使用'=='号进行原始类型的比较(没有自动装箱)</span></span><br><span class="line">        <span class="hljs-keyword">int</span> i1 = <span class="hljs-number">1</span>;</span><br><span class="line">        <span class="hljs-keyword">int</span> i2 = <span class="hljs-number">1</span>;</span><br><span class="line">        System.out.println(<span class="hljs-string">"i1==i2 : "</span> + (i1 == i2)); <span class="hljs-comment">// true</span></span><br><span class="line"></span><br><span class="line">        <span class="hljs-comment">// 示例 2: 使用'=='号进行原始类型和对象类型混合的比较(自动装箱)</span></span><br><span class="line">        Integer num1 = <span class="hljs-number">1</span>;</span><br><span class="line">        <span class="hljs-keyword">int</span> num2 = <span class="hljs-number">1</span>;</span><br><span class="line">        System.out.println(<span class="hljs-string">"num1 == num2 : "</span> + (num1 == num2)); <span class="hljs-comment">// true</span></span><br><span class="line"></span><br><span class="line">        <span class="hljs-comment">// 示例 3: 使用'=='号进行Integer对象类型的比较(会有缓存的特殊情况)</span></span><br><span class="line">        Integer obj1 = <span class="hljs-number">127</span>; <span class="hljs-comment">// 自动装箱将调用`Integer.valueOf()`且缓存该对象，以便重用</span></span><br><span class="line">        Integer obj2 = <span class="hljs-number">127</span>; <span class="hljs-comment">// 获取已经缓存过的对象</span></span><br><span class="line">        System.out.println(<span class="hljs-string">"obj1 == obj2 : "</span> + (obj1 == obj2)); <span class="hljs-comment">// true</span></span><br><span class="line"></span><br><span class="line">       <span class="hljs-comment">// 示例 4: 使用'=='号进行Integer对象类型的比较(不会缓存)</span></span><br><span class="line">        Integer obj3 = <span class="hljs-number">128</span>; <span class="hljs-comment">// 自动装箱将调用`Integer.valueOf()`不缓存该对象</span></span><br><span class="line">        Integer obj4 = <span class="hljs-number">128</span>; <span class="hljs-comment">// 同样是自动装箱将调用`Integer.valueOf()`</span></span><br><span class="line">        System.out.println(<span class="hljs-string">"obj3 == obj4 : "</span> + (obj3 == obj4)); <span class="hljs-comment">// false</span></span><br><span class="line"></span><br><span class="line">        <span class="hljs-comment">// 示例 5: 使用'=='号进行`new`出来的新`Integer`对象类型的比较</span></span><br><span class="line">        Integer one = <span class="hljs-keyword">new</span> Integer(<span class="hljs-number">1</span>); <span class="hljs-comment">// no autoboxing</span></span><br><span class="line">        Integer anotherOne = <span class="hljs-keyword">new</span> Integer(<span class="hljs-number">1</span>);</span><br><span class="line">        System.out.println(<span class="hljs-string">"one == anotherOne : "</span> + (one == anotherOne)); <span class="hljs-comment">// false</span></span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<h3 id="3-缓存部分对象"><a href="#3-缓存部分对象" class="headerlink" title="3. 缓存部分对象"></a>3. 缓存部分对象</h3><p>输出结果：</p>
+<figure class="highlight bash hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">i1==i2 : <span class="hljs-literal">true</span></span><br><span class="line">num1 == num2 : <span class="hljs-literal">true</span></span><br><span class="line">obj1 == obj2 : <span class="hljs-literal">true</span></span><br><span class="line">obj3 == obj4 : <span class="hljs-literal">false</span></span><br><span class="line">one == anotherOne : <span class="hljs-literal">false</span></span><br></pre></td></tr></tbody></table></figure>
+
+<p>在 Java5 中，为<code>Integer</code>的操作引入了一个新的特性，会对<code>-128</code>到<code>127</code>的<code>Integer</code>对象进行缓存，当创建新的<code>Integer</code>对象时，如果符合这个这个范围，并且已有存在的相同值的对象，则返回这个对象，否则创建新的<code>Integer</code>对象。这种<code>Integer</code>缓存策略仅在<strong>自动装箱（autoboxing）</strong>的时候有用，使用构造器创建的<code>Integer</code>对象不能被缓存。</p>
+<p><code>Integer</code>类中有一个专门的私有静态内部类<code>IntegerCache</code>来负责<code>Integer</code>的缓存。代码如下：</p>
+<figure class="highlight java hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">/**</span></span><br><span class="line"><span class="hljs-comment"> * Cache to support the object identity semantics of autoboxing for values between</span></span><br><span class="line"><span class="hljs-comment"> * -128 and 127 (inclusive) as required by JLS.</span></span><br><span class="line"><span class="hljs-comment"> *</span></span><br><span class="line"><span class="hljs-comment"> * The cache is initialized on first usage.  The size of the cache</span></span><br><span class="line"><span class="hljs-comment"> * may be controlled by the {<span class="hljs-doctag">@code</span> -XX:AutoBoxCacheMax=<size>} option.</span></span><br><span class="line"><span class="hljs-comment"> * During VM initialization, java.lang.Integer.IntegerCache.high property</span></span><br><span class="line"><span class="hljs-comment"> * may be set and saved in the private system properties in the</span></span><br><span class="line"><span class="hljs-comment"> * sun.misc.VM class.</span></span><br><span class="line"><span class="hljs-comment"> */</span></span><br><span class="line"><span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">IntegerCache</span> </span>{</span><br><span class="line">    <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> <span class="hljs-keyword">int</span> low = -<span class="hljs-number">128</span>;</span><br><span class="line">    <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> <span class="hljs-keyword">int</span> high;</span><br><span class="line">    <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> Integer cache[];</span><br><span class="line"></span><br><span class="line">    <span class="hljs-keyword">static</span> {</span><br><span class="line">        <span class="hljs-comment">// high value may be configured by property</span></span><br><span class="line">        <span class="hljs-keyword">int</span> h = <span class="hljs-number">127</span>;</span><br><span class="line">        String integerCacheHighPropValue =</span><br><span class="line">            sun.misc.VM.getSavedProperty(<span class="hljs-string">"java.lang.Integer.IntegerCache.high"</span>);</span><br><span class="line">        <span class="hljs-keyword">if</span> (integerCacheHighPropValue != <span class="hljs-keyword">null</span>) {</span><br><span class="line">            <span class="hljs-keyword">try</span> {</span><br><span class="line">                <span class="hljs-keyword">int</span> i = parseInt(integerCacheHighPropValue);</span><br><span class="line">                i = Math.max(i, <span class="hljs-number">127</span>);</span><br><span class="line">                <span class="hljs-comment">// Maximum array size is Integer.MAX_VALUE</span></span><br><span class="line">                h = Math.min(i, Integer.MAX_VALUE - (-low) -<span class="hljs-number">1</span>);</span><br><span class="line">            } <span class="hljs-keyword">catch</span>( NumberFormatException nfe) {</span><br><span class="line">                <span class="hljs-comment">// If the property cannot be parsed into an int, ignore it.</span></span><br><span class="line">            }</span><br><span class="line">        }</span><br><span class="line">        high = h;</span><br><span class="line"></span><br><span class="line">        cache = <span class="hljs-keyword">new</span> Integer[(high - low) + <span class="hljs-number">1</span>];</span><br><span class="line">        <span class="hljs-keyword">int</span> j = low;</span><br><span class="line">        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> k = <span class="hljs-number">0</span>; k < cache.length; k++)</span><br><span class="line">            cache[k] = <span class="hljs-keyword">new</span> Integer(j++);</span><br><span class="line"></span><br><span class="line">        <span class="hljs-comment">// range [-128, 127] must be interned (JLS7 5.1.7)</span></span><br><span class="line">        <span class="hljs-keyword">assert</span> IntegerCache.high >= <span class="hljs-number">127</span>;</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-title">IntegerCache</span><span class="hljs-params">()</span> </span>{}</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<p>Javadoc详细的说明这个类是用来实现缓存支持，并支持<code>-128</code>到<code>127</code>之间的自动装箱过程。最大值<code>127</code>可以通过JVM的启动参数<code>-XX:AutoBoxCacheMax=size</code>修改。 缓存通过一个<code>for</code>循环实现。从小到大的创建尽可能多的整数并存储在一个名为<code>cache</code>的整数数组中。这个缓存会在<code>Integer</code>类第一次被使用的时候被初始化出来。以后，就可以使用缓存中包含的实例对象，而不是创建一个新的实例(在自动装箱的情况下)。</p>
+<p>这种缓存行为不仅适用于<code>Integer</code>对象。我们针对所有整数类型的类都有类似的缓存机制。</p>
+<ul>
+<li><code>ByteCache</code>用于缓存<code>Byte</code>对象</li>
+<li><code>ShortCache</code>用于缓存<code>Short</code>对象</li>
+<li><code>LongCache</code>用于缓存<code>Long</code>对象</li>
+<li><code>CharacterCache</code>用于缓存<code>Character</code>对象</li>
+</ul>
+<p><code>Byte</code>，<code>Short</code>，<code>Long</code>有固定范围:<code>-128</code>到<code>127</code>。对于<code>Character</code>, 范围是<code>0</code>到<code>127</code>。除了<code>Integer</code>可以通过参数改变范围外，其它的都不行。</p>
+<blockquote>
+<p><strong>注</strong>：在Java中另一个节省内存的例子就是<strong>字符串常量池</strong>。</p>
+</blockquote>
+<h3 id="4-自动装箱拆箱的隐患"><a href="#4-自动装箱拆箱的隐患" class="headerlink" title="4. 自动装箱拆箱的隐患"></a>4. 自动装箱拆箱的隐患</h3><p>另一个需要避免的问题就是混乱使用对象和原始数据值，一个具体的例子就是当我们在一个原始数据值与一个对象进行比较时，如果这个对象没有进行初始化或者为<code>null</code>，在自动拆箱过程中<code>obj.xxxValue</code>，会抛出<code>NullPointerException</code>，如下面的代码:</p>
+<figure class="highlight java hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> Integer count;</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">//NullPointerException on unboxing</span></span><br><span class="line"><span class="hljs-keyword">if</span> (count <= <span class="hljs-number">0</span>) {</span><br><span class="line">    System.out.println(<span class="hljs-string">"Count is not started yet"</span>);</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<p>因为自动装箱会隐式地创建对象，像前面提到的那样，如果在一个循环体中，会创建无用的中间对象，这样会增加GC压力，拉低程序的性能。所以在写循环时一定要注意代码，避免引入不必要的自动装箱操作。</p>
+<h2 id="四、枚举-Enums"><a href="#四、枚举-Enums" class="headerlink" title="四、枚举(Enums)"></a>四、枚举(Enums)</h2><p>枚举（<code>enum</code>全称为<code>enumeration</code>）类型是 Java5 新增的类型，存放在<code>java.lang</code>包中，允许用常量来表示特定的数据片断，而且全部都以类型安全的形式来表示。</p>
+<p>关于枚举的介绍，这里就不再细讲了，请参考我以前所整理的<a href="http://blinkfox.com/java-mei-ju-zhi-shi-zheng-li/" target="_blank" rel="noopener">Java 枚举知识整理</a>一文。</p>
+<h2 id="五、可变参数-Varargs"><a href="#五、可变参数-Varargs" class="headerlink" title="五、可变参数(Varargs)"></a>五、可变参数(Varargs)</h2><h3 id="1-基本使用"><a href="#1-基本使用" class="headerlink" title="1. 基本使用"></a>1. 基本使用</h3><p>在 Java5 中提供了可变参数（<code>Varargs</code>），也就是在方法定义中可以使用个数不确定的参数，对于同一方法可以使用不同个数的参数调用，例如<code>print("hello");</code>、<code>print("hello","lisi");</code>等。下面介绍如何定义可变长参数以及如何使用可变长参数。</p>
+<p>使用<code>...</code>表示可变长参数，例如：</p>
+<figure class="highlight java hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">print(String... args) {</span><br><span class="line">   <span class="hljs-comment">// 方法代码</span></span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<p>在具有可变长参数的方法中可以把参数当成数组使用，例如可以循环输出所有的参数值。</p>
+<figure class="highlight java hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">print(String... args) {</span><br><span class="line">    <span class="hljs-keyword">for</span>(String temp:args) {</span><br><span class="line">        System.out.println(temp);</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<p>调用的时候可以给出任意多个参数也可不给参数，例如：</p>
+<figure class="highlight java hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">print();</span><br><span class="line">print(<span class="hljs-string">"hello"</span>);</span><br><span class="line">print(<span class="hljs-string">"hello"</span>,<span class="hljs-string">"lisi"</span>);</span><br></pre></td></tr></tbody></table></figure>
+
+<h3 id="2-可变参数的使用规则"><a href="#2-可变参数的使用规则" class="headerlink" title="2. 可变参数的使用规则"></a>2. 可变参数的使用规则</h3><ul>
+<li>拥有可变参数的方法可以被重载，在调用方法的时候，如果能够和固定参数的方法匹配，也能够与可变参数的方法匹配，则执行时会选择固定参数的方法。</li>
+<li>如果要调用的方法可以和两个可变参数匹配，则编译不会通过。</li>
+<li>一个方法只能有一个可变参数，并且这个可变参数必须是该方法的最后一个参数。</li>
+<li>可变参数可以兼容数组参数，但数组参数无法兼容可变参数。即在方法中定义可变参数后，我们可以像操作数组一样操作该参数；</li>
+</ul>
+<h3 id="3-可变参数的使用规范"><a href="#3-可变参数的使用规范" class="headerlink" title="3. 可变参数的使用规范"></a>3. 可变参数的使用规范</h3><ul>
+<li>避免带有可变参数的方法重载，容易让人陷入调用的陷阱及误区。</li>
+<li>别让<code>null</code>值和空值威胁到可变参数的方法。</li>
+<li>覆写可变参数方法也要满足以下的条件:<ul>
+<li>重写方法不能缩小访问权限。</li>
+<li>参数列表必须与被重写方法相同（包括显示形式）。</li>
+<li>返回类型必须与被重写方法的相同或是其子类。</li>
+<li>重写方法不能抛出新的异常，或者超过了父类范围的异常，但是可以抛出更少、更有限的异常，或者不抛出异常。</li>
+</ul>
+</li>
+</ul>
+<h2 id="六、静态导入-Static-Import"><a href="#六、静态导入-Static-Import" class="headerlink" title="六、静态导入(Static Import)"></a>六、静态导入(Static Import)</h2><p><code>import static</code>，即静态导入是JDK5中的新特性。一般我们导入一个类都用<code>import com.xxx.ClassName;</code>，而静态导入是这样的：<code>import static com.xxx.ClassName.*;</code>。这里多了个<code>static</code>，还有就是类名<code>ClassName</code>后面多了个<code>.*</code>，意思是导入这个类里的所有静态方法。当然，也可以只导入某个静态方法，只要把<code>.*</code>换成具体的静态方法名就行了。然后在这个类中，就可以直接用方法名调用静态方法，而不必用<code>ClassName.方法名</code>的方式来调用。</p>
+<p>静态导入之前的代码：</p>
+<figure class="highlight java hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">double</span> r = Math.cos(Math.PI * theta);</span><br></pre></td></tr></tbody></table></figure>
+
+<p>使用静态导入之后的代码：</p>
+<figure class="highlight java hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">import</span> <span class="hljs-keyword">static</span> java.lang.Math.*;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">double</span> r = cos(PI * theta);</span><br></pre></td></tr></tbody></table></figure>
+
+<p><strong>当你需要频繁访问一个或两个类的静态成员、静态方法时才使用静态导入</strong>。如果您过度的使用了静态导入功能，则可能导致您的程序无法读取且无法维护，从而导致您导入的所有静态成员和方法污染其名称空间。你的代码读者（包括你，在你写了几个月后）不会知道静态成员来自哪个类。从类中导入所有静态成员对可读性尤其有害，如果您只需要一个或两个成员，请单独导入它们。使用适当的，静态导入可以使您的程序更具可读性，通过删除重复的类名称，来减少样板代码。</p>
+<h2 id="七、注解-Annotations"><a href="#七、注解-Annotations" class="headerlink" title="七、注解(Annotations)"></a>七、注解(Annotations)</h2><p>关于注解的介绍，这里就不再细讲了，请参考我前段时间所写的<a href="http://blinkfox.com/javazhu-jie-de-li-jie-he-ying-yong/" target="_blank" rel="noopener">Java注解的理解和应用</a>一文。</p>
+<h2 id="八、值得关注"><a href="#八、值得关注" class="headerlink" title="八、值得关注"></a>八、值得关注</h2><h3 id="1-新增ProcessBuilder类"><a href="#1-新增ProcessBuilder类" class="headerlink" title="1. 新增ProcessBuilder类"></a>1. 新增ProcessBuilder类</h3><p><code>ProcessBuilder</code>类是Java5在<code>java.lang</code>包中新添加的一个新类，此类用于创建操作系统进程，它提供一种启动和管理进程（也就是应用程序）的方法。在此之前，都是由<code>Process</code>类处来实现进程的控制管理。每个<code>ProcessBuilder</code>实例管理一个进程属性集。它的<code>start()</code>方法利用这些属性创建一个新的<code>Process</code>实例。<code>start()</code>方法可以从同一实例重复调用，以利用相同的或相关的属性创建新的子进程。</p>
+<p><code>ProcessBuilder</code>是一个<code>final</code>类，有两个带参数的构造方法，你可以通过构造方法来直接创建<code>ProcessBuilder</code>的对象。而<code>Process</code>是一个抽象类，一般都通过<code>Runtime.exec()</code>和<code>ProcessBuilder.start()</code>来间接创建其实例。<code>ProcessBuilder</code>为进程提供了更多的控制，例如，可以设置当前工作目录，还可以改变环境参数。而<code>Process</code>类的功能相对来说简单的多。<code>ProcessBuilder</code>类不是同步的。如果多个线程同时访问一个<code>ProcessBuilder</code>，而其中至少一个线程从结构上修改了其中一个属性，它必须保持外部同步。</p>
+<p>若要使用<code>ProcessBuilder</code>创建一个进程，只需要创建<code>ProcessBuilder</code>的一个实例，指定该进程的名称和所需参数。要执行此程序，调用该实例上的<code>start()</code>即可。下面是一个执行打开<code>Windows</code>记事本的例子。注意它将要编辑的文件名指定为一个参数。</p>
+<figure class="highlight java hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">PBDemo</span> </span>{</span><br><span class="line"></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String args[])</span> </span>{</span><br><span class="line">        <span class="hljs-keyword">try</span> {</span><br><span class="line">            ProcessBuilder proc = <span class="hljs-keyword">new</span> ProcessBuilder(<span class="hljs-string">"notepad.exe"</span>, <span class="hljs-string">"testfile"</span>);</span><br><span class="line">            proc.start();</span><br><span class="line">        } <span class="hljs-keyword">catch</span> (Exception e) {</span><br><span class="line">            System.out.println(<span class="hljs-string">"Error executing notepad."</span>);</span><br><span class="line">        }</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<h3 id="2-新增Formatter格式化器-Formatter"><a href="#2-新增Formatter格式化器-Formatter" class="headerlink" title="2. 新增Formatter格式化器(Formatter)"></a>2. 新增Formatter格式化器(Formatter)</h3><p><code>Formatter</code>类是Java5中新增的<code>printf-style</code>格式化字符串的解释器，它提供对布局和对齐的支持，提供了对数字，字符串和日期/时间数据的常用格式以及特定于语言环境的输出。常见的Java类型，如<code>byte</code>，<code>java.math.BigDecimal</code>和<code>java.util.Calendar</code>都支持。 通过<code>java.util.Formattable</code>接口提供了针对任意用户类型的有限格式定制。</p>
+<p>更详细的介绍见<a href="https://docs.oracle.com/javase/1.5.0/docs/api/java/util/Formatter.html" target="_blank" rel="noopener">这里</a>。主要使用方法的代码示例如下：</p>
+<figure class="highlight java hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">import</span> java.io.BufferedReader;</span><br><span class="line"><span class="hljs-keyword">import</span> java.io.FileReader;</span><br><span class="line"><span class="hljs-keyword">import</span> java.text.MessageFormat;</span><br><span class="line"><span class="hljs-keyword">import</span> java.text.SimpleDateFormat;</span><br><span class="line"><span class="hljs-keyword">import</span> java.util.*;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">import</span> org.slf4j.Logger;</span><br><span class="line"><span class="hljs-keyword">import</span> org.slf4j.LoggerFactory;</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">/**</span></span><br><span class="line"><span class="hljs-comment"> * 格式化测试使用的示例类.</span></span><br><span class="line"><span class="hljs-comment"> *</span></span><br><span class="line"><span class="hljs-comment"> * <span class="hljs-doctag">@author</span> blinkfox on 2017-11-28.</span></span><br><span class="line"><span class="hljs-comment"> */</span></span><br><span class="line"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">FormatTester</span> </span>{</span><br><span class="line"></span><br><span class="line">    <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> Logger log = LoggerFactory.getLogger(FormatTester<span class="hljs-class">.<span class="hljs-keyword">class</span>)</span>;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-comment">/**</span></span><br><span class="line"><span class="hljs-comment">     * 格式化.</span></span><br><span class="line"><span class="hljs-comment">     */</span></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">formatter</span><span class="hljs-params">()</span> </span>{</span><br><span class="line">        StringBuilder sb = <span class="hljs-keyword">new</span> StringBuilder();</span><br><span class="line">        Formatter formatter = <span class="hljs-keyword">new</span> Formatter(sb, Locale.US);</span><br><span class="line"></span><br><span class="line">        <span class="hljs-comment">// 可重新排序输出.</span></span><br><span class="line">        formatter.format(<span class="hljs-string">"%n%4$2s %3$2s %2$2s %1$2s %n"</span>, <span class="hljs-string">"a"</span>, <span class="hljs-string">"b"</span>, <span class="hljs-string">"c"</span>, <span class="hljs-string">"d"</span>); <span class="hljs-comment">// -> " d  c  b  a"</span></span><br><span class="line">        formatter.format(Locale.FRANCE, <span class="hljs-string">"e = %+10.4f"</span>, Math.E); <span class="hljs-comment">// -> "e =    +2,7183"</span></span><br><span class="line">        formatter.format(<span class="hljs-string">"%nAmount gained or lost since last statement: $ %(,.2f"</span>, <span class="hljs-number">6217.58</span>);</span><br><span class="line">        <span class="hljs-comment">// -> "Amount gained or lost since last statement: $ 6,217.58"</span></span><br><span class="line"></span><br><span class="line">        log.info(<span class="hljs-string">"打印出格式化后的字符串:{}"</span>, formatter);</span><br><span class="line">        formatter.close();</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="hljs-comment">/**</span></span><br><span class="line"><span class="hljs-comment">     * printf打印.</span></span><br><span class="line"><span class="hljs-comment">     */</span></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">printf</span><span class="hljs-params">()</span> </span>{</span><br><span class="line">        String filename = <span class="hljs-string">"testfile"</span>;</span><br><span class="line">        <span class="hljs-keyword">try</span> (FileReader fileReader = <span class="hljs-keyword">new</span> FileReader(filename)) {</span><br><span class="line">            BufferedReader reader = <span class="hljs-keyword">new</span> BufferedReader(fileReader);</span><br><span class="line">            String line;</span><br><span class="line">            <span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>;</span><br><span class="line">            <span class="hljs-keyword">while</span> ((line = reader.readLine()) != <span class="hljs-keyword">null</span>) {</span><br><span class="line">                System.out.printf(<span class="hljs-string">"Line %d: %s%n"</span>, i++, line);</span><br><span class="line">            }</span><br><span class="line">        } <span class="hljs-keyword">catch</span> (Exception e) {</span><br><span class="line">            System.err.printf(<span class="hljs-string">"Unable to open file named '%s': %s"</span>, filename, e.getMessage());</span><br><span class="line">        }</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="hljs-comment">/**</span></span><br><span class="line"><span class="hljs-comment">     * stringFormat使用.</span></span><br><span class="line"><span class="hljs-comment">     */</span></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">stringFormat</span><span class="hljs-params">()</span> </span>{</span><br><span class="line">        <span class="hljs-comment">// 格式化日期.</span></span><br><span class="line">        Calendar c = <span class="hljs-keyword">new</span> GregorianCalendar(<span class="hljs-number">1995</span>, Calendar.MAY, <span class="hljs-number">23</span>);</span><br><span class="line">        String s = String.format(<span class="hljs-string">"Duke's Birthday: %1$tm %1$te,%1$tY"</span>, c);</span><br><span class="line">        <span class="hljs-comment">// -> s == "Duke's Birthday: May 23, 1995"</span></span><br><span class="line">        log.info(s);</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="hljs-comment">/**</span></span><br><span class="line"><span class="hljs-comment">     * 格式化消息.</span></span><br><span class="line"><span class="hljs-comment">     */</span></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">messageFormat</span><span class="hljs-params">()</span> </span>{</span><br><span class="line">        String msg = <span class="hljs-string">"欢迎光临，当前（{0}）等待的业务受理的顾客有{1}位，请排号办理业务！"</span>;</span><br><span class="line">        MessageFormat mf = <span class="hljs-keyword">new</span> MessageFormat(msg);</span><br><span class="line">        String fmsg = mf.format(<span class="hljs-keyword">new</span> Object[]{<span class="hljs-keyword">new</span> Date(), <span class="hljs-number">35</span>});</span><br><span class="line">        log.info(fmsg);</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="hljs-comment">/**</span></span><br><span class="line"><span class="hljs-comment">     * 格式化日期.</span></span><br><span class="line"><span class="hljs-comment">     */</span></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">dateFormat</span><span class="hljs-params">()</span> </span>{</span><br><span class="line">        String str = <span class="hljs-string">"2010-1-10 17:39:21"</span>;</span><br><span class="line">        SimpleDateFormat format = <span class="hljs-keyword">new</span> SimpleDateFormat(<span class="hljs-string">"yyyyMMddHHmmss"</span>);</span><br><span class="line">        <span class="hljs-keyword">try</span> {</span><br><span class="line">            log.info(<span class="hljs-string">"格式化后的日期:{}"</span>, format.format(format.parse(str)));</span><br><span class="line">        } <span class="hljs-keyword">catch</span> (Exception e) {</span><br><span class="line">            log.error(<span class="hljs-string">"日期格式化出错！"</span>, e);</span><br><span class="line">        }</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>{</span><br><span class="line">        formatter();</span><br><span class="line">        stringFormat();</span><br><span class="line">        messageFormat();</span><br><span class="line">        dateFormat();</span><br><span class="line">        printf();</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<h3 id="3-新增Scanner类-Scanner"><a href="#3-新增Scanner类-Scanner" class="headerlink" title="3. 新增Scanner类(Scanner)"></a>3. 新增Scanner类(Scanner)</h3><p><code>java.util.Scanner</code>是Java5的新特征，主要功能是简化文本扫描，但这个类最实用的地方还是在获取控制台输入。</p>
+<h4 id="1-Scanner概述"><a href="#1-Scanner概述" class="headerlink" title="(1). Scanner概述"></a>(1). Scanner概述</h4><p>可以从字符串(<code>Readable</code>)、输入流、文件、Channel等来直接构造Scanner对象，有了Scanner了，就可以逐段（根据正则分隔式）来扫描整个文本，并对扫描后的结果做想要的处理。</p>
+<p><code>Scanner</code>默认使用<strong>空格</strong>作为分割符来分隔文本，但允许你使用<code>useDelimiter(Pattern pattern)</code>或<code>useDelimiter(String pattern)</code>方法来指定新的分隔符。</p>
+<p>主要API如下：</p>
+<ul>
+<li><code>delimiter()</code>: 返回此<code>Scanner</code>当前正在用于匹配分隔符的<code>Pattern</code>。</li>
+<li><code>hasNext()</code>: 判断扫描器中当前扫描位置后是否还存在下一段。</li>
+<li><code>hasNextLine()</code>: 如果在此扫描器的输入中存在另一行，则返回true。</li>
+<li><code>next()</code>: 查找并返回来自此扫描器的下一个完整标记。</li>
+<li><code>nextLine()</code>: 此扫描器执行当前行，并返回跳过的输入信息。</li>
+</ul>
+<h4 id="2-扫描控制台输入"><a href="#2-扫描控制台输入" class="headerlink" title="(2). 扫描控制台输入"></a>(2). 扫描控制台输入</h4><p>当通过<code>new Scanner(System.in)</code>创建了一个<code>Scanner</code>实例时，控制台会一直等待输入，直到敲回车键结束，把所输入的内容传给<code>Scanner</code>，作为扫描对象。如果要获取输入的内容，则只需要调用<code>Scanner</code>的<code>nextLine()</code>方法即可。</p>
+<figure class="highlight java hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">/**</span></span><br><span class="line"><span class="hljs-comment">* 扫描控制台输入.</span></span><br><span class="line"><span class="hljs-comment">*</span></span><br><span class="line"><span class="hljs-comment">* <span class="hljs-doctag">@author</span> blinkfox 2017-11-28</span></span><br><span class="line"><span class="hljs-comment">*/</span></span><br><span class="line"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ScannerTest</span> </span>{</span><br><span class="line"></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>{</span><br><span class="line">        Scanner s = <span class="hljs-keyword">new</span> Scanner(System.in);</span><br><span class="line">        System.out.println(<span class="hljs-string">"请输入字符串："</span>);</span><br><span class="line">        <span class="hljs-keyword">while</span> (<span class="hljs-keyword">true</span>) {</span><br><span class="line">            String line = s.nextLine();</span><br><span class="line">            <span class="hljs-keyword">if</span> (line.equals(<span class="hljs-string">"exit"</span>)) <span class="hljs-keyword">break</span>;</span><br><span class="line">            System.out.println(<span class="hljs-string">">>>"</span> + line);</span><br><span class="line">        }</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<h4 id="3-其它示例"><a href="#3-其它示例" class="headerlink" title="(3).其它示例"></a>(3).其它示例</h4><p>该示例中会从<code>myNumbers</code>文件中读取长整型<code>long</code>的数据。</p>
+<figure class="highlight java hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Scanner sc = <span class="hljs-keyword">new</span> Scanner(<span class="hljs-keyword">new</span> File(<span class="hljs-string">"myNumbers"</span>));</span><br><span class="line"><span class="hljs-keyword">while</span> (sc.hasNextLong()) {</span><br><span class="line">    <span class="hljs-keyword">long</span> aLong = sc.nextLong();</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<p>以下示例可以使用除空格之外的分隔符来从一个字符串中读取几个条目：</p>
+<figure class="highlight java hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">String input = <span class="hljs-string">"1 fish 2 fish red fish blue fish"</span>;</span><br><span class="line">Scanner s = <span class="hljs-keyword">new</span> Scanner(input).useDelimiter(<span class="hljs-string">"\\s*fish\\s*"</span>);</span><br><span class="line">System.out.println(s.nextInt());</span><br><span class="line">System.out.println(s.nextInt());</span><br><span class="line">System.out.println(s.next());</span><br><span class="line">System.out.println(s.next());</span><br><span class="line">s.close();</span><br></pre></td></tr></tbody></table></figure>
+
+<p>将输出：</p>
+<figure class="highlight bash hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">red</span><br><span class="line">blue</span><br></pre></td></tr></tbody></table></figure>
+
+<h3 id="4-增强反射功能-Reflection"><a href="#4-增强反射功能-Reflection" class="headerlink" title="4. 增强反射功能(Reflection)"></a>4. 增强反射功能(Reflection)</h3><p>Java5反射功能方面的增强主要在<code>java.lang.Class</code>和<code>java.lang.reflect</code>类中。</p>
+<p>主要有以下内容增强：</p>
+<ul>
+<li><strong>支持泛型</strong>: 可以检查类型、方法、构造方法或字段的声明并获取泛型所对应的类型信息。</li>
+<li><strong>支持注解</strong>: 通过使用<code>getAnnotation()</code>方法获取已经在运行时标记为可用的方法和构造方法的类型，方法，字段，构造方法和形式参数的注释。人们还可以确定一个接口是否是一个注解类型。</li>
+<li><strong>支持枚举</strong>: 可以确定一个类是否是一个枚举，以及一个字段是否代表一个枚举常量。</li>
+<li><strong>支持可变参数</strong>: 可以确定一个方法或构造方法是否是可变参数方法。</li>
+<li><strong>便利的方法</strong>: 用于确定一个类是否是本地的、匿名的还是成员类，以及一个类型的简单名称是什么。</li>
+<li><strong>java.lang.Class类型标记</strong>: 允许使用<code>java.lang.Class</code>的实例作为类型标记。</li>
+</ul>
+<h3 id="5-增强集合框架-Collections-Framework"><a href="#5-增强集合框架-Collections-Framework" class="headerlink" title="5. 增强集合框架(Collections Framework)"></a>5. 增强集合框架(Collections Framework)</h3><p>在Java5中<a href="https://docs.oracle.com/javase/1.5.0/docs/guide/collections/changes5.html" target="_blank" rel="noopener">集合框架的增强</a>主要在以下几个方面：</p>
+<ul>
+<li>三种新语言特性都有针对集合，包括<strong>泛型</strong>，<strong>增强for循环</strong>和<strong>自动装箱</strong>。</li>
+<li>三个新的接口已被添加到集合框架中，分别是：<code>Queue</code>，<code>BlockingQueue</code>和<code>ConcurrentMap</code>（后两个位于<code>java.util.concurrent</code>包中）。</li>
+<li>提供了两个新的具体队列实现(<code>PriorityQueue</code>、<code>ConcurrentLinkedQueue</code>)，一个现有的列表实现已经被改造来实现队列(<code>LinkedList</code>)，并且提供了一个抽象队列实现(<code>AbstractQueue</code>)。</li>
+<li>已经添加了五个阻塞队列实现，以及一个ConcurrentMap实现，分别是：<code>ArrayBlockingQueue</code>, <code>LinkedBlockingQueue</code>, <code>PriorityBlockingQueue</code>, <code>DelayQueue</code>, <code>SynchronousQueue</code>、<code>ConcurrentHashMap</code>。</li>
+<li>为类型安全的枚举提供了特殊用途的Map和Set实现。(<code>EnumMap</code>和<code>EnumSet</code>)</li>
+<li>添加了特殊用途的<code>copy-on-write</code>List和Set实现，分别是：<code>CopyOnWriteArrayList</code>和<code>CopyOnWriteArraySet</code>。</li>
+<li>提供了包装器的实现来对大多数<code>Collection</code>接口添加动态类型安全性的检查(<code>Collections.checkedInterface</code>)。检查要添加的元素的类型并返回结果。任何尝试添加非法类型的变量都会抛出一个<code>ClassCastException</code>异常。这个功能可以防止在运行的时候出错。</li>
+<li>提供了几个新的算法来处理集合。<ul>
+<li><code>frequency(Collection<?> c, Object o)</code> - 计算指定集合中指定元素出现的次数。</li>
+<li><code>disjoint(Collection<?> c1, Collection<?> c2)</code> - 判断两个集合是否不相交，换句话说，是否它们不包含任何共同的元素。</li>
+<li><code>addAll(Collection<? super T> c, T... a)</code> - 将指定数组中的所有元素添加到指定的集合中。</li>
+<li><code>Comparator<T> reverseOrder(Comparator<T> cmp)</code> - 返回一个比较器，表示指定比较器的反向排序。</li>
+</ul>
+</li>
+<li>提供了计算哈希代码和字符串表示的方法。<code>Arrays</code>工具类已经为所有类型的数组提供了基于内容的<code>hashCode</code>和<code>toString</code>方法。 这些方法补充了现有的<code>equals</code>方法。现在可以打印任何数组的内容。</li>
+</ul>
+<h3 id="6-并发工具类-Concurrency-Utilities"><a href="#6-并发工具类-Concurrency-Utilities" class="headerlink" title="6. 并发工具类(Concurrency Utilities)"></a>6. 并发工具类(Concurrency Utilities)</h3><p><code>java.util.concurrent</code>，<code>java.util.concurrent.atomic</code>和<code>java.util.concurrent.locks</code>包为开发并发类应用程序提供了一个强大的，可扩展的高性能，可伸缩，线程安全构建框架，包括 线程池，线程安全集合，信号量，任务调度框架，任务同步实用程序，原子变量和锁。将这些软件包添加到核心类库可以使程序员免去手工制作这些工具的需要，这与集合框架用于数据结构的方式大致相同。关于并发相关的的介绍会在以后更详细的来讲解。</p>
+<h3 id="7-StringBuilder"><a href="#7-StringBuilder" class="headerlink" title="7. StringBuilder"></a>7. StringBuilder</h3><p><code>StringBuilder</code>也是Java5中新增的类，主要用来代替<code>+</code>号和<code>StringBuffer</code>来更加高效的拼接字符串。<code>StringBuffer</code>与<code>StringBuilder</code>都是继承于<code>AbstractStringBuilder</code>，主要的区别就是<code>StringBuffer</code>的函数上都有<code>synchronized</code>关键字，保证线程安全。</p>
+<p>关于<code>StringBuilder</code>的使用这里就不再详细介绍了，网上文章也有很多。总之，对于<strong>动态字符串</strong>的拼接推荐使用<code>StringBuilder</code>。<strong>静态字符串</strong>的拼接直接使用<code>+</code>号或者字符串的<code>concat(String str)</code>方法，甚至也使用<code>StringBuilder</code>亦可。</p>
+<h2 id="九、其它-others"><a href="#九、其它-others" class="headerlink" title="九、其它(others)"></a>九、其它(others)</h2><ul>
+<li><strong>Instrumentation</strong>: 使用<code>java.lang.instrument</code>，开发者可以构建一个代理，用来监测运行在JVM上的程序。它类似一种更低级，更松耦合的AOP，可以从底层来改变一个类的行为。</li>
+<li><strong>Networking</strong>: 网络编程功能增强。</li>
+<li><strong>Internationalization</strong>: 国际化是设计一个应用程序的过程，以便它可以适应各种语言和地区而无需改变工程。国际化这个术语缩写为<code>i18n</code>，因为在第一个<code>i</code>和最后一个<code>n</code>之间有<code>18</code>个字母。</li>
+<li><strong>改善了环境变量的支持</strong>: <code>System.getenv(String)</code>方法不再被弃用。新的<code>System.getenv()</code>方法允许作为<code>Map <String，String></code>访问进程环境。</li>
+<li><strong>JAXP</strong>: 用于XML处理的<code>Java API(JAXP)</code>包括通过标准化的Java平台API来处理XML文档的基本设施。</li>
+<li><strong>Serialization</strong>: 已经添加了支持来处理5.0版本中新增的枚举类型。序列化枚举实例的规则与序列化<strong>普通</strong>可序列化对象的规则不同：枚举实例的序列化形式仅由其枚举常量名以及标识其基本枚举类型的信息组成。 反序列化行为也不相同 - 类信息用于查找适当的枚举类，并且<code>Enum.valueOf</code>方法与该类和所接收的常量名称一起被调用，以便获取返回的枚举常量。</li>
+<li><strong>监控和管理</strong>: Java5为Java平台的监视和管理提供了显着的增强。</li>
+<li>…</li>
+</ul>
+<hr>
+<p>参考文档:</p>
+<ul>
+<li><a href="https://segmentfault.com/a/1190000004417288" target="_blank" rel="noopener">Java5的新特性</a></li>
+<li><a href="https://docs.oracle.com/javase/1.5.0/docs/relnotes/features.html" target="_blank" rel="noopener">Oracle Java文档</a></li>
+</ul>
+</body></html>
+        </div>
+        
+        <div class="level is-size-7 is-uppercase">
+            <div class="level-start">
+                <div class="level-item">
+                    <span class="is-size-6 has-text-grey has-mr-7">#</span>
+                    <a class="has-link-grey -link" href="/tags/Java/" rel="tag">Java</a>
+                </div>
+            </div>
+        </div>
+        
+        
+        
+        <div class="social-share"></div>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js@1.0.16/dist/css/share.min.css">
+<script src="https://cdn.jsdelivr.net/npm/social-share.js@1.0.16/dist/js/social-share.min.js"></script>
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="menu-label has-text-centered">喜欢这篇文章？打赏一下作者吧</h3>
+        <div class="buttons is-centered">
+            
+                
+<a class="button is-info donate">
+    <span class="icon is-small">
+        <i class="fab fa-alipay"></i>
+    </span>
+    <span>支付宝</span>
+    <div class="qrcode"><img src="/images/zhi.jpg" alt="支付宝"></div>
+</a>
+
+                
+                
+<a class="button is-success donate">
+    <span class="icon is-small">
+        <i class="fab fa-weixin"></i>
+    </span>
+    <span>微信</span>
+    <div class="qrcode"><img src="/images/wei.png" alt="微信"></div>
+</a>
+
+                
+        </div>
+    </div>
+</div>
+
+
+
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        <div class="level-start">
+            <a class="level level-item has-link-grey  article-nav-prev" href="/Java%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E8%AE%BE%E8%AE%A1%E4%B9%8B%E5%B7%A5%E5%8E%82%E6%96%B9%E6%B3%95%E6%A8%A1%E5%BC%8F/">
+                <i class="level-item fas fa-chevron-left"></i>
+                <span class="level-item">Java面向对象设计之工厂方法模式</span>
+            </a>
+        </div>
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/Java%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E8%AE%BE%E8%AE%A1%E4%B9%8B%E7%8A%B6%E6%80%81%E6%A8%A1%E5%BC%8F/">
+                <span class="level-item">Java面向对象设计之状态模式</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="title is-5 has-text-weight-normal">评论</h3>
+        
+<div id="valine-thread" class="content"></div>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+<script>
+    new Valine({
+        el: '#valine-thread' ,
+        notify: false,
+        verify: false,
+        app_id: 'pGtDpK5EpiLy1oMGmpFXAaV6-gzGzoHsz',
+        app_key: 'ra40Npwa5HY3ex482cDELW5j',
+        placeholder: 'xxxxxxxx'
+    });
+</script>
+
+    </div>
+</div>
+</div>
+                
+
+
+
+
+<div class="column is-4-tablet is-4-desktop is-3-widescreen  has-order-1 column-left ">
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <nav class="level">
+            <div class="level-item has-text-centered" style="flex-shrink: 1">
+                <div>
+                    
+                    <figure class="image is-128x128 has-mb-6">
+                        <img class="" src="/images/xueshao110.jpg" alt="一抹离愁">
+                    </figure>
+                    
+                    <p class="is-size-4 is-block">
+                        一抹离愁
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-block">
+                        一抹离愁
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-flex is-flex-center has-text-grey">
+                        <i class="fas fa-map-marker-alt has-mr-7"></i>
+                        <span>西安</span>
+                    </p>
+                    
+                </div>
+            </div>
+        </nav>
+        <nav class="level is-mobile">
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        文章
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        59
+                    </p>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        分类
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        9
+                    </p>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        标签
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        28
+                    </p>
+                </div>
+            </div>
+        </nav>
+        
+        <div class="level">
+            <a class="level-item button is-link is-rounded" href="https://github.com/xueliang0614" target="_blank">
+                关注我</a>
+        </div>
+        
+        
+        
+        <div class="level is-mobile">
+            
+            <a class="level-item button is-white is-marginless" target="_blank"
+                title="Github" href="https://github.com/xueliang0614">
+                
+                <i class="fab fa-github"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank"
+                title="CSDN" href="https://blog.csdn.net/xueshao110">
+                
+                <i class="fab fa-github"></i>
+                
+            </a>
+            
+        </div>
+        
+    </div>
+</div>
+    
+        
+    
+        <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+        <h3 class="menu-label">
+            链接
+        </h3>
+        <ul class="menu-list">
+        
+            <li>
+                <a class="level is-mobile" href="https://blog.csdn.net/xueshao110" target="_blank">
+                    <span class="level-left">
+                        <span class="level-item">CSDN</span>
+                    </span>
+                    <span class="level-right">
+                        <span class="level-item tag">blog.csdn.net</span>
+                    </span>
+                </a>
+            </li>
+        
+            <li>
+                <a class="level is-mobile" href="https://github.com/xueliang0614" target="_blank">
+                    <span class="level-left">
+                        <span class="level-item">github</span>
+                    </span>
+                    <span class="level-right">
+                        <span class="level-item tag">github.com</span>
+                    </span>
+                </a>
+            </li>
+        
+        </ul>
+        </div>
+    </div>
+</div>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css">
+<script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script>
+<!-- require MetingJS -->
+<script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script>
+
+    <meting-js style="margin-top: 1.5rem;width: auto;height: auto;"
+    server="netease"
+    type="playlist"
+    id="408894554"
+    theme="#2980b9"
+    loop="all"
+    autoplay="true"
+    order="random"
+    storageName="aplayer-setting"
+    lrctype= 0
+    >
+    </meting-js>
+<style>
+    .aplayer{
+        margin: 1.5rem 0;
+    }
+</style>
+
+
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                分类
+            </h3>
+            <ul class="menu-list">
+            <li>
+        <a class="level is-marginless" href="/categories/Android/">
+            <span class="level-start">
+                <span class="level-item">Android</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">5</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/%E5%89%8D%E7%AB%AF/">
+            <span class="level-start">
+                <span class="level-item">前端</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">4</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/%E5%90%8E%E7%AB%AF/">
+            <span class="level-start">
+                <span class="level-item">后端</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">21</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/%E5%AE%89%E5%85%A8/">
+            <span class="level-start">
+                <span class="level-item">安全</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/%E5%B0%8F%E7%A8%8B%E5%BA%8F/">
+            <span class="level-start">
+                <span class="level-item">小程序</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/">
+            <span class="level-start">
+                <span class="level-item">数据库</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/%E7%BC%96%E7%A8%8B%E4%B9%8B%E9%81%93/">
+            <span class="level-start">
+                <span class="level-item">编程之道</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">3</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E5%85%B7/">
+            <span class="level-start">
+                <span class="level-item">软件工具</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">8</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/%E8%BD%AF%E4%BB%B6%E8%AE%BE%E8%AE%A1/">
+            <span class="level-start">
+                <span class="level-item">软件设计</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">14</span>
+            </span>
+        </a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+    
+        <div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            标签云
+        </h3>
+        <a href="/tags/Android/" style="font-size: 16.67px;">Android</a> <a href="/tags/Apache/" style="font-size: 15px;">Apache</a> <a href="/tags/CPU%E7%BC%93%E5%AD%98/" style="font-size: 10px;">CPU缓存</a> <a href="/tags/DevOps/" style="font-size: 10px;">DevOps</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/GitLab-CI/" style="font-size: 10px;">GitLab CI</a> <a href="/tags/Google/" style="font-size: 10px;">Google</a> <a href="/tags/Java/" style="font-size: 20px;">Java</a> <a href="/tags/JavaScript/" style="font-size: 15px;">JavaScript</a> <a href="/tags/Jenkins/" style="font-size: 10px;">Jenkins</a> <a href="/tags/Linux/" style="font-size: 15px;">Linux</a> <a href="/tags/MVEL/" style="font-size: 11.67px;">MVEL</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/PostgreSQL/" style="font-size: 10px;">PostgreSQL</a> <a href="/tags/Spring/" style="font-size: 10px;">Spring</a> <a href="/tags/Typora/" style="font-size: 10px;">Typora</a> <a href="/tags/UML/" style="font-size: 11.67px;">UML</a> <a href="/tags/Vue/" style="font-size: 10px;">Vue</a> <a href="/tags/%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95/" style="font-size: 10px;">单元测试</a> <a href="/tags/%E5%AE%89%E5%85%A8/" style="font-size: 10px;">安全</a> <a href="/tags/%E5%B0%8F%E7%A8%8B%E5%BA%8F/" style="font-size: 10px;">小程序</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" style="font-size: 10px;">数据库</a> <a href="/tags/%E6%95%B4%E6%B4%81%E4%BB%A3%E7%A0%81/" style="font-size: 10px;">整洁代码</a> <a href="/tags/%E6%B5%8B%E8%AF%95/" style="font-size: 10px;">测试</a> <a href="/tags/%E8%AE%BE%E8%AE%A1%E5%8E%9F%E5%88%99/" style="font-size: 10px;">设计原则</a> <a href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" style="font-size: 18.33px;">设计模式</a> <a href="/tags/%E9%87%8D%E6%9E%84/" style="font-size: 10px;">重构</a> <a href="/tags/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%BC%96%E7%A8%8B/" style="font-size: 13.33px;">面向对象编程</a>
+    </div>
+</div>
+    
+    
+        <div class="column-right-shadow is-hidden-widescreen ">
+        
+            <div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            最新文章
+        </h3>
+        
+        <article class="media">
+            
+            <a href="/hello-world/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Hello World">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-03-06T03:18:23.363Z">2020-03-06</time></div>
+                    <a href="/hello-world/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Hello World</a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/%E5%85%B3%E4%BA%8E%E5%B0%8F%E7%A8%8B%E5%BA%8F/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/gallery/thumbnails/x.jpeg" alt="关于小程序">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-10-20T14:10:22.000Z">2019-10-20</time></div>
+                    <a href="/%E5%85%B3%E4%BA%8E%E5%B0%8F%E7%A8%8B%E5%BA%8F/" class="title has-link-black-ter is-size-6 has-text-weight-normal">关于小程序</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/%E5%B0%8F%E7%A8%8B%E5%BA%8F/">小程序</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/Android-%E8%87%AA%E5%AE%9A%E4%B9%89%E7%9B%B8%E6%9C%BA/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/gallery/thumbnails/c.jpg" alt="Android 自定义相机">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-04-21T14:42:52.000Z">2019-04-21</time></div>
+                    <a href="/Android-%E8%87%AA%E5%AE%9A%E4%B9%89%E7%9B%B8%E6%9C%BA/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Android 自定义相机</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Android/">Android</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/Android%E5%AE%9E%E7%8E%B0%E4%B8%AA%E4%BA%BA%E4%B8%AD%E5%BF%83%E8%AE%BE%E7%BD%AE%E7%95%8C%E9%9D%A2/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/gallery/thumbnails/b.jpg" alt="Android实现个人中心设置界面">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-03-28T14:35:49.000Z">2019-03-28</time></div>
+                    <a href="/Android%E5%AE%9E%E7%8E%B0%E4%B8%AA%E4%BA%BA%E4%B8%AD%E5%BF%83%E8%AE%BE%E7%BD%AE%E7%95%8C%E9%9D%A2/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Android实现个人中心设置界面</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Android/">Android</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/%E5%9F%BA%E4%BA%8E%E8%B0%B7%E6%AD%8Cmvp%E6%9E%B6%E6%9E%84/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/gallery/thumbnails/a.jpg" alt="基于谷歌mvp架构">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-03-03T14:27:59.000Z">2019-03-03</time></div>
+                    <a href="/%E5%9F%BA%E4%BA%8E%E8%B0%B7%E6%AD%8Cmvp%E6%9E%B6%E6%9E%84/" class="title has-link-black-ter is-size-6 has-text-weight-normal">基于谷歌mvp架构</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Android/">Android</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+    </div>
+</div>
+        
+            <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+        <h3 class="menu-label">
+            归档
+        </h3>
+        <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/03/">
+                <span class="level-start">
+                    <span class="level-item">三月 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/10/">
+                <span class="level-start">
+                    <span class="level-item">十月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/04/">
+                <span class="level-start">
+                    <span class="level-item">四月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/03/">
+                <span class="level-start">
+                    <span class="level-item">三月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">2</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/02/">
+                <span class="level-start">
+                    <span class="level-item">二月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2018/11/">
+                <span class="level-start">
+                    <span class="level-item">十一月 2018</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">4</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2018/10/">
+                <span class="level-start">
+                    <span class="level-item">十月 2018</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">7</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2018/09/">
+                <span class="level-start">
+                    <span class="level-item">九月 2018</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">9</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2018/08/">
+                <span class="level-start">
+                    <span class="level-item">八月 2018</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">2</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2018/07/">
+                <span class="level-start">
+                    <span class="level-item">七月 2018</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">4</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2018/06/">
+                <span class="level-start">
+                    <span class="level-item">六月 2018</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">4</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2018/05/">
+                <span class="level-start">
+                    <span class="level-item">五月 2018</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2018/04/">
+                <span class="level-start">
+                    <span class="level-item">四月 2018</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">2</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2018/03/">
+                <span class="level-start">
+                    <span class="level-item">三月 2018</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">4</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2018/02/">
+                <span class="level-start">
+                    <span class="level-item">二月 2018</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2018/01/">
+                <span class="level-start">
+                    <span class="level-item">一月 2018</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">4</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2017/12/">
+                <span class="level-start">
+                    <span class="level-item">十二月 2017</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2017/11/">
+                <span class="level-start">
+                    <span class="level-item">十一月 2017</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">3</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2017/10/">
+                <span class="level-start">
+                    <span class="level-item">十月 2017</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">2</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2017/09/">
+                <span class="level-start">
+                    <span class="level-item">九月 2017</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">3</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2017/06/">
+                <span class="level-start">
+                    <span class="level-item">六月 2017</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2017/04/">
+                <span class="level-start">
+                    <span class="level-item">四月 2017</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        </ul>
+        </div>
+    </div>
+</div>
+        
+            <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                标签
+            </h3>
+            <div class="field is-grouped is-grouped-multiline">
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Android/">
+                        <span class="tag">Android</span>
+                        <span class="tag is-grey">5</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Apache/">
+                        <span class="tag">Apache</span>
+                        <span class="tag is-grey">4</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/CPU%E7%BC%93%E5%AD%98/">
+                        <span class="tag">CPU缓存</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/DevOps/">
+                        <span class="tag">DevOps</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Git/">
+                        <span class="tag">Git</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/GitLab-CI/">
+                        <span class="tag">GitLab CI</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Google/">
+                        <span class="tag">Google</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Java/">
+                        <span class="tag">Java</span>
+                        <span class="tag is-grey">37</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/JavaScript/">
+                        <span class="tag">JavaScript</span>
+                        <span class="tag is-grey">4</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Jenkins/">
+                        <span class="tag">Jenkins</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Linux/">
+                        <span class="tag">Linux</span>
+                        <span class="tag is-grey">4</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/MVEL/">
+                        <span class="tag">MVEL</span>
+                        <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Markdown/">
+                        <span class="tag">Markdown</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/PostgreSQL/">
+                        <span class="tag">PostgreSQL</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Spring/">
+                        <span class="tag">Spring</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Typora/">
+                        <span class="tag">Typora</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/UML/">
+                        <span class="tag">UML</span>
+                        <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Vue/">
+                        <span class="tag">Vue</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95/">
+                        <span class="tag">单元测试</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/%E5%AE%89%E5%85%A8/">
+                        <span class="tag">安全</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/%E5%B0%8F%E7%A8%8B%E5%BA%8F/">
+                        <span class="tag">小程序</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/">
+                        <span class="tag">数据库</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/%E6%95%B4%E6%B4%81%E4%BB%A3%E7%A0%81/">
+                        <span class="tag">整洁代码</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/%E6%B5%8B%E8%AF%95/">
+                        <span class="tag">测试</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/%E8%AE%BE%E8%AE%A1%E5%8E%9F%E5%88%99/">
+                        <span class="tag">设计原则</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">
+                        <span class="tag">设计模式</span>
+                        <span class="tag is-grey">12</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/%E9%87%8D%E6%9E%84/">
+                        <span class="tag">重构</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%BC%96%E7%A8%8B/">
+                        <span class="tag">面向对象编程</span>
+                        <span class="tag is-grey">3</span>
+                    </a>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</div>
+        
+        </div>
+    
+</div>
+
+                
+
+
+
+
+<div class="column is-4-tablet is-4-desktop is-3-widescreen is-hidden-touch is-hidden-desktop-only has-order-3 column-right ">
+    
+        <div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            最新文章
+        </h3>
+        
+        <article class="media">
+            
+            <a href="/hello-world/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Hello World">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-03-06T03:18:23.363Z">2020-03-06</time></div>
+                    <a href="/hello-world/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Hello World</a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/%E5%85%B3%E4%BA%8E%E5%B0%8F%E7%A8%8B%E5%BA%8F/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/gallery/thumbnails/x.jpeg" alt="关于小程序">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-10-20T14:10:22.000Z">2019-10-20</time></div>
+                    <a href="/%E5%85%B3%E4%BA%8E%E5%B0%8F%E7%A8%8B%E5%BA%8F/" class="title has-link-black-ter is-size-6 has-text-weight-normal">关于小程序</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/%E5%B0%8F%E7%A8%8B%E5%BA%8F/">小程序</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/Android-%E8%87%AA%E5%AE%9A%E4%B9%89%E7%9B%B8%E6%9C%BA/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/gallery/thumbnails/c.jpg" alt="Android 自定义相机">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-04-21T14:42:52.000Z">2019-04-21</time></div>
+                    <a href="/Android-%E8%87%AA%E5%AE%9A%E4%B9%89%E7%9B%B8%E6%9C%BA/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Android 自定义相机</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Android/">Android</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/Android%E5%AE%9E%E7%8E%B0%E4%B8%AA%E4%BA%BA%E4%B8%AD%E5%BF%83%E8%AE%BE%E7%BD%AE%E7%95%8C%E9%9D%A2/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/gallery/thumbnails/b.jpg" alt="Android实现个人中心设置界面">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-03-28T14:35:49.000Z">2019-03-28</time></div>
+                    <a href="/Android%E5%AE%9E%E7%8E%B0%E4%B8%AA%E4%BA%BA%E4%B8%AD%E5%BF%83%E8%AE%BE%E7%BD%AE%E7%95%8C%E9%9D%A2/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Android实现个人中心设置界面</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Android/">Android</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/%E5%9F%BA%E4%BA%8E%E8%B0%B7%E6%AD%8Cmvp%E6%9E%B6%E6%9E%84/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/gallery/thumbnails/a.jpg" alt="基于谷歌mvp架构">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-03-03T14:27:59.000Z">2019-03-03</time></div>
+                    <a href="/%E5%9F%BA%E4%BA%8E%E8%B0%B7%E6%AD%8Cmvp%E6%9E%B6%E6%9E%84/" class="title has-link-black-ter is-size-6 has-text-weight-normal">基于谷歌mvp架构</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Android/">Android</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+    </div>
+</div>
+    
+        <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+        <h3 class="menu-label">
+            归档
+        </h3>
+        <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/03/">
+                <span class="level-start">
+                    <span class="level-item">三月 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/10/">
+                <span class="level-start">
+                    <span class="level-item">十月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/04/">
+                <span class="level-start">
+                    <span class="level-item">四月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/03/">
+                <span class="level-start">
+                    <span class="level-item">三月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">2</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/02/">
+                <span class="level-start">
+                    <span class="level-item">二月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2018/11/">
+                <span class="level-start">
+                    <span class="level-item">十一月 2018</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">4</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2018/10/">
+                <span class="level-start">
+                    <span class="level-item">十月 2018</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">7</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2018/09/">
+                <span class="level-start">
+                    <span class="level-item">九月 2018</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">9</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2018/08/">
+                <span class="level-start">
+                    <span class="level-item">八月 2018</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">2</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2018/07/">
+                <span class="level-start">
+                    <span class="level-item">七月 2018</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">4</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2018/06/">
+                <span class="level-start">
+                    <span class="level-item">六月 2018</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">4</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2018/05/">
+                <span class="level-start">
+                    <span class="level-item">五月 2018</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2018/04/">
+                <span class="level-start">
+                    <span class="level-item">四月 2018</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">2</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2018/03/">
+                <span class="level-start">
+                    <span class="level-item">三月 2018</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">4</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2018/02/">
+                <span class="level-start">
+                    <span class="level-item">二月 2018</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2018/01/">
+                <span class="level-start">
+                    <span class="level-item">一月 2018</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">4</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2017/12/">
+                <span class="level-start">
+                    <span class="level-item">十二月 2017</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2017/11/">
+                <span class="level-start">
+                    <span class="level-item">十一月 2017</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">3</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2017/10/">
+                <span class="level-start">
+                    <span class="level-item">十月 2017</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">2</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2017/09/">
+                <span class="level-start">
+                    <span class="level-item">九月 2017</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">3</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2017/06/">
+                <span class="level-start">
+                    <span class="level-item">六月 2017</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2017/04/">
+                <span class="level-start">
+                    <span class="level-item">四月 2017</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        </ul>
+        </div>
+    </div>
+</div>
+    
+        <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                标签
+            </h3>
+            <div class="field is-grouped is-grouped-multiline">
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Android/">
+                        <span class="tag">Android</span>
+                        <span class="tag is-grey">5</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Apache/">
+                        <span class="tag">Apache</span>
+                        <span class="tag is-grey">4</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/CPU%E7%BC%93%E5%AD%98/">
+                        <span class="tag">CPU缓存</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/DevOps/">
+                        <span class="tag">DevOps</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Git/">
+                        <span class="tag">Git</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/GitLab-CI/">
+                        <span class="tag">GitLab CI</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Google/">
+                        <span class="tag">Google</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Java/">
+                        <span class="tag">Java</span>
+                        <span class="tag is-grey">37</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/JavaScript/">
+                        <span class="tag">JavaScript</span>
+                        <span class="tag is-grey">4</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Jenkins/">
+                        <span class="tag">Jenkins</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Linux/">
+                        <span class="tag">Linux</span>
+                        <span class="tag is-grey">4</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/MVEL/">
+                        <span class="tag">MVEL</span>
+                        <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Markdown/">
+                        <span class="tag">Markdown</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/PostgreSQL/">
+                        <span class="tag">PostgreSQL</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Spring/">
+                        <span class="tag">Spring</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Typora/">
+                        <span class="tag">Typora</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/UML/">
+                        <span class="tag">UML</span>
+                        <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Vue/">
+                        <span class="tag">Vue</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95/">
+                        <span class="tag">单元测试</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/%E5%AE%89%E5%85%A8/">
+                        <span class="tag">安全</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/%E5%B0%8F%E7%A8%8B%E5%BA%8F/">
+                        <span class="tag">小程序</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/">
+                        <span class="tag">数据库</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/%E6%95%B4%E6%B4%81%E4%BB%A3%E7%A0%81/">
+                        <span class="tag">整洁代码</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/%E6%B5%8B%E8%AF%95/">
+                        <span class="tag">测试</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/%E8%AE%BE%E8%AE%A1%E5%8E%9F%E5%88%99/">
+                        <span class="tag">设计原则</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">
+                        <span class="tag">设计模式</span>
+                        <span class="tag is-grey">12</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/%E9%87%8D%E6%9E%84/">
+                        <span class="tag">重构</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%BC%96%E7%A8%8B/">
+                        <span class="tag">面向对象编程</span>
+                        <span class="tag is-grey">3</span>
+                    </a>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</div>
+    
+    
+</div>
+
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+    <div class="container">
+        <div class="level">
+            <div class="level-start has-text-centered-mobile">
+			
+			<script type="text/javascript" src="//rf.revolvermaps.com/0/0/6.js?i=5spvzwvaykj&amp;m=7&amp;c=e63100&amp;cr1=ffffff&amp;f=arial&amp;l=0&amp;bv=90&amp;lx=-420&amp;ly=420&amp;hi=20&amp;he=7&amp;hc=a8ddff&amp;rs=80" async="async"></script>
+			
+                <a class="footer-logo is-block has-mb-6" href="/">
+                
+                    <img src="/images/ava.png" alt="Java5新特性及使用" height="28">
+                
+                </a>
+                <p class="is-size-7">
+                &copy; 2020 blinkfox&nbsp;
+                Powered by <a href="https://hexo.io/" target="_blank">Hexo</a> & <a
+                        href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank">Icarus</a>
+                
+                </p>
+            </div>
+            <div class="level-end">
+            
+                <div class="field has-addons is-flex-center-mobile has-mt-5-mobile is-flex-wrap is-flex-middle">
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="Creative Commons" href="https://creativecommons.org/">
+                        
+                        <i class="fab fa-creative-commons"></i>
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/">
+                        
+                        <i class="fab fa-creative-commons-by"></i>
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="Download on GitHub" href="https://github.com/ppoffice/hexo-theme-icarus">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                </p>
+                
+                </div>
+            
+            </div>
+        </div>
+    </div>
+</footer>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script>
+<script>moment.locale("zh-CN");</script>
+
+<script>
+var IcarusThemeSettings = {
+    article: {
+        highlight: {
+            clipboard: true,
+            fold: 'unfolded'
+        }
+    }
+};
+</script>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script>
+
+
+
+    
+    
+<script src="/js/animation.js"></script>
+
+    
+    
+<script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script>
+<script src="/js/gallery.js" defer></script>
+
+    
+    
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/" target="_blank" rel="noopener">Update
+            my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.js" defer></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        });
+    });
+</script>
+
+    
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.5/unpacked/MathJax.js?config=TeX-MML-AM_CHTML" defer></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    MathJax.Hub.Config({
+        'HTML-CSS': {
+            matchFontHeight: false
+        },
+        SVG: {
+            matchFontHeight: false
+        },
+        CommonHTML: {
+            matchFontHeight: false
+        },
+        tex2jax: {
+            inlineMath: [
+                ['$','$'],
+                ['\\(','\\)']
+            ]
+        }
+    });
+});
+</script>
+    
+    
+<a id="back-to-top" title="回到顶端" href="javascript:;">
+    <i class="fas fa-chevron-up"></i>
+</a>
+<script src="/js/back-to-top.js" defer></script>
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+
+<script src="/js/main.js" defer></script>
+
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="想要查找什么..." />
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '页面',
+                CATEGORIES: '分类',
+                TAGS: '标签',
+                UNTITLED: '(无标题)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script src="/js/insight.js" defer></script>
+<link rel="stylesheet" href="/css/search.css">
+<link rel="stylesheet" href="/css/insight.css">
+    
+	
+	<!-- 雪花特效 -->
+    <script type="text/javascript">
+      var windowWidth = $(window).width();
+      if (windowWidth > 480) {
+        document.write('<script type="text/javascript" src="/js/src/snow.js"><\/script>');
+      }
+    </script>
+	
+	<script type="text/javascript" src="//rf.revolvermaps.com/0/0/6.js?i=5spvzwvaykj&amp;m=7&amp;c=e63100&amp;cr1=ffffff&amp;f=arial&amp;l=0&amp;bv=90&amp;lx=-420&amp;ly=420&amp;hi=20&amp;he=7&amp;hc=a8ddff&amp;rs=80" async="async"></script>
+
+</body>
+</html>
